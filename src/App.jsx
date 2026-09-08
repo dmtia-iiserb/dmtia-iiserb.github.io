@@ -10,7 +10,8 @@ import {
   Menu,
   X,
   Users,
-  Search
+  Search,
+  GraduationCap
 } from 'lucide-react';
 
 // Reads the current page id from the URL hash (e.g. "#/schedule" -> "schedule").
@@ -50,7 +51,7 @@ export default function App() {
     { id: 'home', label: 'Home' },
     { id: 'about', label: 'About Us' },
     { id: 'schedule', label: 'Schedule' },
-    { id: 'abstracts', label: 'Abstracts' },
+    { id: 'speakers', label: 'Speakers' },
     { id: 'contact', label: 'Contact' },
   ];
 
@@ -81,13 +82,28 @@ export default function App() {
     },
   ];
 
-  const abstractsData = [];
+  const speakersData = [
+    { name: 'Prof. AV Jayanthan', affiliation: 'Professor, Department of Mathematics, IIT Madras', institution: 'IIT Madras', talkTitle: 'TBA', abstract: 'TBA', time: 'TBA', venue: 'TBA' },
+    { name: 'Dr. Ajay Kumar', affiliation: 'IIT Jammu', institution: 'IIT Jammu', talkTitle: 'TBA', abstract: 'TBA', time: 'TBA', venue: 'TBA' },
+    { name: 'Dr. Amith Tripathi', affiliation: 'IIT Hyderabad', institution: 'IIT Hyderabad', talkTitle: 'TBA', abstract: 'TBA', time: 'TBA', venue: 'TBA' },
+    { name: 'Dr. Arpan Dutta', affiliation: 'IIT Bhubaneswar', institution: 'IIT Bhubaneswar', talkTitle: 'TBA', abstract: 'TBA', time: 'TBA', venue: 'TBA' },
+    { name: 'Prof. Om Prakash', affiliation: 'IIT Patna', institution: 'IIT Patna', talkTitle: 'TBA', abstract: 'TBA', time: 'TBA', venue: 'TBA' },
+    { name: 'Dr. Ananthnarayan Hariharan', affiliation: 'IIT Bombay', institution: 'IIT Bombay', talkTitle: 'TBA', abstract: 'TBA', time: 'TBA', venue: 'TBA' },
+    { name: 'Dr. Vaibhab Pandey', affiliation: 'IIT Madras', institution: 'IIT Madras', talkTitle: 'TBA', abstract: 'TBA', time: 'TBA', venue: 'TBA' },
+    { name: 'Dr. Rahul Gupta', affiliation: 'IMSc', institution: 'IMSc', talkTitle: 'TBA', abstract: 'TBA', time: 'TBA', venue: 'TBA' },
+    { name: 'Dr. Sudipta Das', affiliation: 'TIFR Mumbai', institution: 'TIFR Mumbai', talkTitle: 'TBA', abstract: 'TBA', time: 'TBA', venue: 'TBA' },
+    { name: 'Dr. Divyasree', affiliation: 'IISER Pune', institution: 'IISER Pune', talkTitle: 'TBA', abstract: 'TBA', time: 'TBA', venue: 'TBA' },
+    { name: 'Deblina Dey', affiliation: 'IISER Bhopal', institution: 'IISER Bhopal', talkTitle: 'TBA', abstract: 'TBA', time: 'TBA', venue: 'TBA' },
+    { name: 'Ekta Tiwari', affiliation: 'IISER Pune', institution: 'IISER Pune', talkTitle: 'TBA', abstract: 'TBA', time: 'TBA', venue: 'TBA' },
+    { name: 'Dr. Sanjeev Kumar Pandey', affiliation: 'IISER Bhopal', institution: 'IISER Bhopal', talkTitle: 'TBA', abstract: 'TBA', time: 'TBA', venue: 'TBA' },
+    { name: 'Varsha Vasudevan', affiliation: 'IISER Bhopal', institution: 'IISER Bhopal', talkTitle: 'TBA', abstract: 'TBA', time: 'TBA', venue: 'TBA' },
+    { name: 'Illa Ahmad', affiliation: 'IISER Bhopal', institution: 'IISER Bhopal', talkTitle: 'TBA', abstract: 'TBA', time: 'TBA', venue: 'TBA' },
+  ];
 
-  const filteredAbstracts = abstractsData.filter(
+  const filteredSpeakers = speakersData.filter(
     (item) =>
-      item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.speaker.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.topic.toLowerCase().includes(searchQuery.toLowerCase())
+      item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.institution.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
@@ -299,12 +315,12 @@ export default function App() {
                     <ChevronRight size={18} />
                   </button>
                   <button
-                    onClick={() => setActiveTab('abstracts')}
+                    onClick={() => setActiveTab('speakers')}
                     className="cta-button w-full sm:w-auto px-7 py-3 rounded-lg font-semibold flex items-center justify-center space-x-2"
                     style={{ background: '#FFFFFF', color: '#3F3D38', border: '1px solid #C9C4B4' }}
                   >
                     <BookOpen size={18} />
-                    <span>Talk Abstracts</span>
+                    <span>Speakers</span>
                   </button>
                 </div>
               </div>
@@ -440,13 +456,13 @@ export default function App() {
           </div>
         )}
 
-        {/* ==================== ABSTRACTS ==================== */}
-        {activeTab === 'abstracts' && (
+        {/* ==================== SPEAKERS ==================== */}
+        {activeTab === 'speakers' && (
           <div className="py-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
               <div>
-                <h1 className="text-3xl sm:text-4xl font-bold mb-2" style={{ color: '#2B2B2E' }}>Talk Abstracts</h1>
-                <p className="sans" style={{ color: '#6B6A5F' }}>Discover titles and summaries for plenary and invited talks.</p>
+                <h1 className="text-3xl sm:text-4xl font-bold mb-2" style={{ color: '#2B2B2E' }}>Speakers</h1>
+                <p className="sans" style={{ color: '#6B6A5F' }}>Faculty and postdoctoral speakers presenting at the symposium.</p>
               </div>
 
               {/* Search Bar */}
@@ -454,7 +470,7 @@ export default function App() {
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2" size={16} style={{ color: '#8A8577' }} />
                 <input
                   type="text"
-                  placeholder="Search abstracts or topics..."
+                  placeholder="Search speakers or institutions..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="w-full pl-9 pr-4 py-2 rounded-lg text-sm focus:outline-none transition-colors"
@@ -463,27 +479,54 @@ export default function App() {
               </div>
             </div>
 
-            <div className="space-y-6">
-              {filteredAbstracts.length > 0 ? (
-                filteredAbstracts.map((item, idx) => (
-                  <div key={item.id} className="soft-card stagger-card p-6 rounded-lg" style={{ background: '#FFFFFF', border: '1px solid #DFDACD', animationDelay: `${idx * 0.07}s` }}>
-                    <div className="flex flex-wrap items-center justify-between gap-2 mb-2 sans">
-                      <span
-                        className="text-xs font-medium mono px-2.5 py-0.5 rounded"
-                        style={{ color: '#3C4A3E', background: '#EFEAE0', border: '1px solid #DAD3C0' }}
-                      >
-                        {item.topic}
-                      </span>
-                      <span className="text-xs font-medium" style={{ color: '#8A8577' }}>{item.institution}</span>
+            <div className="space-y-5">
+              {filteredSpeakers.length > 0 ? (
+                filteredSpeakers.map((item, idx) => (
+                  <div
+                    key={idx}
+                    className="soft-card stagger-card p-6 rounded-lg flex items-start space-x-4"
+                    style={{ background: '#FFFFFF', border: '1px solid #DFDACD', animationDelay: `${idx * 0.05}s` }}
+                  >
+                    <div
+                      className="h-11 w-11 shrink-0 rounded-full flex items-center justify-center"
+                      style={{ background: '#EFEAE0', color: '#3C4A3E' }}
+                    >
+                      <GraduationCap size={20} />
                     </div>
-                    <h2 className="text-xl font-semibold mb-1" style={{ color: '#2B2B2E' }}>{item.title}</h2>
-                    <p className="text-sm font-semibold mb-3 sans" style={{ color: '#5C5A52' }}>{item.speaker}</p>
-                    <p className="text-sm leading-relaxed" style={{ color: '#6B6A5F' }}>{item.abstract}</p>
+                    <div className="flex-1">
+                      <h2 className="text-lg font-semibold mb-0.5" style={{ color: '#2B2B2E' }}>{item.name}</h2>
+                      <p className="text-sm sans mb-3" style={{ color: '#6B6A5F' }}>{item.affiliation}</p>
+
+                      <div className="flex flex-wrap items-center gap-3 text-xs mono mb-3">
+                        <span
+                          className="flex items-center space-x-1.5 px-2.5 py-1 rounded-md"
+                          style={{ color: '#3C4A3E', background: '#EFEAE0', border: '1px solid #DAD3C0' }}
+                        >
+                          <Clock size={13} />
+                          <span>Time: {item.time}</span>
+                        </span>
+                        <span
+                          className="px-3 py-1 rounded-full"
+                          style={{ background: '#F6F2EA', color: '#6B6A5F', border: '1px solid #E9E4D6' }}
+                        >
+                          Venue: {item.venue}
+                        </span>
+                      </div>
+
+                      <p className="text-sm font-semibold mb-1 sans" style={{ color: '#3F3D38' }}>
+                        <span className="font-semibold sans" style={{ color: '#5C5A52' }}>Talk Title: </span>
+                        {item.talkTitle}
+                      </p>
+                      <p className="text-sm leading-relaxed" style={{ color: '#6B6A5F' }}>
+                        <span className="font-semibold sans" style={{ color: '#5C5A52' }}>Abstract: </span>
+                        {item.abstract}
+                      </p>
+                    </div>
                   </div>
                 ))
               ) : (
                 <div className="text-center py-12 rounded-lg sans" style={{ background: '#F6F2EA', border: '1px solid #DFDACD' }}>
-                  <p style={{ color: '#8A8577' }}>No abstracts match your query.</p>
+                  <p style={{ color: '#8A8577' }}>No speakers match your query.</p>
                 </div>
               )}
             </div>
@@ -526,10 +569,28 @@ export default function App() {
                     <Users size={20} style={{ color: '#3C4A3E' }} />
                     <span>Organizing Committee</span>
                   </h2>
-                  <ul className="space-y-2 text-sm" style={{ color: '#3F3D38' }}>
-                    <li>• Department of Mathematics, IISER Bhopal</li>
-                    <li>• Faculty Coordinators & Organizing Team</li>
-                    <li>• Student Volunteers & Support Staff</li>
+                  <ul className="space-y-3 text-sm" style={{ color: '#3F3D38' }}>
+                    <li>
+                      <span className="font-semibold">Dr. Anjan Gupta</span>
+                      <br />
+                      <a href="mailto:anjan@iiserb.ac.in" className="link-hover" style={{ color: '#3C4A3E' }}>
+                        anjan@iiserb.ac.in
+                      </a>
+                    </li>
+                    <li>
+                      <span className="font-semibold">Dr. Sankhaneel Bisui</span>
+                      <br />
+                      <a href="mailto:sankhaneel@iiserb.ac.in" className="link-hover" style={{ color: '#3C4A3E' }}>
+                        sankhaneel@iiserb.ac.in
+                      </a>
+                    </li>
+                    <li>
+                      <span className="font-semibold">Dr. Vivek Sadhu</span>
+                      <br />
+                      <a href="mailto:vsadhu@iiserb.ac.in" className="link-hover" style={{ color: '#3C4A3E' }}>
+                        vsadhu@iiserb.ac.in
+                      </a>
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -564,14 +625,19 @@ export default function App() {
 
       {/* Footer */}
       <footer className="sans" style={{ borderTop: '1px solid #DFDACD', background: '#F6F2EA' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs" style={{ color: '#8A8577' }}>
-          <div>
-            © 2026 Algebra Symposium | Department of Mathematics, IISER Bhopal.
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col gap-4 text-xs" style={{ color: '#8A8577' }}>
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+              © 2026 Algebra Symposium | Department of Mathematics, IISER Bhopal.
+            </div>
+            <div className="flex items-center space-x-4">
+              <span>September 17–18, 2026</span>
+              <span>•</span>
+              <span>IISER Bhopal</span>
+            </div>
           </div>
-          <div className="flex items-center space-x-4">
-            <span>September 17–18, 2026</span>
-            <span>•</span>
-            <span>IISER Bhopal</span>
+          <div className="text-center sm:text-left" style={{ borderTop: '1px solid #E9E4D6', paddingTop: '1rem' }}>
+            Website by Adeetya Choubey
           </div>
         </div>
       </footer>
