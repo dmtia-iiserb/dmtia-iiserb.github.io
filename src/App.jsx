@@ -195,7 +195,7 @@ export default function App() {
                 <span className="text-lg font-semibold tracking-tight" style={{ color: '#2B2B2E' }}>
                   Discussion Meeting on Topics in Algebra
                 </span>
-                <span className="block text-xs mono" style={{ color: '#8A8577' }}>IISER Bhopal</span>
+                <span className="block mono" style={{ color: '#8A8577', fontSize: '0.65rem' }}>IISER Bhopal</span>
               </div>
             </div>
 
@@ -270,7 +270,7 @@ export default function App() {
                 <h1 className="fade-in fade-in-2 text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-6" style={{ color: '#2B2B2E' }}>
                   Discussion Meeting on <br />
                   Topics in Algebra <br />
-                  <span style={{ color: '#3C4A3E' }}>IISER Bhopal 2026</span>
+                  <span style={{ color: '#3C4A3E' }}>IISERB</span>
                 </h1>
 
                 <p className="fade-in fade-in-3 max-w-2xl mx-auto text-base sm:text-lg mb-8 leading-relaxed" style={{ color: '#5C5A52' }}>
@@ -536,11 +536,11 @@ export default function App() {
         {activeTab === 'registration' && (
           <div className="py-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <h1 className="text-3xl sm:text-4xl font-bold mb-2" style={{ color: '#2B2B2E' }}>Registration</h1>
-            <p className="mb-10 sans" style={{ color: '#6B6A5F' }}>
+            <p className="mb-8 sans" style={{ color: '#6B6A5F' }}>
               All talks at the Discussion Meeting on Topics in Algebra (September 17–18, 2026) are open to everyone. Registration below is for a more personalised interaction with the visiting speakers.
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
               {/* Eligibility */}
               <div className="soft-card p-6 rounded-lg" style={{ background: '#FFFFFF', border: '1px solid #DFDACD' }}>
                 <h2 className="text-lg font-semibold mb-4 flex items-center space-x-2" style={{ color: '#2B2B2E' }}>
@@ -577,7 +577,19 @@ export default function App() {
 
             {/* Registration Form */}
             <div className="soft-card p-6 sm:p-8 rounded-lg" style={{ background: '#FFFFFF', border: '1px solid #DFDACD' }}>
-              <h2 className="text-lg font-semibold mb-6" style={{ color: '#2B2B2E' }}>Registration Form</h2>
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+                <h2 className="text-lg font-semibold" style={{ color: '#2B2B2E' }}>Registration Form</h2>
+                <a
+                  href="https://forms.gle/Z1FK9HqBvnE5kniC6"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="cta-button inline-flex items-center justify-center space-x-2 w-full sm:w-auto px-6 py-3 rounded-lg font-semibold text-sm"
+                  style={{ background: '#3C4A3E', color: '#FBFAF7' }}
+                >
+                  <span>Open Form in New Tab</span>
+                  <ExternalLink size={16} />
+                </a>
+              </div>
 
               <div className="rounded-lg overflow-hidden" style={{ border: '1px solid #DFDACD' }}>
                 <iframe
@@ -592,16 +604,7 @@ export default function App() {
               </div>
 
               <p className="text-xs sans pt-4" style={{ color: '#8A8577' }}>
-                Submitting this form does not guarantee a spot; approval depends on alignment with the meeting's themes and availability, and you will be notified by email either way. If the form doesn't load,{' '}
-                <a
-                  href="https://forms.gle/Z1FK9HqBvnE5kniC6"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="link-hover"
-                  style={{ color: '#3C4A3E' }}
-                >
-                  open it in a new tab
-                </a>.
+                Submitting this form does not guarantee a spot; approval depends on alignment with the meeting's themes and availability, and you will be notified by email either way. Having trouble with the embedded form above? Use the "Open Form in New Tab" button instead, which works well on mobile.
               </p>
             </div>
           </div>
