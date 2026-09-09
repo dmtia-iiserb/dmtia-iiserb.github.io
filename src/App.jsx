@@ -605,7 +605,6 @@ export default function App() {
                     </a>.
                   </p>
                 </div>
-                </div>
               </div>
             </div>
           </div>
