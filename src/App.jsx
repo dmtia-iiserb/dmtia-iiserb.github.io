@@ -362,24 +362,24 @@ export default function App() {
         {/* ==================== ABOUT US ==================== */}
         {activeTab === 'about' && (
           <div className="py-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 className="text-3xl sm:text-4xl font-bold mb-4" style={{ color: '#2B2B2E' }}>About the Meeting</h1>
+            <h1 className="text-3xl sm:text-4xl font-bold mb-4" style={{ color: '#2B2B2E' }}>About</h1>
             <p className="font-medium mb-8 sans" style={{ color: '#3C4A3E' }}>Department of Mathematics, IISER Bhopal</p>
 
             <div className="space-y-6 leading-relaxed" style={{ color: '#3F3D38' }}>
               <div className="p-6 sm:p-8 rounded-lg" style={{ background: '#FFFFFF', border: '1px solid #DFDACD' }}>
                 <h2 className="text-xl font-semibold mb-3" style={{ color: '#2B2B2E' }}>Overview & Vision</h2>
                 <p className="mb-4">
-                  The <strong>Discussion Meeting on Topics in Algebra</strong> is organized by the Department of Mathematics at the Indian Institute of Science Education and Research (IISER) Bhopal. Scheduled from <strong>September 17 to September 18, 2026</strong>, this meeting aims to create a learning environment for researchers, faculty members, postdocs, and students specializing in abstract algebra.
+                  The <strong>Discussion Meeting on Topics in Algebra</strong> is an event supported by the Department of Mathematics at the Indian Institute of Science Education and Research (IISER) Bhopal. This meet takes place on <strong>September 17 and September 18, 2026</strong>, and aims to create a learning environment for researchers, faculty members, postdocs, and students interested in aligning areas.
                 </p>
                 <p>
-                  This two-day event includes keynote addresses, presentations, and poster sessions to facilitate academic exchange and foster potential collaborations.
+                  This two-day event includes addresses from various researchers in these areas, from different parts of this country.
                 </p>
               </div>
 
               <div className="p-6 sm:p-8 rounded-lg" style={{ background: '#FFFFFF', border: '1px solid #DFDACD' }}>
                 <h2 className="text-xl font-semibold mb-3" style={{ color: '#2B2B2E' }}>About IISER Bhopal</h2>
                 <p>
-                  IISER Bhopal was established in 2008 by the Ministry of Education, Government of India, and is dedicated to fostering the highest quality of scientific research and education. The Department of Mathematics at IISER Bhopal actively engages in research spanning diverse pure and applied disciplines, including Algebra, Number Theory, Geometry, Topology, and Analysis.
+                  IISER Bhopal was established in 2008 by the Ministry of Education, Government of India, and is dedicated to fostering the highest quality of scientific research and education. The Department of Mathematics at IISER Bhopal actively engages in research spanning diverse areas, including Algebra, Analysis, Number Theory, Geometry, and Topology.
                 </p>
               </div>
 
@@ -410,7 +410,7 @@ export default function App() {
           <div className="py-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="mb-10">
               <h1 className="text-3xl sm:text-4xl font-bold mb-2" style={{ color: '#2B2B2E' }}>Meeting Schedule</h1>
-              <p className="sans" style={{ color: '#6B6A5F' }}>Schedule of technical talks, keynotes, and poster sessions (September 17–18, 2026).</p>
+              <p className="sans" style={{ color: '#6B6A5F' }}>Schedule of talks (September 17–18, 2026).</p>
             </div>
 
             <div className="space-y-12">
