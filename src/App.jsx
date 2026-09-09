@@ -180,20 +180,23 @@ export default function App() {
         }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
+          <div className="flex items-center justify-between min-h-16 py-2 gap-2">
             <div
-              className="flex items-center space-x-3 cursor-pointer"
+              className="flex items-center space-x-3 cursor-pointer min-w-0"
               onClick={() => setActiveTab('home')}
             >
               <div
-                className="h-9 w-9 rounded-md flex items-center justify-center font-bold text-lg mono"
+                className="h-9 w-9 shrink-0 rounded-md flex items-center justify-center font-bold text-lg mono"
                 style={{ background: '#3C4A3E', color: '#FBFAF7' }}
               >
                 ∑
               </div>
-              <div>
-                <span className="text-lg font-semibold tracking-tight" style={{ color: '#2B2B2E' }}>
+              <div className="min-w-0">
+                <span className="hidden sm:block text-lg font-semibold tracking-tight leading-tight" style={{ color: '#2B2B2E' }}>
                   Discussion Meeting on Topics in Algebra
+                </span>
+                <span className="block sm:hidden text-sm font-semibold tracking-tight leading-tight truncate" style={{ color: '#2B2B2E' }}>
+                  Discussion Meeting on Algebra
                 </span>
                 <span className="block mono" style={{ color: '#8A8577', fontSize: '0.65rem' }}>IISER Bhopal</span>
               </div>
