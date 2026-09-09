@@ -270,11 +270,15 @@ export default function App() {
               style={{ borderBottom: '1px solid #DFDACD' }}
             >
               <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h1 className="fade-in fade-in-2 text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-6" style={{ color: '#2B2B2E' }}>
+                <h1 className="fade-in fade-in-2 text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-3" style={{ color: '#2B2B2E' }}>
                   Discussion Meeting on <br />
                   Topics in Algebra <br />
                   <span style={{ color: '#3C4A3E' }}>IISERB</span>
                 </h1>
+
+                <p className="fade-in fade-in-2 text-base sm:text-lg font-medium mb-6 sans" style={{ color: '#6B6A5F' }}>
+                  IISER Bhopal
+                </p>
 
                 <p className="fade-in fade-in-3 max-w-2xl mx-auto text-base sm:text-lg mb-8 leading-relaxed" style={{ color: '#5C5A52' }}>
                   Bringing together researchers, academicians, and students to discuss ongoing research in Commutative Algebra, Algebraic Geometry,  and Representation Theory.
@@ -344,15 +348,9 @@ export default function App() {
                 ].map((item, idx) => (
                   <div
                     key={idx}
-                    className="soft-card stagger-card p-6 rounded-lg"
+                    className="soft-card stagger-card p-6 rounded-lg text-center"
                     style={{ background: '#FFFFFF', border: '1px solid #DFDACD', animationDelay: `${0.1 + idx * 0.08}s` }}
                   >
-                    <div
-                      className="w-10 h-10 rounded-md flex items-center justify-center font-bold mb-4 mono"
-                      style={{ background: '#EFEAE0', color: '#3C4A3E' }}
-                    >
-                      §{idx + 1}
-                    </div>
                     <h3 className="text-lg font-semibold" style={{ color: '#2B2B2E' }}>{item.title}</h3>
                   </div>
                 ))}
