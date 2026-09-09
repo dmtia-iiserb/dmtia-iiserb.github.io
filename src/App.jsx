@@ -52,32 +52,21 @@ export default function App() {
     { id: 'about', label: 'About Us' },
     { id: 'schedule', label: 'Schedule' },
     { id: 'speakers', label: 'Speakers' },
+    { id: 'registration', label: 'Registration' },
     { id: 'contact', label: 'Contact' },
   ];
 
   const scheduleData = [
     {
-      date: 'Day 1 — September 17, 2026',
+      date: 'Day 1, September 17, 2026',
       events: [
-        { time: '09:00 – 09:30', title: 'TBA', speaker: 'TBA', venue: 'LHC' },
-        { time: '09:30 – 10:30', title: 'TBA', speaker: 'TBA', venue: 'LHC' },
-        { time: '10:30 – 11:00', title: 'TBA', speaker: '', venue: 'LHC' },
-        { time: '11:00 – 12:00', title: 'TBA', speaker: 'TBA', venue: 'LHC' },
-        { time: '12:00 – 13:00', title: 'TBA', speaker: 'TBA', venue: 'AB1' },
-        { time: '13:00 – 14:30', title: 'TBA', speaker: '', venue: 'AB1' },
-        { time: '14:30 – 15:30', title: 'TBA', speaker: 'TBA', venue: 'LHC' },
-        { time: '15:30 – 17:00', title: 'TBA', speaker: '', venue: 'AB1' },
+        { time: '13:00 – 14:00', title: 'TBA', speaker: 'TBA', venue: 'AB1 316' },
       ],
     },
     {
-      date: 'Day 2 — September 18, 2026',
+      date: 'Day 2, September 18, 2026',
       events: [
-        { time: '09:30 – 10:30', title: 'TBA', speaker: 'TBA', venue: 'LHC' },
-        { time: '10:30 – 11:00', title: 'TBA', speaker: '', venue: 'LHC' },
-        { time: '11:00 – 12:30', title: 'TBA', speaker: 'TBA', venue: 'AB1' },
-        { time: '12:30 – 14:00', title: 'TBA', speaker: '', venue: 'AB1' },
-        { time: '14:00 – 15:00', title: 'TBA', speaker: 'TBA', venue: 'LHC' },
-        { time: '15:00 – 16:00', title: 'TBA', speaker: 'TBA', venue: 'LHC' },
+        { time: 'TBA', title: 'TBA', speaker: 'TBA', venue: 'Visitor Hostel, First Floor' },
       ],
     },
   ];
@@ -204,7 +193,7 @@ export default function App() {
               </div>
               <div>
                 <span className="text-lg font-semibold tracking-tight" style={{ color: '#2B2B2E' }}>
-                  Algebra Symposium 2026
+                  Discussion Meeting on Topics in Algebra
                 </span>
                 <span className="block text-xs mono" style={{ color: '#8A8577' }}>IISER Bhopal</span>
               </div>
@@ -279,7 +268,8 @@ export default function App() {
             >
               <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <h1 className="fade-in fade-in-2 text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-6" style={{ color: '#2B2B2E' }}>
-                  Algebra Symposium <br />
+                  Discussion Meeting on <br />
+                  Topics in Algebra <br />
                   <span style={{ color: '#3C4A3E' }}>IISER Bhopal 2026</span>
                 </h1>
 
@@ -322,6 +312,14 @@ export default function App() {
                     <BookOpen size={18} />
                     <span>Speakers</span>
                   </button>
+                  <button
+                    onClick={() => setActiveTab('registration')}
+                    className="cta-button w-full sm:w-auto px-7 py-3 rounded-lg font-semibold flex items-center justify-center space-x-2"
+                    style={{ background: '#FFFFFF', color: '#3F3D38', border: '1px solid #C9C4B4' }}
+                  >
+                    <Users size={18} />
+                    <span>Register</span>
+                  </button>
                 </div>
               </div>
             </section>
@@ -363,14 +361,14 @@ export default function App() {
         {/* ==================== ABOUT US ==================== */}
         {activeTab === 'about' && (
           <div className="py-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 className="text-3xl sm:text-4xl font-bold mb-4" style={{ color: '#2B2B2E' }}>About the Symposium</h1>
+            <h1 className="text-3xl sm:text-4xl font-bold mb-4" style={{ color: '#2B2B2E' }}>About the Meeting</h1>
             <p className="font-medium mb-8 sans" style={{ color: '#3C4A3E' }}>Department of Mathematics, IISER Bhopal</p>
 
             <div className="space-y-6 leading-relaxed" style={{ color: '#3F3D38' }}>
               <div className="p-6 sm:p-8 rounded-lg" style={{ background: '#FFFFFF', border: '1px solid #DFDACD' }}>
                 <h2 className="text-xl font-semibold mb-3" style={{ color: '#2B2B2E' }}>Overview & Vision</h2>
                 <p className="mb-4">
-                  The <strong>Algebra Symposium 2026</strong> is organized by the Department of Mathematics at the Indian Institute of Science Education and Research (IISER) Bhopal. Scheduled from <strong>September 17 to September 18, 2026</strong>, this symposium aims to create a learning environment for researchers, faculty members, postdocs, and students specializing in abstract algebra.
+                  The <strong>Discussion Meeting on Topics in Algebra</strong> is organized by the Department of Mathematics at the Indian Institute of Science Education and Research (IISER) Bhopal. Scheduled from <strong>September 17 to September 18, 2026</strong>, this meeting aims to create a learning environment for researchers, faculty members, postdocs, and students specializing in abstract algebra.
                 </p>
                 <p>
                   This two-day event includes keynote addresses, presentations, and poster sessions to facilitate academic exchange and foster potential collaborations.
@@ -388,7 +386,8 @@ export default function App() {
                 <div className="p-5 rounded-lg" style={{ background: '#F6F2EA', border: '1px solid #DFDACD' }}>
                   <h3 className="font-semibold mb-2" style={{ color: '#2B2B2E' }}>Venue</h3>
                   <p className="text-sm" style={{ color: '#6B6A5F' }}>
-                    Academic Block - 1 & Lecture Hall Complex,<br />
+                    Day 1: AB1 316 (Seminar Hall)<br />
+                    Day 2: Visitor Hostel, First Floor<br />
                     IISER Bhopal Campus, Bhauri,<br />
                     Bhopal 462066, Madhya Pradesh, India
                   </p>
@@ -409,7 +408,7 @@ export default function App() {
         {activeTab === 'schedule' && (
           <div className="py-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="mb-10">
-              <h1 className="text-3xl sm:text-4xl font-bold mb-2" style={{ color: '#2B2B2E' }}>Symposium Schedule</h1>
+              <h1 className="text-3xl sm:text-4xl font-bold mb-2" style={{ color: '#2B2B2E' }}>Meeting Schedule</h1>
               <p className="sans" style={{ color: '#6B6A5F' }}>Schedule of technical talks, keynotes, and poster sessions (September 17–18, 2026).</p>
             </div>
 
@@ -462,7 +461,7 @@ export default function App() {
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
               <div>
                 <h1 className="text-3xl sm:text-4xl font-bold mb-2" style={{ color: '#2B2B2E' }}>Speakers</h1>
-                <p className="sans" style={{ color: '#6B6A5F' }}>Faculty and postdoctoral speakers presenting at the symposium.</p>
+                <p className="sans" style={{ color: '#6B6A5F' }}>Faculty and postdoctoral speakers presenting at the meeting.</p>
               </div>
 
               {/* Search Bar */}
@@ -533,11 +532,90 @@ export default function App() {
           </div>
         )}
 
+        {/* ==================== REGISTRATION ==================== */}
+        {activeTab === 'registration' && (
+          <div className="py-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 className="text-3xl sm:text-4xl font-bold mb-2" style={{ color: '#2B2B2E' }}>Registration</h1>
+            <p className="mb-10 sans" style={{ color: '#6B6A5F' }}>
+              All talks at the Discussion Meeting on Topics in Algebra (September 17–18, 2026) are open to everyone. Registration below is for a more personalised interaction with the visiting speakers.
+            </p>
+
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
+              {/* Eligibility */}
+              <div className="lg:col-span-2 space-y-6">
+                <div className="soft-card p-6 rounded-lg" style={{ background: '#FFFFFF', border: '1px solid #DFDACD' }}>
+                  <h2 className="text-lg font-semibold mb-4 flex items-center space-x-2" style={{ color: '#2B2B2E' }}>
+                    <GraduationCap size={20} style={{ color: '#3C4A3E' }} />
+                    <span>Eligibility to Register</span>
+                  </h2>
+                  <ul className="space-y-3 text-sm sans leading-relaxed" style={{ color: '#3F3D38' }}>
+                    <li className="flex items-start space-x-2">
+                      <span style={{ color: '#3C4A3E' }}>•</span>
+                      <span>Registration is open only to students of IISER Bhopal.</span>
+                    </li>
+                    <li className="flex items-start space-x-2">
+                      <span style={{ color: '#3C4A3E' }}>•</span>
+                      <span>Postdocs, PhD, and BS-MS students may be accommodated on a case-to-case basis, depending on how closely their research interests align with the meeting's themes.</span>
+                    </li>
+                    <li className="flex items-start space-x-2">
+                      <span style={{ color: '#3C4A3E' }}>•</span>
+                      <span>Since spots for this interaction are very limited, we kindly request that only those with a genuine interest in Algebra, Algebraic Geometry, Commutative Algebra, or Representation Theory register; this helps us keep the group meaningful for everyone involved.</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="soft-card p-6 rounded-lg" style={{ background: '#F6F2EA', border: '1px solid #DFDACD' }}>
+                  <h2 className="text-lg font-semibold mb-3" style={{ color: '#2B2B2E' }}>Notes</h2>
+                  <ul className="space-y-2 text-sm sans leading-relaxed" style={{ color: '#6B6A5F' }}>
+                    <li>• All talks are open to be attended by everyone. No registration is needed to attend the talks.</li>
+                    <li>• This registration is only for a more personalised interaction with the visitors, and approval will be determined on a case-to-case basis.</li>
+                    <li>• No accommodation or travel support will be provided.</li>
+                    <li>• Confirmation will be sent by email from the organizing committee.</li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Registration Form */}
+              <div className="lg:col-span-3">
+                <div className="soft-card p-6 sm:p-8 rounded-lg" style={{ background: '#FFFFFF', border: '1px solid #DFDACD' }}>
+                  <h2 className="text-lg font-semibold mb-6" style={{ color: '#2B2B2E' }}>Registration Form</h2>
+
+                  <div className="rounded-lg overflow-hidden" style={{ border: '1px solid #DFDACD' }}>
+                    <iframe
+                      src="https://forms.gle/Z1FK9HqBvnE5kniC6"
+                      title="Registration Form"
+                      width="100%"
+                      height="900"
+                      style={{ display: 'block', background: '#FBFAF7' }}
+                    >
+                      Loading form…
+                    </iframe>
+                  </div>
+
+                  <p className="text-xs sans pt-4" style={{ color: '#8A8577' }}>
+                    Submitting this form does not guarantee a spot; approval depends on alignment with the meeting's themes and availability, and you will be notified by email either way. If the form doesn't load,{' '}
+                    <a
+                      href="https://forms.gle/Z1FK9HqBvnE5kniC6"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="link-hover"
+                      style={{ color: '#3C4A3E' }}
+                    >
+                      open it in a new tab
+                    </a>.
+                  </p>
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* ==================== CONTACT ==================== */}
         {activeTab === 'contact' && (
           <div className="py-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <h1 className="text-3xl sm:text-4xl font-bold mb-2" style={{ color: '#2B2B2E' }}>Contact & Venue</h1>
-            <p className="mb-10 sans" style={{ color: '#6B6A5F' }}>Get in touch with the symposium organizing committee.</p>
+            <p className="mb-10 sans" style={{ color: '#6B6A5F' }}>Get in touch with the meeting's organizing committee.</p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sans">
               {/* Contact Information */}
@@ -571,17 +649,17 @@ export default function App() {
                   </h2>
                   <ul className="space-y-3 text-sm" style={{ color: '#3F3D38' }}>
                     <li>
-                      <span className="font-semibold">Dr. Anjan Gupta</span>
-                      <br />
-                      <a href="mailto:anjan@iiserb.ac.in" className="link-hover" style={{ color: '#3C4A3E' }}>
-                        anjan@iiserb.ac.in
-                      </a>
-                    </li>
-                    <li>
                       <span className="font-semibold">Dr. Sankhaneel Bisui</span>
                       <br />
                       <a href="mailto:sankhaneel@iiserb.ac.in" className="link-hover" style={{ color: '#3C4A3E' }}>
                         sankhaneel@iiserb.ac.in
+                      </a>
+                    </li>
+                    <li>
+                      <span className="font-semibold">Dr. Anjan Gupta</span>
+                      <br />
+                      <a href="mailto:anjan@iiserb.ac.in" className="link-hover" style={{ color: '#3C4A3E' }}>
+                        anjan@iiserb.ac.in
                       </a>
                     </li>
                     <li>
@@ -628,7 +706,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col gap-4 text-xs" style={{ color: '#8A8577' }}>
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <div>
-              © 2026 Algebra Symposium | Department of Mathematics, IISER Bhopal.
+              © 2026 Discussion Meeting on Topics in Algebra | Department of Mathematics, IISER Bhopal.
             </div>
             <div className="flex items-center space-x-4">
               <span>September 17–18, 2026</span>
