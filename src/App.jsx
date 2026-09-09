@@ -540,72 +540,69 @@ export default function App() {
               All talks at the Discussion Meeting on Topics in Algebra (September 17–18, 2026) are open to everyone. Registration below is for a more personalised interaction with the visiting speakers.
             </p>
 
-            <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
               {/* Eligibility */}
-              <div className="lg:col-span-2 space-y-6">
-                <div className="soft-card p-6 rounded-lg" style={{ background: '#FFFFFF', border: '1px solid #DFDACD' }}>
-                  <h2 className="text-lg font-semibold mb-4 flex items-center space-x-2" style={{ color: '#2B2B2E' }}>
-                    <GraduationCap size={20} style={{ color: '#3C4A3E' }} />
-                    <span>Eligibility to Register</span>
-                  </h2>
-                  <ul className="space-y-3 text-sm sans leading-relaxed" style={{ color: '#3F3D38' }}>
-                    <li className="flex items-start space-x-2">
-                      <span style={{ color: '#3C4A3E' }}>•</span>
-                      <span>Registration is open only to students of IISER Bhopal.</span>
-                    </li>
-                    <li className="flex items-start space-x-2">
-                      <span style={{ color: '#3C4A3E' }}>•</span>
-                      <span>Postdocs, PhD, and BS-MS students may be accommodated on a case-to-case basis, depending on how closely their research interests align with the meeting's themes.</span>
-                    </li>
-                    <li className="flex items-start space-x-2">
-                      <span style={{ color: '#3C4A3E' }}>•</span>
-                      <span>Since spots for this interaction are very limited, we kindly request that only those with a genuine interest in Algebra, Algebraic Geometry, Commutative Algebra, or Representation Theory register; this helps us keep the group meaningful for everyone involved.</span>
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="soft-card p-6 rounded-lg" style={{ background: '#F6F2EA', border: '1px solid #DFDACD' }}>
-                  <h2 className="text-lg font-semibold mb-3" style={{ color: '#2B2B2E' }}>Notes</h2>
-                  <ul className="space-y-2 text-sm sans leading-relaxed" style={{ color: '#6B6A5F' }}>
-                    <li>• All talks are open to be attended by everyone. No registration is needed to attend the talks.</li>
-                    <li>• This registration is only for a more personalised interaction with the visitors, and approval will be determined on a case-to-case basis.</li>
-                    <li>• No accommodation or travel support will be provided.</li>
-                    <li>• Confirmation will be sent by email from the organizing committee.</li>
-                  </ul>
-                </div>
+              <div className="soft-card p-6 rounded-lg" style={{ background: '#FFFFFF', border: '1px solid #DFDACD' }}>
+                <h2 className="text-lg font-semibold mb-4 flex items-center space-x-2" style={{ color: '#2B2B2E' }}>
+                  <GraduationCap size={20} style={{ color: '#3C4A3E' }} />
+                  <span>Eligibility to Register</span>
+                </h2>
+                <ul className="space-y-3 text-sm sans leading-relaxed" style={{ color: '#3F3D38' }}>
+                  <li className="flex items-start space-x-2">
+                    <span style={{ color: '#3C4A3E' }}>•</span>
+                    <span>Registration is open only to students of IISER Bhopal.</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <span style={{ color: '#3C4A3E' }}>•</span>
+                    <span>Postdocs, PhD, and BS-MS students may be accommodated on a case-to-case basis, depending on how closely their research interests align with the meeting's themes.</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <span style={{ color: '#3C4A3E' }}>•</span>
+                    <span>Since spots for this interaction are very limited, we kindly request that only those with a genuine interest in Algebra, Algebraic Geometry, Commutative Algebra, or Representation Theory register; this helps us keep the group meaningful for everyone involved.</span>
+                  </li>
+                </ul>
               </div>
 
-              {/* Registration Form */}
-              <div className="lg:col-span-3">
-                <div className="soft-card p-6 sm:p-8 rounded-lg" style={{ background: '#FFFFFF', border: '1px solid #DFDACD' }}>
-                  <h2 className="text-lg font-semibold mb-6" style={{ color: '#2B2B2E' }}>Registration Form</h2>
-
-                  <div className="rounded-lg overflow-hidden" style={{ border: '1px solid #DFDACD' }}>
-                    <iframe
-                      src="https://forms.gle/Z1FK9HqBvnE5kniC6"
-                      title="Registration Form"
-                      width="100%"
-                      height="900"
-                      style={{ display: 'block', background: '#FBFAF7' }}
-                    >
-                      Loading form…
-                    </iframe>
-                  </div>
-
-                  <p className="text-xs sans pt-4" style={{ color: '#8A8577' }}>
-                    Submitting this form does not guarantee a spot; approval depends on alignment with the meeting's themes and availability, and you will be notified by email either way. If the form doesn't load,{' '}
-                    <a
-                      href="https://forms.gle/Z1FK9HqBvnE5kniC6"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="link-hover"
-                      style={{ color: '#3C4A3E' }}
-                    >
-                      open it in a new tab
-                    </a>.
-                  </p>
-                </div>
+              {/* Notes */}
+              <div className="soft-card p-6 rounded-lg" style={{ background: '#F6F2EA', border: '1px solid #DFDACD' }}>
+                <h2 className="text-lg font-semibold mb-3" style={{ color: '#2B2B2E' }}>Notes</h2>
+                <ul className="space-y-2 text-sm sans leading-relaxed" style={{ color: '#6B6A5F' }}>
+                  <li>• All talks are open to be attended by everyone. No registration is needed to attend the talks.</li>
+                  <li>• This registration is only for a more personalised interaction with the visitors, and approval will be determined on a case-to-case basis.</li>
+                  <li>• No accommodation or travel support will be provided.</li>
+                  <li>• Confirmation will be sent by email from the organizing committee.</li>
+                </ul>
               </div>
+            </div>
+
+            {/* Registration Form */}
+            <div className="soft-card p-6 sm:p-8 rounded-lg" style={{ background: '#FFFFFF', border: '1px solid #DFDACD' }}>
+              <h2 className="text-lg font-semibold mb-6" style={{ color: '#2B2B2E' }}>Registration Form</h2>
+
+              <div className="rounded-lg overflow-hidden" style={{ border: '1px solid #DFDACD' }}>
+                <iframe
+                  src="https://forms.gle/Z1FK9HqBvnE5kniC6"
+                  title="Registration Form"
+                  width="100%"
+                  height="900"
+                  style={{ display: 'block', background: '#FBFAF7' }}
+                >
+                  Loading form…
+                </iframe>
+              </div>
+
+              <p className="text-xs sans pt-4" style={{ color: '#8A8577' }}>
+                Submitting this form does not guarantee a spot; approval depends on alignment with the meeting's themes and availability, and you will be notified by email either way. If the form doesn't load,{' '}
+                <a
+                  href="https://forms.gle/Z1FK9HqBvnE5kniC6"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="link-hover"
+                  style={{ color: '#3C4A3E' }}
+                >
+                  open it in a new tab
+                </a>.
+              </p>
             </div>
           </div>
         )}
