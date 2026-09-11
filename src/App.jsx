@@ -106,7 +106,18 @@ export default function App() {
     { name: 'Dr. Sudipta Das', affiliation: 'TIFR Mumbai', institution: 'TIFR Mumbai', talkTitle: 'TBA', abstract: 'TBA', date: 'Friday, September 18, 2026', time: '5:45 – 6:10 PM', venue: 'Visitor Hostel, First Floor' },
   ];
 
-  const filteredSpeakers = speakersData.filter(
+  // Extracts the last name for sorting, ignoring honorifics like Dr./Prof.
+  const getLastName = (fullName) => {
+    const withoutTitle = fullName.replace(/^(Dr\.|Prof\.)\s*/, '');
+    const parts = withoutTitle.trim().split(/\s+/);
+    return parts[parts.length - 1].toLowerCase();
+  };
+
+  const sortedSpeakers = [...speakersData].sort((a, b) =>
+    getLastName(a.name).localeCompare(getLastName(b.name))
+  );
+
+  const filteredSpeakers = sortedSpeakers.filter(
     (item) =>
       item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       item.institution.toLowerCase().includes(searchQuery.toLowerCase())
