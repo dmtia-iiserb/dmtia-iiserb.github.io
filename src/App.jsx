@@ -451,7 +451,7 @@ export default function App() {
           <div className="py-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="mb-10">
               <h1 className="text-3xl sm:text-4xl font-bold mb-2" style={{ color: '#2B2B2E' }}>Meeting Schedule</h1>
-              <p className="sans" style={{ color: '#6B6A5F' }}>Schedule of technical talks, keynotes, and poster sessions (September 17–18, 2026).</p>
+              <p className="sans" style={{ color: '#6B6A5F' }}> Time, Date and Venue of all the talks. (September 17–18, 2026).</p>
             </div>
 
             <div className="space-y-12">
@@ -505,7 +505,7 @@ export default function App() {
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
               <div>
                 <h1 className="text-3xl sm:text-4xl font-bold mb-2" style={{ color: '#2B2B2E' }}>Speakers</h1>
-                <p className="sans" style={{ color: '#6B6A5F' }}>Faculty and postdoctoral speakers presenting at the meeting.</p>
+                <p className="sans" style={{ color: '#6B6A5F' }}>A list of speakers, and details about their talks.</p>
               </div>
 
               {/* Search Bar */}
