@@ -52,41 +52,58 @@ export default function App() {
     { id: 'about', label: 'About Us' },
     { id: 'schedule', label: 'Schedule' },
     { id: 'speakers', label: 'Speakers' },
+    { id: 'poster', label: 'Poster' },
     { id: 'registration', label: 'Registration' },
     { id: 'contact', label: 'Contact' },
   ];
 
   const scheduleData = [
     {
-      date: 'Day 1, September 17, 2026',
+      date: 'Thursday, September 17, 2026',
       events: [
-        { time: '13:00 – 14:00', title: 'TBA', speaker: 'TBA', venue: 'AB1 316' },
+        { time: '2:00 – 2:45 PM', title: 'Talk', speaker: 'Dr. Ananthnarayan H', venue: 'AB1 316' },
+        { time: '2:50 – 3:35 PM', title: 'Talk', speaker: 'Dr. Rahul Gupta', venue: 'AB1 316' },
+        { time: '3:35 – 3:55 PM', title: 'Recess', speaker: '', venue: 'AB1 316' },
+        { time: '3:55 – 4:40 PM', title: 'Talk', speaker: 'Dr. Amith Tripathi', venue: 'AB1 316' },
+        { time: '4:45 – 5:30 PM', title: 'Talk', speaker: 'Dr. Arpan Dutta', venue: 'AB1 316' },
+        { time: '5:35 – 6:00 PM', title: 'Talk', speaker: 'Dr. Divyasree', venue: 'AB1 316' },
       ],
     },
     {
-      date: 'Day 2, September 18, 2026',
+      date: 'Friday, September 18, 2026',
       events: [
-        { time: 'TBA', title: 'TBA', speaker: 'TBA', venue: 'Visitor Hostel, First Floor' },
+        { time: '10:00 – 10:45 AM', title: 'Talk', speaker: 'Prof. Om Prakash', venue: 'Visitor Hostel, First Floor' },
+        { time: '10:45 – 11:00 AM', title: 'Recess', speaker: '', venue: 'Visitor Hostel, First Floor' },
+        { time: '11:00 – 11:25 AM', title: 'Talk', speaker: 'Dr. Ila Ahmad', venue: 'Visitor Hostel, First Floor' },
+        { time: '11:30 – 11:55 AM', title: 'Talk', speaker: 'Dr. Ekta Tiwari', venue: 'Visitor Hostel, First Floor' },
+        { time: '12:00 – 12:25 PM', title: 'Talk', speaker: 'Dr. Sanjeev Kumar Pandey', venue: 'Visitor Hostel, First Floor' },
+        { time: '12:30 – 12:55 PM', title: 'Talk', speaker: 'Dr. Varsha Vasudevan', venue: 'Visitor Hostel, First Floor' },
+        { time: '2:30 – 3:15 PM', title: 'Talk', speaker: 'Prof. A. V. Jayanthan', venue: 'Visitor Hostel, First Floor' },
+        { time: '3:20 – 4:05 PM', title: 'Talk', speaker: 'Dr. Vaibhav Pandey', venue: 'Visitor Hostel, First Floor' },
+        { time: '4:05 – 4:25 PM', title: 'Recess', speaker: '', venue: 'Visitor Hostel, First Floor' },
+        { time: '4:25 – 5:10 PM', title: 'Talk', speaker: 'Dr. Ajay Kumar', venue: 'Visitor Hostel, First Floor' },
+        { time: '5:15 – 5:40 PM', title: 'Talk', speaker: 'Dr. Deblina Dey', venue: 'Visitor Hostel, First Floor' },
+        { time: '5:45 – 6:10 PM', title: 'Talk', speaker: 'Dr. Sudipta Das', venue: 'Visitor Hostel, First Floor' },
       ],
     },
   ];
 
   const speakersData = [
-    { name: 'Prof. AV Jayanthan', affiliation: 'Professor, Department of Mathematics, IIT Madras', institution: 'IIT Madras', talkTitle: 'TBA', abstract: 'TBA', time: 'TBA', venue: 'TBA' },
-    { name: 'Dr. Ajay Kumar', affiliation: 'IIT Jammu', institution: 'IIT Jammu', talkTitle: 'TBA', abstract: 'TBA', time: 'TBA', venue: 'TBA' },
-    { name: 'Dr. Amith Tripathi', affiliation: 'IIT Hyderabad', institution: 'IIT Hyderabad', talkTitle: 'TBA', abstract: 'TBA', time: 'TBA', venue: 'TBA' },
-    { name: 'Dr. Arpan Dutta', affiliation: 'IIT Bhubaneswar', institution: 'IIT Bhubaneswar', talkTitle: 'TBA', abstract: 'TBA', time: 'TBA', venue: 'TBA' },
-    { name: 'Prof. Om Prakash', affiliation: 'IIT Patna', institution: 'IIT Patna', talkTitle: 'TBA', abstract: 'TBA', time: 'TBA', venue: 'TBA' },
-    { name: 'Dr. Ananthnarayan Hariharan', affiliation: 'IIT Bombay', institution: 'IIT Bombay', talkTitle: 'TBA', abstract: 'TBA', time: 'TBA', venue: 'TBA' },
-    { name: 'Dr. Vaibhab Pandey', affiliation: 'IIT Madras', institution: 'IIT Madras', talkTitle: 'TBA', abstract: 'TBA', time: 'TBA', venue: 'TBA' },
-    { name: 'Dr. Rahul Gupta', affiliation: 'IMSc', institution: 'IMSc', talkTitle: 'TBA', abstract: 'TBA', time: 'TBA', venue: 'TBA' },
-    { name: 'Dr. Sudipta Das', affiliation: 'TIFR Mumbai', institution: 'TIFR Mumbai', talkTitle: 'TBA', abstract: 'TBA', time: 'TBA', venue: 'TBA' },
-    { name: 'Dr. Divyasree', affiliation: 'IISER Pune', institution: 'IISER Pune', talkTitle: 'TBA', abstract: 'TBA', time: 'TBA', venue: 'TBA' },
-    { name: 'Deblina Dey', affiliation: 'IISER Bhopal', institution: 'IISER Bhopal', talkTitle: 'TBA', abstract: 'TBA', time: 'TBA', venue: 'TBA' },
-    { name: 'Ekta Tiwari', affiliation: 'IISER Pune', institution: 'IISER Pune', talkTitle: 'TBA', abstract: 'TBA', time: 'TBA', venue: 'TBA' },
-    { name: 'Dr. Sanjeev Kumar Pandey', affiliation: 'IISER Bhopal', institution: 'IISER Bhopal', talkTitle: 'TBA', abstract: 'TBA', time: 'TBA', venue: 'TBA' },
-    { name: 'Varsha Vasudevan', affiliation: 'IISER Bhopal', institution: 'IISER Bhopal', talkTitle: 'TBA', abstract: 'TBA', time: 'TBA', venue: 'TBA' },
-    { name: 'Illa Ahmad', affiliation: 'IISER Bhopal', institution: 'IISER Bhopal', talkTitle: 'TBA', abstract: 'TBA', time: 'TBA', venue: 'TBA' },
+    { name: 'Dr. Ananthnarayan H', affiliation: 'IIT Bombay', institution: 'IIT Bombay', talkTitle: 'TBA', abstract: 'TBA', date: 'Thursday, September 17, 2026', time: '2:00 – 2:45 PM', venue: 'AB1 316' },
+    { name: 'Dr. Rahul Gupta', affiliation: 'IMSc', institution: 'IMSc', talkTitle: 'TBA', abstract: 'TBA', date: 'Thursday, September 17, 2026', time: '2:50 – 3:35 PM', venue: 'AB1 316' },
+    { name: 'Dr. Amith Tripathi', affiliation: 'IIT Hyderabad', institution: 'IIT Hyderabad', talkTitle: 'TBA', abstract: 'TBA', date: 'Thursday, September 17, 2026', time: '3:55 – 4:40 PM', venue: 'AB1 316' },
+    { name: 'Dr. Arpan Dutta', affiliation: 'IIT Bhubaneswar', institution: 'IIT Bhubaneswar', talkTitle: 'TBA', abstract: 'TBA', date: 'Thursday, September 17, 2026', time: '4:45 – 5:30 PM', venue: 'AB1 316' },
+    { name: 'Dr. Divyasree', affiliation: 'IISER Pune', institution: 'IISER Pune', talkTitle: 'TBA', abstract: 'TBA', date: 'Thursday, September 17, 2026', time: '5:35 – 6:00 PM', venue: 'AB1 316' },
+    { name: 'Prof. Om Prakash', affiliation: 'IIT Patna', institution: 'IIT Patna', talkTitle: 'TBA', abstract: 'TBA', date: 'Friday, September 18, 2026', time: '10:00 – 10:45 AM', venue: 'Visitor Hostel, First Floor' },
+    { name: 'Dr. Ila Ahmad', affiliation: 'IISER Bhopal', institution: 'IISER Bhopal', talkTitle: 'TBA', abstract: 'TBA', date: 'Friday, September 18, 2026', time: '11:00 – 11:25 AM', venue: 'Visitor Hostel, First Floor' },
+    { name: 'Dr. Ekta Tiwari', affiliation: 'IISER Pune', institution: 'IISER Pune', talkTitle: 'TBA', abstract: 'TBA', date: 'Friday, September 18, 2026', time: '11:30 – 11:55 AM', venue: 'Visitor Hostel, First Floor' },
+    { name: 'Dr. Sanjeev Kumar Pandey', affiliation: 'IISER Bhopal', institution: 'IISER Bhopal', talkTitle: 'TBA', abstract: 'TBA', date: 'Friday, September 18, 2026', time: '12:00 – 12:25 PM', venue: 'Visitor Hostel, First Floor' },
+    { name: 'Dr. Varsha Vasudevan', affiliation: 'IISER Bhopal', institution: 'IISER Bhopal', talkTitle: 'TBA', abstract: 'TBA', date: 'Friday, September 18, 2026', time: '12:30 – 12:55 PM', venue: 'Visitor Hostel, First Floor' },
+    { name: 'Prof. A. V. Jayanthan', affiliation: 'IIT Madras', institution: 'IIT Madras', talkTitle: 'TBA', abstract: 'TBA', date: 'Friday, September 18, 2026', time: '2:30 – 3:15 PM', venue: 'Visitor Hostel, First Floor' },
+    { name: 'Dr. Vaibhav Pandey', affiliation: 'IIT Madras', institution: 'IIT Madras', talkTitle: 'TBA', abstract: 'TBA', date: 'Friday, September 18, 2026', time: '3:20 – 4:05 PM', venue: 'Visitor Hostel, First Floor' },
+    { name: 'Dr. Ajay Kumar', affiliation: 'IIT Jammu', institution: 'IIT Jammu', talkTitle: 'TBA', abstract: 'TBA', date: 'Friday, September 18, 2026', time: '4:25 – 5:10 PM', venue: 'Visitor Hostel, First Floor' },
+    { name: 'Dr. Deblina Dey', affiliation: 'IISER Bhopal', institution: 'IISER Bhopal', talkTitle: 'TBA', abstract: 'TBA', date: 'Friday, September 18, 2026', time: '5:15 – 5:40 PM', venue: 'Visitor Hostel, First Floor' },
+    { name: 'Dr. Sudipta Das', affiliation: 'TIFR Mumbai', institution: 'TIFR Mumbai', talkTitle: 'TBA', abstract: 'TBA', date: 'Friday, September 18, 2026', time: '5:45 – 6:10 PM', venue: 'Visitor Hostel, First Floor' },
   ];
 
   const filteredSpeakers = speakersData.filter(
@@ -396,6 +413,24 @@ export default function App() {
                   </p>
                 </div>
               </div>
+
+              <div className="p-6 sm:p-8 rounded-lg" style={{ background: '#FFFFFF', border: '1px solid #DFDACD' }}>
+                <h2 className="text-xl font-semibold mb-4 flex items-center space-x-2" style={{ color: '#2B2B2E' }}>
+                  <Users size={20} style={{ color: '#3C4A3E' }} />
+                  <span>Organisers</span>
+                </h2>
+                <ul className="space-y-2 text-sm sans mb-6" style={{ color: '#3F3D38' }}>
+                  <li>Dr. Sankhaneel Bisui</li>
+                  <li>Dr. Anjan Gupta</li>
+                  <li>Dr. Vivek Sadhu</li>
+                </ul>
+
+                <h3 className="text-base font-semibold mb-3" style={{ color: '#2B2B2E' }}>Student Volunteers</h3>
+                <ul className="space-y-2 text-sm sans" style={{ color: '#3F3D38' }}>
+                  <li>Adeetya Choubey, BS-MS Math — Website</li>
+                  <li>Kritika Pahilajani, BS-MS Math — Poster</li>
+                </ul>
+              </div>
             </div>
           </div>
         )}
@@ -430,9 +465,11 @@ export default function App() {
                             <span>{event.time}</span>
                           </div>
                           <div>
-                            <h3 className="text-base font-semibold" style={{ color: '#2B2B2E' }}>{event.title}</h3>
+                            <h3 className="text-base font-semibold" style={{ color: '#2B2B2E' }}>
+                              {event.speaker ? event.speaker : event.title}
+                            </h3>
                             {event.speaker && (
-                              <p className="text-sm mt-0.5 sans" style={{ color: '#8A8577' }}>{event.speaker}</p>
+                              <p className="text-sm mt-0.5 sans" style={{ color: '#8A8577' }}>{event.title}</p>
                             )}
                           </div>
                         </div>
@@ -497,8 +534,15 @@ export default function App() {
                           className="flex items-center space-x-1.5 px-2.5 py-1 rounded-md"
                           style={{ color: '#3C4A3E', background: '#EFEAE0', border: '1px solid #DAD3C0' }}
                         >
+                          <Calendar size={13} />
+                          <span>{item.date}</span>
+                        </span>
+                        <span
+                          className="flex items-center space-x-1.5 px-2.5 py-1 rounded-md"
+                          style={{ color: '#3C4A3E', background: '#EFEAE0', border: '1px solid #DAD3C0' }}
+                        >
                           <Clock size={13} />
-                          <span>Time: {item.time}</span>
+                          <span>{item.time}</span>
                         </span>
                         <span
                           className="px-3 py-1 rounded-full"
@@ -524,6 +568,31 @@ export default function App() {
                   <p style={{ color: '#8A8577' }}>No speakers match your query.</p>
                 </div>
               )}
+            </div>
+          </div>
+        )}
+
+        {/* ==================== POSTER ==================== */}
+        {activeTab === 'poster' && (
+          <div className="py-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 className="text-3xl sm:text-4xl font-bold mb-2" style={{ color: '#2B2B2E' }}>Poster</h1>
+            <p className="mb-8 sans" style={{ color: '#6B6A5F' }}>
+              The event poster for the Discussion Meeting on Topics in Algebra.
+            </p>
+
+            <div
+              className="soft-card p-12 sm:p-20 rounded-lg flex flex-col items-center justify-center text-center"
+              style={{ background: '#F6F2EA', border: '1px dashed #C9C4B4' }}
+            >
+              <span
+                className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold mono mb-4"
+                style={{ background: '#EFEAE0', color: '#8C5A5A', border: '1px solid #DAD3C0' }}
+              >
+                Under Construction
+              </span>
+              <p className="text-sm sans" style={{ color: '#8A8577' }}>
+                The poster is being finalised and will be added here shortly.
+              </p>
             </div>
           </div>
         )}
@@ -564,8 +633,6 @@ export default function App() {
                 <h2 className="text-lg font-semibold mb-3" style={{ color: '#2B2B2E' }}>Notes</h2>
                 <ul className="space-y-2 text-sm sans leading-relaxed" style={{ color: '#6B6A5F' }}>
                   <li>• All talks are open to be attended by everyone. No registration is needed to attend the talks.</li>
-                  <li>• This registration is only for a more personalised interaction with the visitors, and approval will be determined on a case-to-case basis.</li>
-                  <li>• No accommodation or travel support will be provided.</li>
                   <li>• Confirmation will be sent by email from the organizing committee.</li>
                 </ul>
               </div>
