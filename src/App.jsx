@@ -3,7 +3,6 @@ import {
   Calendar,
   MapPin,
   Clock,
-  BookOpen,
   Mail,
   ExternalLink,
   ChevronRight,
@@ -51,77 +50,38 @@ export default function App() {
     { id: 'home', label: 'Home' },
     { id: 'about', label: 'About Us' },
     { id: 'schedule', label: 'Schedule' },
-    { id: 'speakers', label: 'Speakers' },
     { id: 'poster', label: 'Poster' },
     { id: 'registration', label: 'Registration' },
     { id: 'contact', label: 'Contact' },
   ];
 
-  const scheduleData = [
-    {
-      date: 'Thursday, September 17, 2026',
-      events: [
-        { time: '2:00 – 2:45 PM', title: 'Talk', speaker: 'Dr. Ananthnarayan H', venue: 'AB1 316 (Third Floor)' },
-        { time: '2:50 – 3:35 PM', title: 'Talk', speaker: 'Dr. Rahul Gupta', venue: 'AB1 316 (Third Floor)' },
-        { time: '3:35 – 3:55 PM', title: 'Recess', speaker: '', venue: 'AB1 316 (Third Floor)' },
-        { time: '3:55 – 4:40 PM', title: 'Talk', speaker: 'Dr. Amith Tripathi', venue: 'AB1 316 (Third Floor)' },
-        { time: '4:45 – 5:30 PM', title: 'Talk', speaker: 'Dr. Arpan Dutta', venue: 'AB1 316 (Third Floor)' },
-        { time: '5:35 – 6:00 PM', title: 'Talk', speaker: 'Dr. Divyasree', venue: 'AB1 316 (Third Floor)' },
-      ],
-    },
-    {
-      date: 'Friday, September 18, 2026',
-      events: [
-        { time: '10:00 – 10:45 AM', title: 'Talk', speaker: 'Prof. Om Prakash', venue: 'Visitor Hostel, First Floor' },
-        { time: '10:45 – 11:00 AM', title: 'Recess', speaker: '', venue: 'Visitor Hostel, First Floor' },
-        { time: '11:00 – 11:25 AM', title: 'Talk', speaker: 'Ila Ahmad', venue: 'Visitor Hostel, First Floor' },
-        { time: '11:30 – 11:55 AM', title: 'Talk', speaker: 'Dr. Ekta Tiwari', venue: 'Visitor Hostel, First Floor' },
-        { time: '12:00 – 12:25 PM', title: 'Talk', speaker: 'Dr. Sanjeev Kumar Pandey', venue: 'Visitor Hostel, First Floor' },
-        { time: '12:30 – 12:55 PM', title: 'Talk', speaker: 'Varsha Vasudevan', venue: 'Visitor Hostel, First Floor' },
-        { time: '2:30 – 3:15 PM', title: 'Talk', speaker: 'Prof. A. V. Jayanthan', venue: 'Visitor Hostel, First Floor' },
-        { time: '3:20 – 4:05 PM', title: 'Talk', speaker: 'Dr. Vaibhav Pandey', venue: 'Visitor Hostel, First Floor' },
-        { time: '4:05 – 4:25 PM', title: 'Recess', speaker: '', venue: 'Visitor Hostel, First Floor' },
-        { time: '4:25 – 5:10 PM', title: 'Talk', speaker: 'Dr. Ajay Kumar', venue: 'Visitor Hostel, First Floor' },
-        { time: '5:15 – 5:40 PM', title: 'Talk', speaker: 'Dr. Deblina Dey', venue: 'Visitor Hostel, First Floor' },
-        { time: '5:45 – 6:10 PM', title: 'Talk', speaker: 'Dr. Sudipta Das', venue: 'Visitor Hostel, First Floor' },
-      ],
-    },
+  // Single source of truth for the day-by-day schedule of talks and recess breaks.
+  const sessionsData = [
+    { type: 'talk', name: 'Dr. Ananthnarayan H', affiliation: 'IIT Bombay', institution: 'IIT Bombay', talkTitle: 'TBA', abstract: 'TBA', day: 'Thursday, September 17, 2026', time: '2:00 – 2:45 PM', venue: 'AB1 316 (Third Floor)' },
+    { type: 'talk', name: 'Dr. Rahul Gupta', affiliation: 'IMSc, Chennai', institution: 'IMSc, Chennai', talkTitle: 'TBA', abstract: 'TBA', day: 'Thursday, September 17, 2026', time: '2:50 – 3:35 PM', venue: 'AB1 316 (Third Floor)' },
+    { type: 'recess', day: 'Thursday, September 17, 2026', time: '3:35 – 3:55 PM', venue: 'AB1 316 (Third Floor)' },
+    { type: 'talk', name: 'Dr. Amith Tripathi', affiliation: 'IIT Hyderabad', institution: 'IIT Hyderabad', talkTitle: 'TBA', abstract: 'TBA', day: 'Thursday, September 17, 2026', time: '3:55 – 4:40 PM', venue: 'AB1 316 (Third Floor)' },
+    { type: 'talk', name: 'Dr. Arpan Dutta', affiliation: 'IIT Bhubaneswar', institution: 'IIT Bhubaneswar', talkTitle: 'TBA', abstract: 'TBA', day: 'Thursday, September 17, 2026', time: '4:45 – 5:30 PM', venue: 'AB1 316 (Third Floor)' },
+    { type: 'talk', name: 'Dr. Divyasree', affiliation: 'IISER Pune', institution: 'IISER Pune', talkTitle: 'TBA', abstract: 'TBA', day: 'Thursday, September 17, 2026', time: '5:35 – 6:00 PM', venue: 'AB1 316 (Third Floor)' },
+    { type: 'talk', name: 'Prof. Om Prakash', affiliation: 'IIT Patna', institution: 'IIT Patna', talkTitle: 'TBA', abstract: 'TBA', day: 'Friday, September 18, 2026', time: '10:00 – 10:45 AM', venue: 'Visitor Hostel, First Floor' },
+    { type: 'recess', day: 'Friday, September 18, 2026', time: '10:45 – 11:00 AM', venue: 'Visitor Hostel, First Floor' },
+    { type: 'talk', name: 'Ila Ahmad', affiliation: 'IISER Bhopal', institution: 'IISER Bhopal', talkTitle: 'TBA', abstract: 'TBA', day: 'Friday, September 18, 2026', time: '11:00 – 11:25 AM', venue: 'Visitor Hostel, First Floor' },
+    { type: 'talk', name: 'Dr. Ekta Tiwari', affiliation: 'IISER Pune', institution: 'IISER Pune', talkTitle: 'TBA', abstract: 'TBA', day: 'Friday, September 18, 2026', time: '11:30 – 11:55 AM', venue: 'Visitor Hostel, First Floor' },
+    { type: 'talk', name: 'Dr. Sanjeev Kumar Pandey', affiliation: 'IISER Bhopal', institution: 'IISER Bhopal', talkTitle: 'TBA', abstract: 'TBA', day: 'Friday, September 18, 2026', time: '12:00 – 12:25 PM', venue: 'Visitor Hostel, First Floor' },
+    { type: 'talk', name: 'Varsha Vasudevan', affiliation: 'IISER Bhopal', institution: 'IISER Bhopal', talkTitle: 'TBA', abstract: 'TBA', day: 'Friday, September 18, 2026', time: '12:30 – 12:55 PM', venue: 'Visitor Hostel, First Floor' },
+    { type: 'talk', name: 'Prof. A. V. Jayanthan', affiliation: 'IIT Madras', institution: 'IIT Madras', talkTitle: 'TBA', abstract: 'TBA', day: 'Friday, September 18, 2026', time: '2:30 – 3:15 PM', venue: 'Visitor Hostel, First Floor' },
+    { type: 'talk', name: 'Dr. Vaibhav Pandey', affiliation: 'IIT Madras', institution: 'IIT Madras', talkTitle: 'TBA', abstract: 'TBA', day: 'Friday, September 18, 2026', time: '3:20 – 4:05 PM', venue: 'Visitor Hostel, First Floor' },
+    { type: 'recess', day: 'Friday, September 18, 2026', time: '4:05 – 4:25 PM', venue: 'Visitor Hostel, First Floor' },
+    { type: 'talk', name: 'Dr. Ajay Kumar', affiliation: 'IIT Jammu', institution: 'IIT Jammu', talkTitle: 'TBA', abstract: 'TBA', day: 'Friday, September 18, 2026', time: '4:25 – 5:10 PM', venue: 'Visitor Hostel, First Floor' },
+    { type: 'talk', name: 'Dr. Deblina Dey', affiliation: 'IISER Bhopal', institution: 'IISER Bhopal', talkTitle: 'TBA', abstract: 'TBA', day: 'Friday, September 18, 2026', time: '5:15 – 5:40 PM', venue: 'Visitor Hostel, First Floor' },
+    { type: 'talk', name: 'Dr. Sudipta Das', affiliation: 'TIFR Mumbai', institution: 'TIFR Mumbai', talkTitle: 'TBA', abstract: 'TBA', day: 'Friday, September 18, 2026', time: '5:45 – 6:10 PM', venue: 'Visitor Hostel, First Floor' },
   ];
 
-  const speakersData = [
-    { name: 'Dr. Ananthnarayan H', affiliation: 'IIT Bombay', institution: 'IIT Bombay', talkTitle: 'TBA', abstract: 'TBA', date: 'Thursday, September 17, 2026', time: '2:00 – 2:45 PM', venue: 'AB1 316 (Third Floor)' },
-    { name: 'Dr. Rahul Gupta', affiliation: 'IMSc, Chennai', institution: 'IMSc, Chennai', talkTitle: 'TBA', abstract: 'TBA', date: 'Thursday, September 17, 2026', time: '2:50 – 3:35 PM', venue: 'AB1 316 (Third Floor)' },
-    { name: 'Dr. Amith Tripathi', affiliation: 'IIT Hyderabad', institution: 'IIT Hyderabad', talkTitle: 'TBA', abstract: 'TBA', date: 'Thursday, September 17, 2026', time: '3:55 – 4:40 PM', venue: 'AB1 316 (Third Floor)' },
-    { name: 'Dr. Arpan Dutta', affiliation: 'IIT Bhubaneswar', institution: 'IIT Bhubaneswar', talkTitle: 'TBA', abstract: 'TBA', date: 'Thursday, September 17, 2026', time: '4:45 – 5:30 PM', venue: 'AB1 316 (Third Floor)' },
-    { name: 'Dr. Divyasree', affiliation: 'IISER Pune', institution: 'IISER Pune', talkTitle: 'TBA', abstract: 'TBA', date: 'Thursday, September 17, 2026', time: '5:35 – 6:00 PM', venue: 'AB1 316 (Third Floor)' },
-    { name: 'Prof. Om Prakash', affiliation: 'IIT Patna', institution: 'IIT Patna', talkTitle: 'TBA', abstract: 'TBA', date: 'Friday, September 18, 2026', time: '10:00 – 10:45 AM', venue: 'Visitor Hostel, First Floor' },
-    { name: 'Ila Ahmad', affiliation: 'IISER Bhopal', institution: 'IISER Bhopal', talkTitle: 'TBA', abstract: 'TBA', date: 'Friday, September 18, 2026', time: '11:00 – 11:25 AM', venue: 'Visitor Hostel, First Floor' },
-    { name: 'Dr. Ekta Tiwari', affiliation: 'IISER Pune', institution: 'IISER Pune', talkTitle: 'TBA', abstract: 'TBA', date: 'Friday, September 18, 2026', time: '11:30 – 11:55 AM', venue: 'Visitor Hostel, First Floor' },
-    { name: 'Dr. Sanjeev Kumar Pandey', affiliation: 'IISER Bhopal', institution: 'IISER Bhopal', talkTitle: 'TBA', abstract: 'TBA', date: 'Friday, September 18, 2026', time: '12:00 – 12:25 PM', venue: 'Visitor Hostel, First Floor' },
-    { name: 'Varsha Vasudevan', affiliation: 'IISER Bhopal', institution: 'IISER Bhopal', talkTitle: 'TBA', abstract: 'TBA', date: 'Friday, September 18, 2026', time: '12:30 – 12:55 PM', venue: 'Visitor Hostel, First Floor' },
-    { name: 'Prof. A. V. Jayanthan', affiliation: 'IIT Madras', institution: 'IIT Madras', talkTitle: 'TBA', abstract: 'TBA', date: 'Friday, September 18, 2026', time: '2:30 – 3:15 PM', venue: 'Visitor Hostel, First Floor' },
-    { name: 'Dr. Vaibhav Pandey', affiliation: 'IIT Madras', institution: 'IIT Madras', talkTitle: 'TBA', abstract: 'TBA', date: 'Friday, September 18, 2026', time: '3:20 – 4:05 PM', venue: 'Visitor Hostel, First Floor' },
-    { name: 'Dr. Ajay Kumar', affiliation: 'IIT Jammu', institution: 'IIT Jammu', talkTitle: 'TBA', abstract: 'TBA', date: 'Friday, September 18, 2026', time: '4:25 – 5:10 PM', venue: 'Visitor Hostel, First Floor' },
-    { name: 'Dr. Deblina Dey', affiliation: 'IISER Bhopal', institution: 'IISER Bhopal', talkTitle: 'TBA', abstract: 'TBA', date: 'Friday, September 18, 2026', time: '5:15 – 5:40 PM', venue: 'Visitor Hostel, First Floor' },
-    { name: 'Dr. Sudipta Das', affiliation: 'TIFR Mumbai', institution: 'TIFR Mumbai', talkTitle: 'TBA', abstract: 'TBA', date: 'Friday, September 18, 2026', time: '5:45 – 6:10 PM', venue: 'Visitor Hostel, First Floor' },
-  ];
-
-  // Extracts the last name for sorting, ignoring honorifics like Dr./Prof.
-  const getLastName = (fullName) => {
-    const withoutTitle = fullName.replace(/^(Dr\.|Prof\.)\s*/, '');
-    const parts = withoutTitle.trim().split(/\s+/);
-    return parts[parts.length - 1].toLowerCase();
-  };
-
-  const sortedSpeakers = [...speakersData].sort((a, b) =>
-    getLastName(a.name).localeCompare(getLastName(b.name))
-  );
-
-  const filteredSpeakers = sortedSpeakers.filter(
-    (item) =>
-      item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.institution.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  // Group sessions by day, in schedule order, for the day-by-day timeline view.
+  const scheduleData = ['Thursday, September 17, 2026', 'Friday, September 18, 2026'].map((day) => ({
+    date: day,
+    events: sessionsData.filter((s) => s.day === day),
+  }));
 
   return (
     <div
@@ -144,8 +104,8 @@ export default function App() {
         }
 
         @keyframes fadeSlideUp {
-          from { opacity: 0; transform: translateY(14px); }
-          to { opacity: 1; transform: translateY(0); }
+          from { opacity: 0; transform: translate3d(0, 14px, 0); }
+          to { opacity: 1; transform: translate3d(0, 0, 0); }
         }
 
         .fade-in {
@@ -158,6 +118,8 @@ export default function App() {
 
         .stagger-card {
           animation: fadeSlideUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+          backface-visibility: hidden;
+          transform: translateZ(0);
         }
 
         .link-hover {
@@ -195,6 +157,8 @@ export default function App() {
         }
         .mono {
           font-family: 'IBM Plex Mono', monospace;
+          -webkit-font-smoothing: antialiased;
+          text-rendering: geometricPrecision;
         }
       `}</style>
 
@@ -336,14 +300,6 @@ export default function App() {
                     <ChevronRight size={18} />
                   </button>
                   <button
-                    onClick={() => setActiveTab('speakers')}
-                    className="cta-button w-full sm:w-auto px-7 py-3 rounded-lg font-semibold flex items-center justify-center space-x-2"
-                    style={{ background: '#FFFFFF', color: '#3F3D38', border: '1px solid #C9C4B4' }}
-                  >
-                    <BookOpen size={18} />
-                    <span>Speakers</span>
-                  </button>
-                  <button
                     onClick={() => setActiveTab('registration')}
                     className="cta-button w-full sm:w-auto px-7 py-3 rounded-lg font-semibold flex items-center justify-center space-x-2"
                     style={{ background: '#FFFFFF', color: '#3F3D38', border: '1px solid #C9C4B4' }}
@@ -449,63 +405,10 @@ export default function App() {
         {/* ==================== SCHEDULE ==================== */}
         {activeTab === 'schedule' && (
           <div className="py-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="mb-10">
-              <h1 className="text-3xl sm:text-4xl font-bold mb-2" style={{ color: '#2B2B2E' }}>Meeting Schedule</h1>
-              <p className="sans" style={{ color: '#6B6A5F' }}> Time, Date and Venue of all the talks. (September 17–18, 2026).</p>
-            </div>
-
-            <div className="space-y-12">
-              {scheduleData.map((day, idx) => (
-                <div key={idx} className="stagger-card rounded-lg overflow-hidden" style={{ background: '#FFFFFF', border: '1px solid #DFDACD', animationDelay: `${idx * 0.1}s` }}>
-                  <div className="px-6 py-4" style={{ background: '#EFEAE0', borderBottom: '1px solid #DFDACD' }}>
-                    <h2 className="text-xl font-semibold" style={{ color: '#3C4A3E' }}>{day.date}</h2>
-                  </div>
-                  <div className="divide-y" style={{ borderColor: '#E9E4D6' }}>
-                    {day.events.map((event, eventIdx) => (
-                      <div
-                        key={eventIdx}
-                        className="p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4"
-                        style={{ borderBottom: '1px solid #EDEAE0' }}
-                      >
-                        <div className="flex items-start space-x-4">
-                          <div
-                            className="flex items-center space-x-1.5 text-xs font-semibold mono px-2.5 py-1 rounded-md whitespace-nowrap"
-                            style={{ color: '#3C4A3E', background: '#EFEAE0', border: '1px solid #DAD3C0' }}
-                          >
-                            <Clock size={13} />
-                            <span>{event.time}</span>
-                          </div>
-                          <div>
-                            <h3 className="text-base font-semibold" style={{ color: '#2B2B2E' }}>
-                              {event.speaker ? event.speaker : event.title}
-                            </h3>
-                            {event.speaker && (
-                              <p className="text-sm mt-0.5 sans" style={{ color: '#8A8577' }}>{event.title}</p>
-                            )}
-                          </div>
-                        </div>
-                        <div
-                          className="text-xs mono px-3 py-1 rounded-full self-start sm:self-center"
-                          style={{ background: '#F6F2EA', color: '#6B6A5F', border: '1px solid #E9E4D6' }}
-                        >
-                          {event.venue}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* ==================== SPEAKERS ==================== */}
-        {activeTab === 'speakers' && (
-          <div className="py-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-10">
               <div>
-                <h1 className="text-3xl sm:text-4xl font-bold mb-2" style={{ color: '#2B2B2E' }}>Speakers</h1>
-                <p className="sans" style={{ color: '#6B6A5F' }}>A list of speakers, and details about their talks.</p>
+                <h1 className="text-3xl sm:text-4xl font-bold mb-2" style={{ color: '#2B2B2E' }}>Schedule & Speakers</h1>
+                <p className="sans" style={{ color: '#6B6A5F' }}>Day-by-day schedule of talks, with speaker details (September 17–18, 2026).</p>
               </div>
 
               {/* Search Bar */}
@@ -522,59 +425,100 @@ export default function App() {
               </div>
             </div>
 
-            <div className="space-y-5">
-              {filteredSpeakers.length > 0 ? (
-                filteredSpeakers.map((item, idx) => (
-                  <div
-                    key={idx}
-                    className="soft-card stagger-card p-6 rounded-lg flex items-start space-x-4"
-                    style={{ background: '#FFFFFF', border: '1px solid #DFDACD', animationDelay: `${idx * 0.05}s` }}
-                  >
-                    <div
-                      className="h-11 w-11 shrink-0 rounded-full flex items-center justify-center"
-                      style={{ background: '#EFEAE0', color: '#3C4A3E' }}
-                    >
-                      <GraduationCap size={20} />
+            <div className="space-y-12">
+              {scheduleData.map((day, dayIdx) => {
+                const visibleEvents = day.events.filter((event) => {
+                  if (event.type === 'recess') return !searchQuery;
+                  return (
+                    event.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                    event.institution.toLowerCase().includes(searchQuery.toLowerCase())
+                  );
+                });
+                if (visibleEvents.length === 0) return null;
+
+                return (
+                  <div key={dayIdx} className="stagger-card rounded-lg overflow-hidden" style={{ background: '#FFFFFF', border: '1px solid #DFDACD', animationDelay: `${dayIdx * 0.1}s` }}>
+                    <div className="px-6 py-4" style={{ background: '#EFEAE0', borderBottom: '1px solid #DFDACD' }}>
+                      <h2 className="text-xl font-semibold" style={{ color: '#3C4A3E' }}>{day.date}</h2>
                     </div>
-                    <div className="flex-1">
-                      <h2 className="text-lg font-semibold mb-0.5" style={{ color: '#2B2B2E' }}>{item.name}</h2>
-                      <p className="text-sm sans mb-3" style={{ color: '#6B6A5F' }}>{item.affiliation}</p>
+                    <div className="divide-y" style={{ borderColor: '#E9E4D6' }}>
+                      {visibleEvents.map((event, eventIdx) => (
+                        event.type === 'recess' ? (
+                          <div
+                            key={eventIdx}
+                            className="p-5 sm:p-6 flex items-center justify-between gap-4"
+                            style={{ background: '#FBFAF7' }}
+                          >
+                            <div className="flex items-center space-x-4">
+                              <div
+                                className="flex items-center space-x-1.5 text-xs font-semibold mono px-2.5 py-1 rounded-md whitespace-nowrap"
+                                style={{ color: '#8A8577', background: '#F6F2EA', border: '1px solid #E9E4D6' }}
+                              >
+                                <Clock size={13} />
+                                <span>{event.time}</span>
+                              </div>
+                              <h3 className="text-sm font-medium sans" style={{ color: '#8A8577' }}>Recess</h3>
+                            </div>
+                          </div>
+                        ) : (
+                          <div
+                            key={eventIdx}
+                            className="p-5 sm:p-6 flex items-start space-x-4"
+                          >
+                            <div
+                              className="h-11 w-11 shrink-0 rounded-full flex items-center justify-center hidden sm:flex"
+                              style={{ background: '#EFEAE0', color: '#3C4A3E' }}
+                            >
+                              <GraduationCap size={20} />
+                            </div>
+                            <div className="flex-1">
+                              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-1">
+                                <h3 className="text-base font-semibold" style={{ color: '#2B2B2E' }}>{event.name}</h3>
+                                <div
+                                  className="flex items-center space-x-1.5 text-xs font-semibold mono px-2.5 py-1 rounded-md whitespace-nowrap self-start"
+                                  style={{ color: '#3C4A3E', background: '#EFEAE0', border: '1px solid #DAD3C0' }}
+                                >
+                                  <Clock size={13} />
+                                  <span>{event.time}</span>
+                                </div>
+                              </div>
+                              <p className="text-sm sans mb-3" style={{ color: '#6B6A5F' }}>{event.affiliation}</p>
 
-                      <div className="flex flex-wrap items-center gap-3 text-xs mono mb-3">
-                        <span
-                          className="flex items-center space-x-1.5 px-2.5 py-1 rounded-md"
-                          style={{ color: '#3C4A3E', background: '#EFEAE0', border: '1px solid #DAD3C0' }}
-                        >
-                          <Calendar size={13} />
-                          <span>{item.date.replace(', 2026', '')}</span>
-                        </span>
-                        <span
-                          className="flex items-center space-x-1.5 px-2.5 py-1 rounded-md"
-                          style={{ color: '#3C4A3E', background: '#EFEAE0', border: '1px solid #DAD3C0' }}
-                        >
-                          <Clock size={13} />
-                          <span>{item.time}</span>
-                        </span>
-                        <span
-                          className="px-3 py-1 rounded-full"
-                          style={{ background: '#F6F2EA', color: '#6B6A5F', border: '1px solid #E9E4D6' }}
-                        >
-                          Venue: {item.venue}
-                        </span>
-                      </div>
+                              <div className="flex flex-wrap items-center gap-3 text-xs mono mb-3">
+                                <span
+                                  className="px-3 py-1 rounded-full"
+                                  style={{ background: '#F6F2EA', color: '#6B6A5F', border: '1px solid #E9E4D6' }}
+                                >
+                                  Venue: {event.venue}
+                                </span>
+                              </div>
 
-                      <p className="text-sm font-semibold mb-1 sans" style={{ color: '#3F3D38' }}>
-                        <span className="font-semibold sans" style={{ color: '#5C5A52' }}>Talk Title: </span>
-                        {item.talkTitle}
-                      </p>
-                      <p className="text-sm leading-relaxed" style={{ color: '#6B6A5F' }}>
-                        <span className="font-semibold sans" style={{ color: '#5C5A52' }}>Abstract: </span>
-                        {item.abstract}
-                      </p>
+                              <p className="text-sm font-semibold mb-1 sans" style={{ color: '#3F3D38' }}>
+                                <span className="font-semibold sans" style={{ color: '#5C5A52' }}>Talk Title: </span>
+                                {event.talkTitle}
+                              </p>
+                              <p className="text-sm leading-relaxed" style={{ color: '#6B6A5F' }}>
+                                <span className="font-semibold sans" style={{ color: '#5C5A52' }}>Abstract: </span>
+                                {event.abstract}
+                              </p>
+                            </div>
+                          </div>
+                        )
+                      ))}
                     </div>
                   </div>
-                ))
-              ) : (
+                );
+              })}
+
+              {scheduleData.every((day) =>
+                day.events.filter((event) => {
+                  if (event.type === 'recess') return !searchQuery;
+                  return (
+                    event.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                    event.institution.toLowerCase().includes(searchQuery.toLowerCase())
+                  );
+                }).length === 0
+              ) && (
                 <div className="text-center py-12 rounded-lg sans" style={{ background: '#F6F2EA', border: '1px solid #DFDACD' }}>
                   <p style={{ color: '#8A8577' }}>No speakers match your query.</p>
                 </div>
