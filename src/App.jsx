@@ -61,12 +61,12 @@ export default function App() {
     {
       date: 'Thursday, September 17, 2026',
       events: [
-        { time: '2:00 – 2:45 PM', title: 'Talk', speaker: 'Dr. Ananthnarayan H', venue: 'AB1 316' },
-        { time: '2:50 – 3:35 PM', title: 'Talk', speaker: 'Dr. Rahul Gupta', venue: 'AB1 316' },
-        { time: '3:35 – 3:55 PM', title: 'Recess', speaker: '', venue: 'AB1 316' },
-        { time: '3:55 – 4:40 PM', title: 'Talk', speaker: 'Dr. Amith Tripathi', venue: 'AB1 316' },
-        { time: '4:45 – 5:30 PM', title: 'Talk', speaker: 'Dr. Arpan Dutta', venue: 'AB1 316' },
-        { time: '5:35 – 6:00 PM', title: 'Talk', speaker: 'Dr. Divyasree', venue: 'AB1 316' },
+        { time: '2:00 – 2:45 PM', title: 'Talk', speaker: 'Dr. Ananthnarayan H', venue: 'AB1 316 (Third Floor)' },
+        { time: '2:50 – 3:35 PM', title: 'Talk', speaker: 'Dr. Rahul Gupta', venue: 'AB1 316 (Third Floor)' },
+        { time: '3:35 – 3:55 PM', title: 'Recess', speaker: '', venue: 'AB1 316 (Third Floor)' },
+        { time: '3:55 – 4:40 PM', title: 'Talk', speaker: 'Dr. Amith Tripathi', venue: 'AB1 316 (Third Floor)' },
+        { time: '4:45 – 5:30 PM', title: 'Talk', speaker: 'Dr. Arpan Dutta', venue: 'AB1 316 (Third Floor)' },
+        { time: '5:35 – 6:00 PM', title: 'Talk', speaker: 'Dr. Divyasree', venue: 'AB1 316 (Third Floor)' },
       ],
     },
     {
@@ -74,10 +74,10 @@ export default function App() {
       events: [
         { time: '10:00 – 10:45 AM', title: 'Talk', speaker: 'Prof. Om Prakash', venue: 'Visitor Hostel, First Floor' },
         { time: '10:45 – 11:00 AM', title: 'Recess', speaker: '', venue: 'Visitor Hostel, First Floor' },
-        { time: '11:00 – 11:25 AM', title: 'Talk', speaker: 'Dr. Ila Ahmad', venue: 'Visitor Hostel, First Floor' },
+        { time: '11:00 – 11:25 AM', title: 'Talk', speaker: 'Ila Ahmad', venue: 'Visitor Hostel, First Floor' },
         { time: '11:30 – 11:55 AM', title: 'Talk', speaker: 'Dr. Ekta Tiwari', venue: 'Visitor Hostel, First Floor' },
         { time: '12:00 – 12:25 PM', title: 'Talk', speaker: 'Dr. Sanjeev Kumar Pandey', venue: 'Visitor Hostel, First Floor' },
-        { time: '12:30 – 12:55 PM', title: 'Talk', speaker: 'Dr. Varsha Vasudevan', venue: 'Visitor Hostel, First Floor' },
+        { time: '12:30 – 12:55 PM', title: 'Talk', speaker: 'Varsha Vasudevan', venue: 'Visitor Hostel, First Floor' },
         { time: '2:30 – 3:15 PM', title: 'Talk', speaker: 'Prof. A. V. Jayanthan', venue: 'Visitor Hostel, First Floor' },
         { time: '3:20 – 4:05 PM', title: 'Talk', speaker: 'Dr. Vaibhav Pandey', venue: 'Visitor Hostel, First Floor' },
         { time: '4:05 – 4:25 PM', title: 'Recess', speaker: '', venue: 'Visitor Hostel, First Floor' },
@@ -89,16 +89,16 @@ export default function App() {
   ];
 
   const speakersData = [
-    { name: 'Dr. Ananthnarayan H', affiliation: 'IIT Bombay', institution: 'IIT Bombay', talkTitle: 'TBA', abstract: 'TBA', date: 'Thursday, September 17, 2026', time: '2:00 – 2:45 PM', venue: 'AB1 316' },
-    { name: 'Dr. Rahul Gupta', affiliation: 'IMSc', institution: 'IMSc', talkTitle: 'TBA', abstract: 'TBA', date: 'Thursday, September 17, 2026', time: '2:50 – 3:35 PM', venue: 'AB1 316' },
-    { name: 'Dr. Amith Tripathi', affiliation: 'IIT Hyderabad', institution: 'IIT Hyderabad', talkTitle: 'TBA', abstract: 'TBA', date: 'Thursday, September 17, 2026', time: '3:55 – 4:40 PM', venue: 'AB1 316' },
-    { name: 'Dr. Arpan Dutta', affiliation: 'IIT Bhubaneswar', institution: 'IIT Bhubaneswar', talkTitle: 'TBA', abstract: 'TBA', date: 'Thursday, September 17, 2026', time: '4:45 – 5:30 PM', venue: 'AB1 316' },
-    { name: 'Dr. Divyasree', affiliation: 'IISER Pune', institution: 'IISER Pune', talkTitle: 'TBA', abstract: 'TBA', date: 'Thursday, September 17, 2026', time: '5:35 – 6:00 PM', venue: 'AB1 316' },
+    { name: 'Dr. Ananthnarayan H', affiliation: 'IIT Bombay', institution: 'IIT Bombay', talkTitle: 'TBA', abstract: 'TBA', date: 'Thursday, September 17, 2026', time: '2:00 – 2:45 PM', venue: 'AB1 316 (Third Floor)' },
+    { name: 'Dr. Rahul Gupta', affiliation: 'IMSc, Chennai', institution: 'IMSc, Chennai', talkTitle: 'TBA', abstract: 'TBA', date: 'Thursday, September 17, 2026', time: '2:50 – 3:35 PM', venue: 'AB1 316 (Third Floor)' },
+    { name: 'Dr. Amith Tripathi', affiliation: 'IIT Hyderabad', institution: 'IIT Hyderabad', talkTitle: 'TBA', abstract: 'TBA', date: 'Thursday, September 17, 2026', time: '3:55 – 4:40 PM', venue: 'AB1 316 (Third Floor)' },
+    { name: 'Dr. Arpan Dutta', affiliation: 'IIT Bhubaneswar', institution: 'IIT Bhubaneswar', talkTitle: 'TBA', abstract: 'TBA', date: 'Thursday, September 17, 2026', time: '4:45 – 5:30 PM', venue: 'AB1 316 (Third Floor)' },
+    { name: 'Dr. Divyasree', affiliation: 'IISER Pune', institution: 'IISER Pune', talkTitle: 'TBA', abstract: 'TBA', date: 'Thursday, September 17, 2026', time: '5:35 – 6:00 PM', venue: 'AB1 316 (Third Floor)' },
     { name: 'Prof. Om Prakash', affiliation: 'IIT Patna', institution: 'IIT Patna', talkTitle: 'TBA', abstract: 'TBA', date: 'Friday, September 18, 2026', time: '10:00 – 10:45 AM', venue: 'Visitor Hostel, First Floor' },
-    { name: 'Dr. Ila Ahmad', affiliation: 'IISER Bhopal', institution: 'IISER Bhopal', talkTitle: 'TBA', abstract: 'TBA', date: 'Friday, September 18, 2026', time: '11:00 – 11:25 AM', venue: 'Visitor Hostel, First Floor' },
+    { name: 'Ila Ahmad', affiliation: 'IISER Bhopal', institution: 'IISER Bhopal', talkTitle: 'TBA', abstract: 'TBA', date: 'Friday, September 18, 2026', time: '11:00 – 11:25 AM', venue: 'Visitor Hostel, First Floor' },
     { name: 'Dr. Ekta Tiwari', affiliation: 'IISER Pune', institution: 'IISER Pune', talkTitle: 'TBA', abstract: 'TBA', date: 'Friday, September 18, 2026', time: '11:30 – 11:55 AM', venue: 'Visitor Hostel, First Floor' },
     { name: 'Dr. Sanjeev Kumar Pandey', affiliation: 'IISER Bhopal', institution: 'IISER Bhopal', talkTitle: 'TBA', abstract: 'TBA', date: 'Friday, September 18, 2026', time: '12:00 – 12:25 PM', venue: 'Visitor Hostel, First Floor' },
-    { name: 'Dr. Varsha Vasudevan', affiliation: 'IISER Bhopal', institution: 'IISER Bhopal', talkTitle: 'TBA', abstract: 'TBA', date: 'Friday, September 18, 2026', time: '12:30 – 12:55 PM', venue: 'Visitor Hostel, First Floor' },
+    { name: 'Varsha Vasudevan', affiliation: 'IISER Bhopal', institution: 'IISER Bhopal', talkTitle: 'TBA', abstract: 'TBA', date: 'Friday, September 18, 2026', time: '12:30 – 12:55 PM', venue: 'Visitor Hostel, First Floor' },
     { name: 'Prof. A. V. Jayanthan', affiliation: 'IIT Madras', institution: 'IIT Madras', talkTitle: 'TBA', abstract: 'TBA', date: 'Friday, September 18, 2026', time: '2:30 – 3:15 PM', venue: 'Visitor Hostel, First Floor' },
     { name: 'Dr. Vaibhav Pandey', affiliation: 'IIT Madras', institution: 'IIT Madras', talkTitle: 'TBA', abstract: 'TBA', date: 'Friday, September 18, 2026', time: '3:20 – 4:05 PM', venue: 'Visitor Hostel, First Floor' },
     { name: 'Dr. Ajay Kumar', affiliation: 'IIT Jammu', institution: 'IIT Jammu', talkTitle: 'TBA', abstract: 'TBA', date: 'Friday, September 18, 2026', time: '4:25 – 5:10 PM', venue: 'Visitor Hostel, First Floor' },
@@ -399,7 +399,7 @@ export default function App() {
                 <div className="p-5 rounded-lg" style={{ background: '#F6F2EA', border: '1px solid #DFDACD' }}>
                   <h3 className="font-semibold mb-2" style={{ color: '#2B2B2E' }}>Venue</h3>
                   <p className="text-sm" style={{ color: '#6B6A5F' }}>
-                    Day 1: AB1-316 (Seminar Hall)<br />
+                    Day 1: AB1-316, Third Floor (Seminar Hall)<br />
                     Day 2: Visitor Hostel, First Floor<br />
                     IISER Bhopal Campus, Bhauri,<br />
                     Bhopal 462066, Madhya Pradesh, India
@@ -535,7 +535,7 @@ export default function App() {
                           style={{ color: '#3C4A3E', background: '#EFEAE0', border: '1px solid #DAD3C0' }}
                         >
                           <Calendar size={13} />
-                          <span>{item.date}</span>
+                          <span>{item.date.replace(', 2026', '')}</span>
                         </span>
                         <span
                           className="flex items-center space-x-1.5 px-2.5 py-1 rounded-md"
