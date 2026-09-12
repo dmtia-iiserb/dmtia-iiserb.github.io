@@ -97,28 +97,39 @@ export default function App() {
         fontFamily: "'Fraunces', 'Georgia', serif",
       }}
     >
-      {/* Fixed campus background image */}
+      {/* Campus background image — scrolls with the page so the whole background (sky + buildings) stays visible behind every page, not just the hero */}
       <div
         aria-hidden="true"
         style={{
-          position: 'fixed',
-          inset: 0,
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          height: '100%',
+          minHeight: '100vh',
           zIndex: -2,
           backgroundImage: "url('/campus.jpg')",
           backgroundSize: 'cover',
           backgroundPosition: 'center top',
           backgroundRepeat: 'no-repeat',
+          backgroundAttachment: 'fixed',
           backgroundColor: '#bcdcf5',
         }}
       />
-      {/* Soft overlay so content boxes stay legible over the image everywhere */}
+      {/* Light veil for text contrast — subtle everywhere, never fades to a solid block */}
       <div
         aria-hidden="true"
         style={{
-          position: 'fixed',
-          inset: 0,
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          height: '100%',
+          minHeight: '100vh',
           zIndex: -1,
-          background: 'linear-gradient(180deg, rgba(251,250,247,0.15) 0%, rgba(251,250,247,0.55) 38%, rgba(251,250,247,0.92) 60%, #FBFAF7 78%)',
+          background: activeTab === 'home'
+            ? 'linear-gradient(180deg, rgba(251,250,247,0) 0%, rgba(251,250,247,0.08) 55%, rgba(251,250,247,0.35) 100%)'
+            : 'rgba(251,250,247,0.55)',
         }}
       />
 
@@ -285,7 +296,7 @@ export default function App() {
       </header>
 
       {/* Main Content Area */}
-      <main className="flex-grow" style={activeTab !== 'home' ? { background: '#FBFAF7' } : undefined}>
+      <main className="flex-grow">
         {/* ==================== HOME / LANDING PAGE ==================== */}
         {activeTab === 'home' && (
           <div key="home" className="page-enter">
@@ -364,9 +375,6 @@ export default function App() {
                 </div>
               </div>
             </section>
-
-            {/* Spacer wedge that transitions from image into the solid page background before the next section */}
-            <div style={{ height: 'clamp(2rem, 8vh, 6rem)' }} />
 
             {/* Focus Themes */}
             <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
