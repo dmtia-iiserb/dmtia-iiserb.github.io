@@ -128,7 +128,7 @@ export default function App() {
           minHeight: '100vh',
           zIndex: -1,
           background: activeTab === 'home'
-            ? 'linear-gradient(180deg, rgba(251,250,247,0) 0%, rgba(251,250,247,0.08) 55%, rgba(251,250,247,0.35) 100%)'
+            ? 'linear-gradient(90deg, rgba(251,250,247,0) 0%, rgba(251,250,247,0.05) 45%, rgba(251,250,247,0.18) 100%)'
             : 'rgba(251,250,247,0.55)',
         }}
       />
@@ -211,9 +211,9 @@ export default function App() {
       <header
         className="sticky top-0 z-50 sans"
         style={{
-          background: activeTab === 'home' ? 'rgba(251, 250, 247, 0.55)' : 'rgba(251, 250, 247, 0.92)',
-          backdropFilter: 'blur(8px)',
-          borderBottom: activeTab === 'home' ? '1px solid rgba(223,218,205,0.5)' : '1px solid #DFDACD',
+          background: 'rgba(251, 250, 247, 0.6)',
+          backdropFilter: 'blur(10px)',
+          borderBottom: '1px solid rgba(223,218,205,0.55)',
         }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -224,7 +224,7 @@ export default function App() {
             >
               <div
                 className="h-9 w-9 shrink-0 rounded-md flex items-center justify-center font-bold text-lg mono"
-                style={{ background: '#3C4A3E', color: '#FBFAF7' }}
+                style={{ background: 'rgba(60,74,62,0.88)', color: '#FBFAF7' }}
               >
                 ∑
               </div>
@@ -247,7 +247,7 @@ export default function App() {
                   className="nav-link px-4 py-2 rounded-md text-sm font-medium"
                   style={{
                     color: activeTab === item.id ? '#3C4A3E' : '#5C5A52',
-                    background: activeTab === item.id ? '#EFEAE0' : 'transparent',
+                    background: activeTab === item.id ? 'rgba(239,234,224,0.85)' : 'transparent',
                     border: activeTab === item.id ? '1px solid #DAD3C0' : '1px solid transparent',
                   }}
                 >
@@ -273,7 +273,7 @@ export default function App() {
         {mobileMenuOpen && (
           <div
             className="md:hidden px-4 pt-2 pb-4 space-y-1"
-            style={{ background: '#FBFAF7', borderBottom: '1px solid #DFDACD' }}
+            style={{ background: 'rgba(251,250,247,0.85)', backdropFilter: 'blur(10px)', borderBottom: '1px solid rgba(223,218,205,0.6)' }}
           >
             {navigation.map((item) => (
               <button
@@ -285,7 +285,7 @@ export default function App() {
                 className="nav-link block w-full text-left px-3 py-2 rounded-md text-base font-medium"
                 style={{
                   color: activeTab === item.id ? '#3C4A3E' : '#5C5A52',
-                  background: activeTab === item.id ? '#EFEAE0' : 'transparent',
+                  background: activeTab === item.id ? 'rgba(239,234,224,0.85)' : 'transparent',
                 }}
               >
                 {item.label}
@@ -300,22 +300,22 @@ export default function App() {
         {/* ==================== HOME / LANDING PAGE ==================== */}
         {activeTab === 'home' && (
           <div key="home" className="page-enter">
-            {/* Hero Section — pinned to the top so headline + buttons sit inside the blue sky band of the background image; scrolling reveals the buildings + next section below */}
+            {/* Hero Section — content pushed to the right, fully inside the blue sky band, sized to fit without needing to scroll */}
             <section
-              className="relative overflow-hidden flex flex-col items-center justify-start px-4 sm:px-6 lg:px-8"
+              className="relative overflow-hidden flex flex-col items-end justify-start px-5 sm:px-8 lg:px-16"
               style={{
-                height: 'clamp(420px, 58vh, 700px)',
-                paddingTop: 'clamp(1.25rem, 5vh, 3rem)',
+                minHeight: 'calc(100vh - 64px)',
+                paddingTop: 'clamp(1.25rem, 5vh, 3.5rem)',
               }}
             >
-              <div className="relative w-full max-w-5xl mx-auto text-center">
+              <div className="relative w-full max-w-xl text-right">
                 <h1
-                  className="fade-in fade-in-2 font-semibold tracking-tight mb-4"
+                  className="fade-in fade-in-2 font-semibold tracking-tight mb-3 sm:mb-4"
                   style={{
                     color: '#20262A',
                     letterSpacing: '-0.015em',
-                    fontSize: 'clamp(1.6rem, 5vw, 3.75rem)',
-                    lineHeight: 1.08,
+                    fontSize: 'clamp(1.5rem, 4.4vw, 3.1rem)',
+                    lineHeight: 1.1,
                     textShadow: '0 2px 18px rgba(255,255,255,0.55)',
                   }}
                 >
@@ -325,40 +325,54 @@ export default function App() {
                 </h1>
 
                 <p
-                  className="fade-in fade-in-3 max-w-2xl mx-auto mb-5 leading-relaxed sans"
+                  className="fade-in fade-in-3 ml-auto mb-4 sm:mb-5 leading-relaxed sans"
                   style={{
                     color: '#33393D',
-                    fontSize: 'clamp(0.8rem, 1.6vw, 1.05rem)',
+                    fontSize: 'clamp(0.75rem, 1.4vw, 1rem)',
                     textShadow: '0 1px 12px rgba(255,255,255,0.6)',
+                    maxWidth: '32rem',
                   }}
                 >
                   Bringing together researchers, academicians, and students to discuss ongoing research in Commutative Algebra, Algebraic Geometry, and Representation Theory.
                 </p>
 
+                {/* Thematic areas — compact inline chips instead of a separate section, so the whole page fits without scrolling */}
+                <div className="fade-in fade-in-3 flex flex-wrap justify-end gap-2 mb-4 sm:mb-5 sans">
+                  {['Commutative Algebra', 'Algebraic Geometry', 'Representation Theory'].map((t) => (
+                    <span
+                      key={t}
+                      className="px-2.5 py-1 rounded-full text-[10px] sm:text-xs font-medium"
+                      style={{ background: 'rgba(255,255,255,0.55)', border: '1px solid rgba(223,218,205,0.7)', color: '#3F3D38', backdropFilter: 'blur(3px)' }}
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+
                 {/* Event Highlights Badges */}
-                <div className="fade-in fade-in-4 flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 text-xs sm:text-sm font-medium mb-6 sans">
+                <div className="fade-in fade-in-4 flex flex-wrap items-center justify-end gap-2 sm:gap-3 text-[11px] sm:text-sm font-medium mb-5 sm:mb-6 sans">
                   <div
                     className="soft-card flex items-center space-x-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg"
-                    style={{ background: 'rgba(255,255,255,0.92)', border: '1px solid #DFDACD', color: '#3F3D38', backdropFilter: 'blur(4px)' }}
+                    style={{ background: 'rgba(255,255,255,0.7)', border: '1px solid rgba(223,218,205,0.7)', color: '#3F3D38', backdropFilter: 'blur(6px)' }}
                   >
-                    <Calendar size={16} style={{ color: '#3C4A3E' }} />
+                    <Calendar size={15} style={{ color: '#3C4A3E' }} />
                     <span>September 17–18, 2026</span>
                   </div>
                   <button
                     onClick={() => setActiveTab('contact')}
                     className="soft-card flex items-center space-x-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg cursor-pointer"
-                    style={{ background: 'rgba(255,255,255,0.92)', border: '1px solid #DFDACD', color: '#3F3D38', backdropFilter: 'blur(4px)' }}
+                    style={{ background: 'rgba(255,255,255,0.7)', border: '1px solid rgba(223,218,205,0.7)', color: '#3F3D38', backdropFilter: 'blur(6px)' }}
                   >
-                    <MapPin size={16} style={{ color: '#8C5A5A' }} />
-                    <span>IISER Bhopal, Madhya Pradesh, India</span>
+                    <MapPin size={15} style={{ color: '#8C5A5A' }} />
+                    <span>IISER Bhopal, Madhya Pradesh</span>
                   </button>
                 </div>
 
-                <div className="fade-in fade-in-4 flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-4 sans">
+                <div className="fade-in fade-in-4 flex flex-col sm:flex-row justify-end items-center gap-3 sans">
                   <button
                     onClick={() => setActiveTab('schedule')}
                     className="cta-button w-full sm:w-auto px-6 py-2.5 sm:px-7 sm:py-3 rounded-lg font-semibold flex items-center justify-center space-x-2"
-                    style={{ background: '#3C4A3E', color: '#FBFAF7', boxShadow: '0 6px 20px -8px rgba(0,0,0,0.35)' }}
+                    style={{ background: 'rgba(60,74,62,0.92)', color: '#FBFAF7', boxShadow: '0 6px 20px -8px rgba(0,0,0,0.35)' }}
                   >
                     <span>View Schedule</span>
                     <ChevronRight size={18} />
@@ -366,38 +380,12 @@ export default function App() {
                   <button
                     onClick={() => setActiveTab('registration')}
                     className="cta-button w-full sm:w-auto px-6 py-2.5 sm:px-7 sm:py-3 rounded-lg font-semibold flex items-center justify-center space-x-2"
-                    style={{ background: 'rgba(255,255,255,0.95)', color: '#3F3D38', border: '1px solid #C9C4B4', boxShadow: '0 6px 20px -8px rgba(0,0,0,0.2)' }}
+                    style={{ background: 'rgba(255,255,255,0.8)', color: '#3F3D38', border: '1px solid rgba(201,196,180,0.8)', boxShadow: '0 6px 20px -8px rgba(0,0,0,0.2)', backdropFilter: 'blur(6px)' }}
                   >
                     <Users size={18} />
                     <span>Register</span>
                   </button>
                 </div>
-              </div>
-            </section>
-
-            {/* Focus Themes */}
-            <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-2 text-center" style={{ color: '#2B2B2E' }}>
-                Thematic Areas
-              </h2>
-              <p className="text-center mb-12 max-w-xl mx-auto sans" style={{ color: '#6B6A5F' }}>
-                Key areas of focus
-              </p>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {[
-                  { title: 'Commutative Algebra' },
-                  { title: 'Algebraic Geometry' },
-                  { title: 'Representation Theory' },
-                ].map((item, idx) => (
-                  <div
-                    key={idx}
-                    className="soft-card stagger-card p-6 rounded-lg text-center"
-                    style={{ background: '#FFFFFF', border: '1px solid #DFDACD', animationDelay: `${0.1 + idx * 0.08}s` }}
-                  >
-                    <h3 className="text-lg font-semibold" style={{ color: '#2B2B2E' }}>{item.title}</h3>
-                  </div>
-                ))}
               </div>
             </section>
           </div>
@@ -409,7 +397,7 @@ export default function App() {
             <h1 className="text-3xl sm:text-4xl font-bold mb-4" style={{ color: '#2B2B2E' }}>About the Meeting</h1>
 
             <div className="space-y-6 leading-relaxed" style={{ color: '#3F3D38' }}>
-              <div className="p-6 sm:p-8 rounded-lg" style={{ background: '#FFFFFF', border: '1px solid #DFDACD' }}>
+              <div className="p-6 sm:p-8 rounded-lg" style={{ background: 'rgba(255,255,255,0.82)', border: '1px solid #DFDACD' }}>
                 <h2 className="text-xl font-semibold mb-3" style={{ color: '#2B2B2E' }}>Overview & Vision</h2>
                 <p className="mb-4">
                   The <strong>Discussion Meeting on Topics in Algebra</strong> is organized (and supported) by the Department of Mathematics at the Indian Institute of Science Education and Research (IISER) Bhopal. This meeting takes place on <strong>September 17 and September 18, 2026</strong>, and it aims to create a learning environment for researchers in the fields, and students with aligning interests.
@@ -419,7 +407,7 @@ export default function App() {
                 </p>
               </div>
 
-              <div className="p-6 sm:p-8 rounded-lg" style={{ background: '#FFFFFF', border: '1px solid #DFDACD' }}>
+              <div className="p-6 sm:p-8 rounded-lg" style={{ background: 'rgba(255,255,255,0.82)', border: '1px solid #DFDACD' }}>
                 <h2 className="text-xl font-semibold mb-3" style={{ color: '#2B2B2E' }}>About IISER Bhopal</h2>
                 <p>
                   IISER Bhopal was established in 2008 by the Ministry of Education, Government of India, and is dedicated to fostering the highest quality of scientific research and education. The Department of Mathematics at IISER Bhopal actively engages in research which spans across Algebra, Number Theory, Geometry, Topology, and Analysis.
@@ -427,7 +415,7 @@ export default function App() {
               </div>
 
               <div className="pt-4">
-                <div className="p-5 rounded-lg" style={{ background: '#F6F2EA', border: '1px solid #DFDACD' }}>
+                <div className="p-5 rounded-lg" style={{ background: 'rgba(246,242,234,0.78)', border: '1px solid #DFDACD' }}>
                   <h3 className="font-semibold mb-2" style={{ color: '#2B2B2E' }}>Venue & Dates</h3>
                   <p className="text-sm" style={{ color: '#6B6A5F' }}>
                     Thursday, September 17, 2026 — AB1-316, Third Floor (Seminar Hall)<br />
@@ -438,7 +426,7 @@ export default function App() {
                 </div>
               </div>
 
-              <div className="p-6 sm:p-8 rounded-lg" style={{ background: '#FFFFFF', border: '1px solid #DFDACD' }}>
+              <div className="p-6 sm:p-8 rounded-lg" style={{ background: 'rgba(255,255,255,0.82)', border: '1px solid #DFDACD' }}>
                 <h2 className="text-xl font-semibold mb-4 flex items-center space-x-2" style={{ color: '#2B2B2E' }}>
                   <Users size={20} style={{ color: '#3C4A3E' }} />
                   <span>Organizers</span>
@@ -480,7 +468,7 @@ export default function App() {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="w-full pl-9 pr-4 py-2 rounded-lg text-sm focus:outline-none transition-colors"
-                  style={{ background: '#FFFFFF', border: '1px solid #DFDACD', color: '#2B2B2E' }}
+                  style={{ background: 'rgba(255,255,255,0.82)', border: '1px solid #DFDACD', color: '#2B2B2E' }}
                 />
               </div>
             </div>
@@ -497,8 +485,8 @@ export default function App() {
                 if (visibleEvents.length === 0) return null;
 
                 return (
-                  <div key={dayIdx} className="stagger-card rounded-lg overflow-hidden" style={{ background: '#FFFFFF', border: '1px solid #DFDACD', animationDelay: `${dayIdx * 0.1}s` }}>
-                    <div className="px-6 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2" style={{ background: '#EFEAE0', borderBottom: '1px solid #DFDACD' }}>
+                  <div key={dayIdx} className="stagger-card rounded-lg overflow-hidden" style={{ background: 'rgba(255,255,255,0.82)', border: '1px solid #DFDACD', animationDelay: `${dayIdx * 0.1}s` }}>
+                    <div className="px-6 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2" style={{ background: 'rgba(239,234,224,0.78)', borderBottom: '1px solid #DFDACD' }}>
                       <h2 className="text-xl font-semibold" style={{ color: '#3C4A3E' }}>{day.date}</h2>
                       <span
                         className="inline-flex items-center space-x-2 text-base sm:text-lg font-semibold self-start sm:self-auto"
@@ -514,12 +502,12 @@ export default function App() {
                           <div
                             key={eventIdx}
                             className="p-5 sm:p-6 flex items-center justify-between gap-4"
-                            style={{ background: '#FBFAF7' }}
+                            style={{ background: 'rgba(251,250,247,0.6)' }}
                           >
                             <div className="flex items-center space-x-4">
                               <div
                                 className="flex items-center space-x-1.5 text-sm font-semibold mono px-2.5 py-1 rounded-md whitespace-nowrap"
-                                style={{ color: '#8A8577', background: '#F6F2EA', border: '1px solid #E9E4D6' }}
+                                style={{ color: '#8A8577', background: 'rgba(246,242,234,0.78)', border: '1px solid #E9E4D6' }}
                               >
                                 <Clock size={14} />
                                 <span>{event.time}</span>
@@ -534,7 +522,7 @@ export default function App() {
                           >
                             <div
                               className="h-11 w-11 shrink-0 rounded-full flex items-center justify-center hidden sm:flex"
-                              style={{ background: '#EFEAE0', color: '#3C4A3E' }}
+                              style={{ background: 'rgba(239,234,224,0.78)', color: '#3C4A3E' }}
                             >
                               <GraduationCap size={20} />
                             </div>
@@ -546,7 +534,7 @@ export default function App() {
                                 <h3 className="text-base font-semibold" style={{ color: '#3F3D38' }}>{event.name}</h3>
                                 <div
                                   className="flex items-center space-x-1.5 text-sm font-semibold mono px-2.5 py-1 rounded-md whitespace-nowrap self-start"
-                                  style={{ color: '#3C4A3E', background: '#EFEAE0', border: '1px solid #DAD3C0' }}
+                                  style={{ color: '#3C4A3E', background: 'rgba(239,234,224,0.78)', border: '1px solid #DAD3C0' }}
                                 >
                                   <Clock size={14} />
                                   <span>{event.time}</span>
@@ -576,7 +564,7 @@ export default function App() {
                   );
                 }).length === 0
               ) && (
-                <div className="text-center py-12 rounded-lg sans" style={{ background: '#F6F2EA', border: '1px solid #DFDACD' }}>
+                <div className="text-center py-12 rounded-lg sans" style={{ background: 'rgba(246,242,234,0.78)', border: '1px solid #DFDACD' }}>
                   <p style={{ color: '#8A8577' }}>No speakers match your query.</p>
                 </div>
               )}
@@ -594,11 +582,11 @@ export default function App() {
 
             <div
               className="soft-card p-12 sm:p-20 rounded-lg flex flex-col items-center justify-center text-center"
-              style={{ background: '#F6F2EA', border: '1px dashed #C9C4B4' }}
+              style={{ background: 'rgba(246,242,234,0.78)', border: '1px dashed #C9C4B4' }}
             >
               <span
                 className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold mono mb-4"
-                style={{ background: '#EFEAE0', color: '#8C5A5A', border: '1px solid #DAD3C0' }}
+                style={{ background: 'rgba(239,234,224,0.78)', color: '#8C5A5A', border: '1px solid #DAD3C0' }}
               >
                 Under Construction
               </span>
@@ -616,7 +604,7 @@ export default function App() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
               {/* Eligibility */}
-              <div className="soft-card p-6 rounded-lg" style={{ background: '#FFFFFF', border: '1px solid #DFDACD' }}>
+              <div className="soft-card p-6 rounded-lg" style={{ background: 'rgba(255,255,255,0.82)', border: '1px solid #DFDACD' }}>
                 <h2 className="text-lg font-semibold mb-4 flex items-center space-x-2" style={{ color: '#2B2B2E' }}>
                   <GraduationCap size={20} style={{ color: '#3C4A3E' }} />
                   <span>Eligibility to Register</span>
@@ -634,7 +622,7 @@ export default function App() {
               </div>
 
               {/* Notes */}
-              <div className="soft-card p-6 rounded-lg" style={{ background: '#F6F2EA', border: '1px solid #DFDACD' }}>
+              <div className="soft-card p-6 rounded-lg" style={{ background: 'rgba(246,242,234,0.78)', border: '1px solid #DFDACD' }}>
                 <h2 className="text-lg font-semibold mb-3" style={{ color: '#2B2B2E' }}>Notes</h2>
                 <ul className="space-y-2 text-sm sans leading-relaxed" style={{ color: '#6B6A5F' }}>
                   <li>• All talks are open to be attended by everyone. No registration is needed to attend the talks.</li>
@@ -644,7 +632,7 @@ export default function App() {
             </div>
 
             {/* Registration Form */}
-            <div className="soft-card p-6 sm:p-8 rounded-lg" style={{ background: '#FFFFFF', border: '1px solid #DFDACD' }}>
+            <div className="soft-card p-6 sm:p-8 rounded-lg" style={{ background: 'rgba(255,255,255,0.82)', border: '1px solid #DFDACD' }}>
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
                 <h2 className="text-lg font-semibold" style={{ color: '#2B2B2E' }}>Registration Form</h2>
                 <a
@@ -683,7 +671,7 @@ export default function App() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sans">
               {/* Contact Information */}
               <div className="space-y-6">
-                <div className="soft-card p-6 rounded-lg" style={{ background: '#FFFFFF', border: '1px solid #DFDACD' }}>
+                <div className="soft-card p-6 rounded-lg" style={{ background: 'rgba(255,255,255,0.82)', border: '1px solid #DFDACD' }}>
                   <h2 className="text-lg font-semibold mb-4 flex items-center space-x-2" style={{ color: '#2B2B2E' }}>
                     <Users size={20} style={{ color: '#3C4A3E' }} />
                     <span>Organizing Committee</span>
@@ -713,7 +701,7 @@ export default function App() {
                   </ul>
                 </div>
 
-                <div className="soft-card p-6 rounded-lg" style={{ background: '#FFFFFF', border: '1px solid #DFDACD' }}>
+                <div className="soft-card p-6 rounded-lg" style={{ background: 'rgba(255,255,255,0.82)', border: '1px solid #DFDACD' }}>
                   <h2 className="text-lg font-semibold mb-4 flex items-center space-x-2" style={{ color: '#2B2B2E' }}>
                     <Mail size={20} style={{ color: '#3C4A3E' }} />
                     <span>Queries</span>
@@ -737,7 +725,7 @@ export default function App() {
               </div>
 
               {/* Location & Travel */}
-              <div className="soft-card p-6 rounded-lg flex flex-col justify-between" style={{ background: '#FFFFFF', border: '1px solid #DFDACD' }}>
+              <div className="soft-card p-6 rounded-lg flex flex-col justify-between" style={{ background: 'rgba(255,255,255,0.82)', border: '1px solid #DFDACD' }}>
                 <div>
                   <h2 className="text-lg font-semibold mb-4 flex items-center space-x-2" style={{ color: '#2B2B2E' }}>
                     <MapPin size={20} style={{ color: '#8C5A5A' }} />
@@ -765,21 +753,10 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <footer className="sans" style={{ borderTop: '1px solid #DFDACD', background: '#F6F2EA' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col gap-4 text-xs" style={{ color: '#8A8577' }}>
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div>
-              © 2026 Discussion Meeting on Topics in Algebra | Department of Mathematics, IISER Bhopal.
-            </div>
-            <div className="flex items-center space-x-4">
-              <span>September 17–18, 2026</span>
-              <span>•</span>
-              <span>IISER Bhopal</span>
-            </div>
-          </div>
-          <div className="text-center sm:text-left" style={{ borderTop: '1px solid #E9E4D6', paddingTop: '1rem' }}>
-            Website by Adeetya Choubey
-          </div>
+      <footer className="sans" style={{ borderTop: '1px solid rgba(223,218,205,0.6)', background: 'rgba(246,242,234,0.72)', backdropFilter: 'blur(6px)' }}>
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-col sm:flex-row items-center justify-between gap-1.5 text-[11px] sm:text-xs text-center sm:text-left" style={{ color: '#8A8577' }}>
+          <span>© 2026 Discussion Meeting on Topics in Algebra, IISER Bhopal</span>
+          <span>Website by Adeetya Choubey</span>
         </div>
       </footer>
     </div>
