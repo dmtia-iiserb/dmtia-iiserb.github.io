@@ -300,22 +300,21 @@ export default function App() {
         {/* ==================== HOME / LANDING PAGE ==================== */}
         {activeTab === 'home' && (
           <div key="home" className="page-enter">
-            {/* Hero Section — sized so headline + buttons land on the blue sky part of the background image, on phone, tablet and desktop */}
+            {/* Hero Section — pinned to the top so headline + buttons sit inside the blue sky band of the background image; scrolling reveals the buildings + next section below */}
             <section
-              className="relative overflow-hidden flex items-start justify-center px-4 sm:px-6 lg:px-8"
+              className="relative overflow-hidden flex flex-col items-center justify-start px-4 sm:px-6 lg:px-8"
               style={{
-                minHeight: 'min(88vh, 620px)',
-                paddingTop: 'clamp(1.5rem, 6vh, 4rem)',
-                paddingBottom: '2rem',
+                height: 'clamp(420px, 58vh, 700px)',
+                paddingTop: 'clamp(1.25rem, 5vh, 3rem)',
               }}
             >
               <div className="relative w-full max-w-5xl mx-auto text-center">
                 <h1
-                  className="fade-in fade-in-2 font-semibold tracking-tight mb-5"
+                  className="fade-in fade-in-2 font-semibold tracking-tight mb-4"
                   style={{
                     color: '#20262A',
                     letterSpacing: '-0.015em',
-                    fontSize: 'clamp(1.9rem, 6vw, 4.5rem)',
+                    fontSize: 'clamp(1.6rem, 5vw, 3.75rem)',
                     lineHeight: 1.08,
                     textShadow: '0 2px 18px rgba(255,255,255,0.55)',
                   }}
@@ -326,10 +325,10 @@ export default function App() {
                 </h1>
 
                 <p
-                  className="fade-in fade-in-3 max-w-2xl mx-auto mb-6 leading-relaxed sans"
+                  className="fade-in fade-in-3 max-w-2xl mx-auto mb-5 leading-relaxed sans"
                   style={{
                     color: '#33393D',
-                    fontSize: 'clamp(0.9rem, 2vw, 1.125rem)',
+                    fontSize: 'clamp(0.8rem, 1.6vw, 1.05rem)',
                     textShadow: '0 1px 12px rgba(255,255,255,0.6)',
                   }}
                 >
@@ -337,20 +336,20 @@ export default function App() {
                 </p>
 
                 {/* Event Highlights Badges */}
-                <div className="fade-in fade-in-4 flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-xs sm:text-sm font-medium mb-8 sans">
+                <div className="fade-in fade-in-4 flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 text-xs sm:text-sm font-medium mb-6 sans">
                   <div
-                    className="soft-card flex items-center space-x-2 px-3.5 py-2 sm:px-4 sm:py-2 rounded-lg"
+                    className="soft-card flex items-center space-x-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg"
                     style={{ background: 'rgba(255,255,255,0.92)', border: '1px solid #DFDACD', color: '#3F3D38', backdropFilter: 'blur(4px)' }}
                   >
-                    <Calendar size={17} style={{ color: '#3C4A3E' }} />
+                    <Calendar size={16} style={{ color: '#3C4A3E' }} />
                     <span>September 17–18, 2026</span>
                   </div>
                   <button
                     onClick={() => setActiveTab('contact')}
-                    className="soft-card flex items-center space-x-2 px-3.5 py-2 sm:px-4 sm:py-2 rounded-lg cursor-pointer"
+                    className="soft-card flex items-center space-x-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg cursor-pointer"
                     style={{ background: 'rgba(255,255,255,0.92)', border: '1px solid #DFDACD', color: '#3F3D38', backdropFilter: 'blur(4px)' }}
                   >
-                    <MapPin size={17} style={{ color: '#8C5A5A' }} />
+                    <MapPin size={16} style={{ color: '#8C5A5A' }} />
                     <span>IISER Bhopal, Madhya Pradesh, India</span>
                   </button>
                 </div>
@@ -358,7 +357,7 @@ export default function App() {
                 <div className="fade-in fade-in-4 flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-4 sans">
                   <button
                     onClick={() => setActiveTab('schedule')}
-                    className="cta-button w-full sm:w-auto px-7 py-3 rounded-lg font-semibold flex items-center justify-center space-x-2"
+                    className="cta-button w-full sm:w-auto px-6 py-2.5 sm:px-7 sm:py-3 rounded-lg font-semibold flex items-center justify-center space-x-2"
                     style={{ background: '#3C4A3E', color: '#FBFAF7', boxShadow: '0 6px 20px -8px rgba(0,0,0,0.35)' }}
                   >
                     <span>View Schedule</span>
@@ -366,7 +365,7 @@ export default function App() {
                   </button>
                   <button
                     onClick={() => setActiveTab('registration')}
-                    className="cta-button w-full sm:w-auto px-7 py-3 rounded-lg font-semibold flex items-center justify-center space-x-2"
+                    className="cta-button w-full sm:w-auto px-6 py-2.5 sm:px-7 sm:py-3 rounded-lg font-semibold flex items-center justify-center space-x-2"
                     style={{ background: 'rgba(255,255,255,0.95)', color: '#3F3D38', border: '1px solid #C9C4B4', boxShadow: '0 6px 20px -8px rgba(0,0,0,0.2)' }}
                   >
                     <Users size={18} />
