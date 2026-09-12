@@ -57,24 +57,23 @@ export default function App() {
 
   // Single source of truth for the day-by-day schedule of talks and recess breaks.
   const sessionsData = [
-    { type: 'talk', name: 'Dr. Ananthnarayan H', affiliation: 'IIT Bombay', institution: 'IIT Bombay', talkTitle: 'TBA', abstract: 'TBA', day: 'Thursday, September 17, 2026', time: '2:00 – 2:45 PM', venue: 'AB1 316 (Third Floor)' },
-    { type: 'talk', name: 'Dr. Rahul Gupta', affiliation: 'IMSc, Chennai', institution: 'IMSc, Chennai', talkTitle: 'TBA', abstract: 'TBA', day: 'Thursday, September 17, 2026', time: '2:50 – 3:35 PM', venue: 'AB1 316 (Third Floor)' },
-    { type: 'recess', day: 'Thursday, September 17, 2026', time: '3:35 – 3:55 PM', venue: 'AB1 316 (Third Floor)' },
-    { type: 'talk', name: 'Dr. Amith Tripathi', affiliation: 'IIT Hyderabad', institution: 'IIT Hyderabad', talkTitle: 'TBA', abstract: 'TBA', day: 'Thursday, September 17, 2026', time: '3:55 – 4:40 PM', venue: 'AB1 316 (Third Floor)' },
-    { type: 'talk', name: 'Dr. Arpan Dutta', affiliation: 'IIT Bhubaneswar', institution: 'IIT Bhubaneswar', talkTitle: 'TBA', abstract: 'TBA', day: 'Thursday, September 17, 2026', time: '4:45 – 5:30 PM', venue: 'AB1 316 (Third Floor)' },
-    { type: 'talk', name: 'Dr. Divyasree', affiliation: 'IISER Pune', institution: 'IISER Pune', talkTitle: 'TBA', abstract: 'TBA', day: 'Thursday, September 17, 2026', time: '5:35 – 6:00 PM', venue: 'AB1 316 (Third Floor)' },
+    { type: 'talk', name: 'Dr. Ananthnarayan H', affiliation: 'IIT Bombay', institution: 'IIT Bombay', talkTitle: 'TBA', abstract: 'TBA', day: 'Thursday, September 17, 2026', time: '2:15 – 3:00 PM', venue: 'AB1 316 (Third Floor)' },
+    { type: 'talk', name: 'Dr. Rahul Gupta', affiliation: 'IMSc, Chennai', institution: 'IMSc, Chennai', talkTitle: 'TBA', abstract: 'TBA', day: 'Thursday, September 17, 2026', time: '3:05 – 3:50 PM', venue: 'AB1 316 (Third Floor)' },
+    { type: 'recess', day: 'Thursday, September 17, 2026', time: '3:50 – 4:10 PM', venue: 'AB1 316 (Third Floor)' },
+    { type: 'talk', name: 'Dr. Arpan Dutta', affiliation: 'IIT Bhubaneswar', institution: 'IIT Bhubaneswar', talkTitle: 'TBA', abstract: 'TBA', day: 'Thursday, September 17, 2026', time: '4:10 – 4:55 PM', venue: 'AB1 316 (Third Floor)' },
+    { type: 'talk', name: 'Dr. Sudipta Das', affiliation: 'TIFR Mumbai', institution: 'TIFR Mumbai', talkTitle: 'TBA', abstract: 'TBA', day: 'Thursday, September 17, 2026', time: '5:00 – 5:25 PM', venue: 'AB1 316 (Third Floor)' },
+    { type: 'talk', name: 'Dr. Divyasree', affiliation: 'IISER Pune', institution: 'IISER Pune', talkTitle: 'TBA', abstract: 'TBA', day: 'Thursday, September 17, 2026', time: '5:30 – 6:00 PM', venue: 'AB1 316 (Third Floor)' },
     { type: 'talk', name: 'Prof. Om Prakash', affiliation: 'IIT Patna', institution: 'IIT Patna', talkTitle: 'TBA', abstract: 'TBA', day: 'Friday, September 18, 2026', time: '10:00 – 10:45 AM', venue: 'Visitor Hostel, First Floor' },
     { type: 'recess', day: 'Friday, September 18, 2026', time: '10:45 – 11:00 AM', venue: 'Visitor Hostel, First Floor' },
-    { type: 'talk', name: 'Dr. Illa Ahmad', affiliation: 'IISER Bhopal', institution: 'IISER Bhopal', talkTitle: 'TBA', abstract: 'TBA', day: 'Friday, September 18, 2026', time: '11:00 – 11:25 AM', venue: 'Visitor Hostel, First Floor' },
+    { type: 'talk', name: 'Ila Ahmad', affiliation: 'IISER Bhopal', institution: 'IISER Bhopal', talkTitle: 'TBA', abstract: 'TBA', day: 'Friday, September 18, 2026', time: '11:00 – 11:25 AM', venue: 'Visitor Hostel, First Floor' },
     { type: 'talk', name: 'Dr. Ekta Tiwari', affiliation: 'IISER Pune', institution: 'IISER Pune', talkTitle: 'TBA', abstract: 'TBA', day: 'Friday, September 18, 2026', time: '11:30 – 11:55 AM', venue: 'Visitor Hostel, First Floor' },
     { type: 'talk', name: 'Dr. Sanjeev Kumar Pandey', affiliation: 'IISER Bhopal', institution: 'IISER Bhopal', talkTitle: 'TBA', abstract: 'TBA', day: 'Friday, September 18, 2026', time: '12:00 – 12:25 PM', venue: 'Visitor Hostel, First Floor' },
-    { type: 'talk', name: 'Dr. Varsha Vasudevan', affiliation: 'IISER Bhopal', institution: 'IISER Bhopal', talkTitle: 'TBA', abstract: 'TBA', day: 'Friday, September 18, 2026', time: '12:30 – 12:55 PM', venue: 'Visitor Hostel, First Floor' },
+    { type: 'talk', name: 'Varsha Vasudevan', affiliation: 'IISER Bhopal', institution: 'IISER Bhopal', talkTitle: 'TBA', abstract: 'TBA', day: 'Friday, September 18, 2026', time: '12:30 – 12:55 PM', venue: 'Visitor Hostel, First Floor' },
     { type: 'talk', name: 'Prof. A. V. Jayanthan', affiliation: 'IIT Madras', institution: 'IIT Madras', talkTitle: 'TBA', abstract: 'TBA', day: 'Friday, September 18, 2026', time: '2:30 – 3:15 PM', venue: 'Visitor Hostel, First Floor' },
     { type: 'talk', name: 'Dr. Vaibhav Pandey', affiliation: 'IIT Madras', institution: 'IIT Madras', talkTitle: 'TBA', abstract: 'TBA', day: 'Friday, September 18, 2026', time: '3:20 – 4:05 PM', venue: 'Visitor Hostel, First Floor' },
     { type: 'recess', day: 'Friday, September 18, 2026', time: '4:05 – 4:25 PM', venue: 'Visitor Hostel, First Floor' },
     { type: 'talk', name: 'Dr. Ajay Kumar', affiliation: 'IIT Jammu', institution: 'IIT Jammu', talkTitle: 'TBA', abstract: 'TBA', day: 'Friday, September 18, 2026', time: '4:25 – 5:10 PM', venue: 'Visitor Hostel, First Floor' },
     { type: 'talk', name: 'Dr. Deblina Dey', affiliation: 'IISER Bhopal', institution: 'IISER Bhopal', talkTitle: 'TBA', abstract: 'TBA', day: 'Friday, September 18, 2026', time: '5:15 – 5:40 PM', venue: 'Visitor Hostel, First Floor' },
-    { type: 'talk', name: 'Dr. Sudipta Das', affiliation: 'TIFR Mumbai', institution: 'TIFR Mumbai', talkTitle: 'TBA', abstract: 'TBA', day: 'Friday, September 18, 2026', time: '5:45 – 6:10 PM', venue: 'Visitor Hostel, First Floor' },
   ];
 
   // Venue is fixed per day rather than per speaker.
@@ -375,8 +374,9 @@ export default function App() {
                   <p className="text-sm" style={{ color: '#6B6A5F' }}>
                     Thursday, September 17, 2026 — AB1-316, Third Floor (Seminar Hall)<br />
                     Friday, September 18, 2026 — Visitor Hostel, First Floor<br />
-                    IISER Bhopal Campus, Bhauri,<br />
-                    Bhopal 462066, Madhya Pradesh, India
+                    IISER Bhopal, Bhauri,<br />
+                    Bhopal 462066, <br />
+                    Madhya Pradesh, India
                   </p>
                 </div>
               </div>
@@ -395,8 +395,8 @@ export default function App() {
                 <h3 className="text-base font-semibold mb-3" style={{ color: '#2B2B2E' }}>Student Volunteers</h3>
                 <ul className="space-y-2 text-sm sans" style={{ color: '#3F3D38' }}>
                   <li>Kader Ali</li>
-                  <li>Adeetya Choubey, BS-MS Math — Website</li>
-                  <li>Kritika Pahilajani, BS-MS Math — Poster</li>
+                  <li>Adeetya Choubey - Website</li>
+                  <li>Kritika Pahilajani - Poster</li>
                   <li>Mahadeb Pal</li>
                   <li>Anshika Patel</li>
                 </ul>
@@ -444,10 +444,10 @@ export default function App() {
                     <div className="px-6 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2" style={{ background: '#EFEAE0', borderBottom: '1px solid #DFDACD' }}>
                       <h2 className="text-xl font-semibold" style={{ color: '#3C4A3E' }}>{day.date}</h2>
                       <span
-                        className="inline-flex items-center space-x-1.5 text-xs font-semibold mono px-3 py-1 rounded-full self-start sm:self-auto"
+                        className="inline-flex items-center space-x-2 text-sm sm:text-base font-semibold mono px-4 py-2 rounded-full self-start sm:self-auto"
                         style={{ color: '#3C4A3E', background: '#FFFFFF', border: '1px solid #DAD3C0' }}
                       >
-                        <MapPin size={13} />
+                        <MapPin size={18} />
                         <span>{day.venue}</span>
                       </span>
                     </div>
@@ -482,8 +482,11 @@ export default function App() {
                               <GraduationCap size={20} />
                             </div>
                             <div className="flex-1">
+                              <p className="text-base sm:text-lg font-bold mb-1" style={{ color: '#2B2B2E' }}>
+                                {event.talkTitle}
+                              </p>
                               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-1">
-                                <h3 className="text-base font-semibold" style={{ color: '#2B2B2E' }}>{event.name}</h3>
+                                <h3 className="text-base font-semibold" style={{ color: '#3F3D38' }}>{event.name}</h3>
                                 <div
                                   className="flex items-center space-x-1.5 text-xs font-semibold mono px-2.5 py-1 rounded-md whitespace-nowrap self-start"
                                   style={{ color: '#3C4A3E', background: '#EFEAE0', border: '1px solid #DAD3C0' }}
@@ -494,9 +497,6 @@ export default function App() {
                               </div>
                               <p className="text-sm sans mb-3" style={{ color: '#6B6A5F' }}>{event.affiliation}</p>
 
-                              <p className="text-base sm:text-lg font-bold mb-2" style={{ color: '#2B2B2E' }}>
-                                {event.talkTitle}
-                              </p>
                               <p className="text-sm leading-relaxed" style={{ color: '#6B6A5F' }}>
                                 <span className="font-semibold sans" style={{ color: '#5C5A52' }}>Abstract: </span>
                                 {event.abstract}
@@ -613,10 +613,6 @@ export default function App() {
                   Loading form…
                 </iframe>
               </div>
-
-              <p className="text-xs sans pt-4" style={{ color: '#8A8577' }}>
-                Submitting this form does not guarantee a spot; approval depends on alignment with the meeting's themes and availability, and you will be notified by email either way. Having trouble with the embedded form above? Use the "Open Form in New Tab" button instead, which works well on mobile.
-              </p>
             </div>
           </div>
         )}
@@ -665,20 +661,21 @@ export default function App() {
                     <Mail size={20} style={{ color: '#3C4A3E' }} />
                     <span>Queries</span>
                   </h2>
-                  <div className="space-y-3 text-sm" style={{ color: '#3F3D38' }}>
-                    <p>
-                      For queries, contact{' '}
-                      <span className="font-semibold">Adeetya</span> (
+                  <p className="text-sm mb-3" style={{ color: '#3F3D38' }}>For queries, contact:</p>
+                  <ul className="space-y-3 text-sm" style={{ color: '#3F3D38' }}>
+                    <li>
+                      <span className="font-semibold">Adeetya</span> —{' '}
                       <a href="mailto:adeetya22@iiserb.ac.in" className="link-hover" style={{ color: '#3C4A3E' }}>
                         adeetya22@iiserb.ac.in
                       </a>
-                      ) and <span className="font-semibold">Kritika</span> (
+                    </li>
+                    <li>
+                      <span className="font-semibold">Kritika</span> —{' '}
                       <a href="mailto:kritika22@iiserb.ac.in" className="link-hover" style={{ color: '#3C4A3E' }}>
                         kritika22@iiserb.ac.in
                       </a>
-                      ).
-                    </p>
-                  </div>
+                    </li>
+                  </ul>
                 </div>
               </div>
 
