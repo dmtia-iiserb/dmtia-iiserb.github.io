@@ -65,10 +65,10 @@ export default function App() {
     { type: 'talk', name: 'Dr. Divyasree', affiliation: 'IISER Pune', institution: 'IISER Pune', talkTitle: 'TBA', abstract: 'TBA', day: 'Thursday, September 17, 2026', time: '5:35 – 6:00 PM', venue: 'AB1 316 (Third Floor)' },
     { type: 'talk', name: 'Prof. Om Prakash', affiliation: 'IIT Patna', institution: 'IIT Patna', talkTitle: 'TBA', abstract: 'TBA', day: 'Friday, September 18, 2026', time: '10:00 – 10:45 AM', venue: 'Visitor Hostel, First Floor' },
     { type: 'recess', day: 'Friday, September 18, 2026', time: '10:45 – 11:00 AM', venue: 'Visitor Hostel, First Floor' },
-    { type: 'talk', name: 'Ila Ahmad', affiliation: 'IISER Bhopal', institution: 'IISER Bhopal', talkTitle: 'TBA', abstract: 'TBA', day: 'Friday, September 18, 2026', time: '11:00 – 11:25 AM', venue: 'Visitor Hostel, First Floor' },
+    { type: 'talk', name: 'Dr. Illa Ahmad', affiliation: 'IISER Bhopal', institution: 'IISER Bhopal', talkTitle: 'TBA', abstract: 'TBA', day: 'Friday, September 18, 2026', time: '11:00 – 11:25 AM', venue: 'Visitor Hostel, First Floor' },
     { type: 'talk', name: 'Dr. Ekta Tiwari', affiliation: 'IISER Pune', institution: 'IISER Pune', talkTitle: 'TBA', abstract: 'TBA', day: 'Friday, September 18, 2026', time: '11:30 – 11:55 AM', venue: 'Visitor Hostel, First Floor' },
     { type: 'talk', name: 'Dr. Sanjeev Kumar Pandey', affiliation: 'IISER Bhopal', institution: 'IISER Bhopal', talkTitle: 'TBA', abstract: 'TBA', day: 'Friday, September 18, 2026', time: '12:00 – 12:25 PM', venue: 'Visitor Hostel, First Floor' },
-    { type: 'talk', name: 'Varsha Vasudevan', affiliation: 'IISER Bhopal', institution: 'IISER Bhopal', talkTitle: 'TBA', abstract: 'TBA', day: 'Friday, September 18, 2026', time: '12:30 – 12:55 PM', venue: 'Visitor Hostel, First Floor' },
+    { type: 'talk', name: 'Dr. Varsha Vasudevan', affiliation: 'IISER Bhopal', institution: 'IISER Bhopal', talkTitle: 'TBA', abstract: 'TBA', day: 'Friday, September 18, 2026', time: '12:30 – 12:55 PM', venue: 'Visitor Hostel, First Floor' },
     { type: 'talk', name: 'Prof. A. V. Jayanthan', affiliation: 'IIT Madras', institution: 'IIT Madras', talkTitle: 'TBA', abstract: 'TBA', day: 'Friday, September 18, 2026', time: '2:30 – 3:15 PM', venue: 'Visitor Hostel, First Floor' },
     { type: 'talk', name: 'Dr. Vaibhav Pandey', affiliation: 'IIT Madras', institution: 'IIT Madras', talkTitle: 'TBA', abstract: 'TBA', day: 'Friday, September 18, 2026', time: '3:20 – 4:05 PM', venue: 'Visitor Hostel, First Floor' },
     { type: 'recess', day: 'Friday, September 18, 2026', time: '4:05 – 4:25 PM', venue: 'Visitor Hostel, First Floor' },
@@ -77,9 +77,16 @@ export default function App() {
     { type: 'talk', name: 'Dr. Sudipta Das', affiliation: 'TIFR Mumbai', institution: 'TIFR Mumbai', talkTitle: 'TBA', abstract: 'TBA', day: 'Friday, September 18, 2026', time: '5:45 – 6:10 PM', venue: 'Visitor Hostel, First Floor' },
   ];
 
+  // Venue is fixed per day rather than per speaker.
+  const venueByDay = {
+    'Thursday, September 17, 2026': 'AB1 316',
+    'Friday, September 18, 2026': "Visitor's Hostel, First Floor",
+  };
+
   // Group sessions by day, in schedule order, for the day-by-day timeline view.
   const scheduleData = ['Thursday, September 17, 2026', 'Friday, September 18, 2026'].map((day) => ({
     date: day,
+    venue: venueByDay[day],
     events: sessionsData.filter((s) => s.day === day),
   }));
 
@@ -190,7 +197,6 @@ export default function App() {
                 <span className="block sm:hidden text-sm font-semibold tracking-tight leading-tight truncate" style={{ color: '#2B2B2E' }}>
                   Discussion Meeting on Algebra
                 </span>
-                <span className="block mono" style={{ color: '#8A8577', fontSize: '0.65rem' }}>IISER Bhopal</span>
               </div>
             </div>
 
@@ -269,7 +275,7 @@ export default function App() {
                 </h1>
 
                 <p className="fade-in fade-in-3 max-w-2xl mx-auto text-base sm:text-lg mb-8 leading-relaxed" style={{ color: '#5C5A52' }}>
-                  Bringing together researchers, academicians, and students to discuss ongoing research in Commutative Algebra, Algebraic Geometry,  and Representation Theory.
+                  Bringing together researchers, academicians, and students to discuss ongoing research in Commutative Algebra, Algebraic Geometry, and Representation Theory.
                 </p>
 
                 {/* Event Highlights Badges */}
@@ -281,13 +287,14 @@ export default function App() {
                     <Calendar size={18} style={{ color: '#3C4A3E' }} />
                     <span>September 17–18, 2026</span>
                   </div>
-                  <div
-                    className="soft-card flex items-center space-x-2 px-4 py-2 rounded-lg"
+                  <button
+                    onClick={() => setActiveTab('contact')}
+                    className="soft-card flex items-center space-x-2 px-4 py-2 rounded-lg cursor-pointer"
                     style={{ background: '#FFFFFF', border: '1px solid #DFDACD', color: '#3F3D38' }}
                   >
                     <MapPin size={18} style={{ color: '#8C5A5A' }} />
                     <span>IISER Bhopal, Madhya Pradesh, India</span>
-                  </div>
+                  </button>
                 </div>
 
                 <div className="fade-in fade-in-4 flex flex-col sm:flex-row justify-center items-center gap-4 sans">
@@ -362,21 +369,14 @@ export default function App() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 sans">
+              <div className="pt-4">
                 <div className="p-5 rounded-lg" style={{ background: '#F6F2EA', border: '1px solid #DFDACD' }}>
-                  <h3 className="font-semibold mb-2" style={{ color: '#2B2B2E' }}>Venue</h3>
+                  <h3 className="font-semibold mb-2" style={{ color: '#2B2B2E' }}>Venue & Dates</h3>
                   <p className="text-sm" style={{ color: '#6B6A5F' }}>
-                    Day 1: AB1-316, Third Floor (Seminar Hall)<br />
-                    Day 2: Visitor Hostel, First Floor<br />
+                    Thursday, September 17, 2026 — AB1-316, Third Floor (Seminar Hall)<br />
+                    Friday, September 18, 2026 — Visitor Hostel, First Floor<br />
                     IISER Bhopal Campus, Bhauri,<br />
                     Bhopal 462066, Madhya Pradesh, India
-                  </p>
-                </div>
-                <div className="p-5 rounded-lg" style={{ background: '#F6F2EA', border: '1px solid #DFDACD' }}>
-                  <h3 className="font-semibold mb-2" style={{ color: '#2B2B2E' }}>Dates</h3>
-                  <p className="text-sm" style={{ color: '#6B6A5F' }}>
-                    Thursday, September 17, 2026<br />
-                    Friday, September 18, 2026
                   </p>
                 </div>
               </div>
@@ -384,7 +384,7 @@ export default function App() {
               <div className="p-6 sm:p-8 rounded-lg" style={{ background: '#FFFFFF', border: '1px solid #DFDACD' }}>
                 <h2 className="text-xl font-semibold mb-4 flex items-center space-x-2" style={{ color: '#2B2B2E' }}>
                   <Users size={20} style={{ color: '#3C4A3E' }} />
-                  <span>Organisers</span>
+                  <span>Organizers</span>
                 </h2>
                 <ul className="space-y-2 text-sm sans mb-6" style={{ color: '#3F3D38' }}>
                   <li>Dr. Sankhaneel Bisui</li>
@@ -394,8 +394,11 @@ export default function App() {
 
                 <h3 className="text-base font-semibold mb-3" style={{ color: '#2B2B2E' }}>Student Volunteers</h3>
                 <ul className="space-y-2 text-sm sans" style={{ color: '#3F3D38' }}>
+                  <li>Kader Ali</li>
                   <li>Adeetya Choubey, BS-MS Math — Website</li>
                   <li>Kritika Pahilajani, BS-MS Math — Poster</li>
+                  <li>Mahadeb Pal</li>
+                  <li>Anshika Patel</li>
                 </ul>
               </div>
             </div>
@@ -438,8 +441,15 @@ export default function App() {
 
                 return (
                   <div key={dayIdx} className="stagger-card rounded-lg overflow-hidden" style={{ background: '#FFFFFF', border: '1px solid #DFDACD', animationDelay: `${dayIdx * 0.1}s` }}>
-                    <div className="px-6 py-4" style={{ background: '#EFEAE0', borderBottom: '1px solid #DFDACD' }}>
+                    <div className="px-6 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2" style={{ background: '#EFEAE0', borderBottom: '1px solid #DFDACD' }}>
                       <h2 className="text-xl font-semibold" style={{ color: '#3C4A3E' }}>{day.date}</h2>
+                      <span
+                        className="inline-flex items-center space-x-1.5 text-xs font-semibold mono px-3 py-1 rounded-full self-start sm:self-auto"
+                        style={{ color: '#3C4A3E', background: '#FFFFFF', border: '1px solid #DAD3C0' }}
+                      >
+                        <MapPin size={13} />
+                        <span>{day.venue}</span>
+                      </span>
                     </div>
                     <div className="divide-y" style={{ borderColor: '#E9E4D6' }}>
                       {visibleEvents.map((event, eventIdx) => (
@@ -484,17 +494,7 @@ export default function App() {
                               </div>
                               <p className="text-sm sans mb-3" style={{ color: '#6B6A5F' }}>{event.affiliation}</p>
 
-                              <div className="flex flex-wrap items-center gap-3 text-xs mono mb-3">
-                                <span
-                                  className="px-3 py-1 rounded-full"
-                                  style={{ background: '#F6F2EA', color: '#6B6A5F', border: '1px solid #E9E4D6' }}
-                                >
-                                  Venue: {event.venue}
-                                </span>
-                              </div>
-
-                              <p className="text-sm font-semibold mb-1 sans" style={{ color: '#3F3D38' }}>
-                                <span className="font-semibold sans" style={{ color: '#5C5A52' }}>Talk Title: </span>
+                              <p className="text-base sm:text-lg font-bold mb-2" style={{ color: '#2B2B2E' }}>
                                 {event.talkTitle}
                               </p>
                               <p className="text-sm leading-relaxed" style={{ color: '#6B6A5F' }}>
@@ -555,10 +555,7 @@ export default function App() {
         {/* ==================== REGISTRATION ==================== */}
         {activeTab === 'registration' && (
           <div className="py-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 className="text-3xl sm:text-4xl font-bold mb-2" style={{ color: '#2B2B2E' }}>Registration</h1>
-            <p className="mb-8 sans" style={{ color: '#6B6A5F' }}>
-              All talks at the Discussion Meeting on Topics in Algebra (September 17–18, 2026) are open to everyone. Registration below is for a more personalised interaction with the visiting speakers.
-            </p>
+            <h1 className="text-3xl sm:text-4xl font-bold mb-8" style={{ color: '#2B2B2E' }}>Registration</h1>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
               {/* Eligibility */}
@@ -570,11 +567,7 @@ export default function App() {
                 <ul className="space-y-3 text-sm sans leading-relaxed" style={{ color: '#3F3D38' }}>
                   <li className="flex items-start space-x-2">
                     <span style={{ color: '#3C4A3E' }}>•</span>
-                    <span>Registration is open only to students of IISER Bhopal.</span>
-                  </li>
-                  <li className="flex items-start space-x-2">
-                    <span style={{ color: '#3C4A3E' }}>•</span>
-                    <span>Postdocs, PhD, and BS-MS students may be accommodated on a case-to-case basis, depending on how closely their research interests align with the meeting's themes.</span>
+                    <span>Only members of the IISER Bhopal Department of Mathematics are allowed to register.</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <span style={{ color: '#3C4A3E' }}>•</span>
@@ -639,28 +632,6 @@ export default function App() {
               <div className="space-y-6">
                 <div className="soft-card p-6 rounded-lg" style={{ background: '#FFFFFF', border: '1px solid #DFDACD' }}>
                   <h2 className="text-lg font-semibold mb-4 flex items-center space-x-2" style={{ color: '#2B2B2E' }}>
-                    <Mail size={20} style={{ color: '#3C4A3E' }} />
-                    <span>Correspondence</span>
-                  </h2>
-                  <div className="space-y-3 text-sm" style={{ color: '#3F3D38' }}>
-                    <p>
-                      <strong>Department Website:</strong>{' '}
-                      <a
-                        href="https://maths.iiserb.ac.in"
-                        target="_blank"
-                        rel="noreferrer"
-                        className="link-hover inline-flex items-center space-x-1"
-                        style={{ color: '#3C4A3E' }}
-                      >
-                        <span>maths.iiserb.ac.in</span>
-                        <ExternalLink size={12} />
-                      </a>
-                    </p>
-                  </div>
-                </div>
-
-                <div className="soft-card p-6 rounded-lg" style={{ background: '#FFFFFF', border: '1px solid #DFDACD' }}>
-                  <h2 className="text-lg font-semibold mb-4 flex items-center space-x-2" style={{ color: '#2B2B2E' }}>
                     <Users size={20} style={{ color: '#3C4A3E' }} />
                     <span>Organizing Committee</span>
                   </h2>
@@ -687,6 +658,27 @@ export default function App() {
                       </a>
                     </li>
                   </ul>
+                </div>
+
+                <div className="soft-card p-6 rounded-lg" style={{ background: '#FFFFFF', border: '1px solid #DFDACD' }}>
+                  <h2 className="text-lg font-semibold mb-4 flex items-center space-x-2" style={{ color: '#2B2B2E' }}>
+                    <Mail size={20} style={{ color: '#3C4A3E' }} />
+                    <span>Queries</span>
+                  </h2>
+                  <div className="space-y-3 text-sm" style={{ color: '#3F3D38' }}>
+                    <p>
+                      For queries, contact{' '}
+                      <span className="font-semibold">Adeetya</span> (
+                      <a href="mailto:adeetya22@iiserb.ac.in" className="link-hover" style={{ color: '#3C4A3E' }}>
+                        adeetya22@iiserb.ac.in
+                      </a>
+                      ) and <span className="font-semibold">Kritika</span> (
+                      <a href="mailto:kritika22@iiserb.ac.in" className="link-hover" style={{ color: '#3C4A3E' }}>
+                        kritika22@iiserb.ac.in
+                      </a>
+                      ).
+                    </p>
+                  </div>
                 </div>
               </div>
 
