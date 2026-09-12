@@ -91,13 +91,37 @@ export default function App() {
 
   return (
     <div
-      className="min-h-screen flex flex-col"
+      className="min-h-screen flex flex-col relative"
       style={{
-        background: '#FBFAF7',
         color: '#242422',
         fontFamily: "'Fraunces', 'Georgia', serif",
       }}
     >
+      {/* Fixed campus background image */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'fixed',
+          inset: 0,
+          zIndex: -2,
+          backgroundImage: "url('/campus.jpg')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center top',
+          backgroundRepeat: 'no-repeat',
+          backgroundColor: '#bcdcf5',
+        }}
+      />
+      {/* Soft overlay so content boxes stay legible over the image everywhere */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'fixed',
+          inset: 0,
+          zIndex: -1,
+          background: 'linear-gradient(180deg, rgba(251,250,247,0.15) 0%, rgba(251,250,247,0.55) 38%, rgba(251,250,247,0.92) 60%, #FBFAF7 78%)',
+        }}
+      />
+
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
 
@@ -176,9 +200,9 @@ export default function App() {
       <header
         className="sticky top-0 z-50 sans"
         style={{
-          background: 'rgba(251, 250, 247, 0.92)',
+          background: activeTab === 'home' ? 'rgba(251, 250, 247, 0.55)' : 'rgba(251, 250, 247, 0.92)',
           backdropFilter: 'blur(8px)',
-          borderBottom: '1px solid #DFDACD',
+          borderBottom: activeTab === 'home' ? '1px solid rgba(223,218,205,0.5)' : '1px solid #DFDACD',
         }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -261,50 +285,70 @@ export default function App() {
       </header>
 
       {/* Main Content Area */}
-      <main className="flex-grow">
+      <main className="flex-grow" style={activeTab !== 'home' ? { background: '#FBFAF7' } : undefined}>
         {/* ==================== HOME / LANDING PAGE ==================== */}
         {activeTab === 'home' && (
           <div key="home" className="page-enter">
-            {/* Hero Section */}
+            {/* Hero Section — sized so headline + buttons land on the blue sky part of the background image, on phone, tablet and desktop */}
             <section
-              className="relative overflow-hidden py-24 md:py-32"
-              style={{ borderBottom: '1px solid #DFDACD' }}
+              className="relative overflow-hidden flex items-start justify-center px-4 sm:px-6 lg:px-8"
+              style={{
+                minHeight: 'min(88vh, 620px)',
+                paddingTop: 'clamp(1.5rem, 6vh, 4rem)',
+                paddingBottom: '2rem',
+              }}
             >
-              <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h1 className="fade-in fade-in-2 text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-tight mb-6" style={{ color: '#2B2B2E', letterSpacing: '-0.015em' }}>
+              <div className="relative w-full max-w-5xl mx-auto text-center">
+                <h1
+                  className="fade-in fade-in-2 font-semibold tracking-tight mb-5"
+                  style={{
+                    color: '#20262A',
+                    letterSpacing: '-0.015em',
+                    fontSize: 'clamp(1.9rem, 6vw, 4.5rem)',
+                    lineHeight: 1.08,
+                    textShadow: '0 2px 18px rgba(255,255,255,0.55)',
+                  }}
+                >
                   Discussion Meeting on <br />
                   Topics in Algebra <br />
-                  <span style={{ color: '#3C4A3E' }}>IISER Bhopal</span>
+                  <span style={{ color: '#2E4A3F' }}>IISER Bhopal</span>
                 </h1>
 
-                <p className="fade-in fade-in-3 max-w-2xl mx-auto text-base sm:text-lg mb-8 leading-relaxed" style={{ color: '#5C5A52' }}>
+                <p
+                  className="fade-in fade-in-3 max-w-2xl mx-auto mb-6 leading-relaxed sans"
+                  style={{
+                    color: '#33393D',
+                    fontSize: 'clamp(0.9rem, 2vw, 1.125rem)',
+                    textShadow: '0 1px 12px rgba(255,255,255,0.6)',
+                  }}
+                >
                   Bringing together researchers, academicians, and students to discuss ongoing research in Commutative Algebra, Algebraic Geometry, and Representation Theory.
                 </p>
 
                 {/* Event Highlights Badges */}
-                <div className="fade-in fade-in-4 flex flex-wrap items-center justify-center gap-4 text-sm font-medium mb-10 sans">
+                <div className="fade-in fade-in-4 flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-xs sm:text-sm font-medium mb-8 sans">
                   <div
-                    className="soft-card flex items-center space-x-2 px-4 py-2 rounded-lg"
-                    style={{ background: '#FFFFFF', border: '1px solid #DFDACD', color: '#3F3D38' }}
+                    className="soft-card flex items-center space-x-2 px-3.5 py-2 sm:px-4 sm:py-2 rounded-lg"
+                    style={{ background: 'rgba(255,255,255,0.92)', border: '1px solid #DFDACD', color: '#3F3D38', backdropFilter: 'blur(4px)' }}
                   >
-                    <Calendar size={18} style={{ color: '#3C4A3E' }} />
+                    <Calendar size={17} style={{ color: '#3C4A3E' }} />
                     <span>September 17–18, 2026</span>
                   </div>
                   <button
                     onClick={() => setActiveTab('contact')}
-                    className="soft-card flex items-center space-x-2 px-4 py-2 rounded-lg cursor-pointer"
-                    style={{ background: '#FFFFFF', border: '1px solid #DFDACD', color: '#3F3D38' }}
+                    className="soft-card flex items-center space-x-2 px-3.5 py-2 sm:px-4 sm:py-2 rounded-lg cursor-pointer"
+                    style={{ background: 'rgba(255,255,255,0.92)', border: '1px solid #DFDACD', color: '#3F3D38', backdropFilter: 'blur(4px)' }}
                   >
-                    <MapPin size={18} style={{ color: '#8C5A5A' }} />
+                    <MapPin size={17} style={{ color: '#8C5A5A' }} />
                     <span>IISER Bhopal, Madhya Pradesh, India</span>
                   </button>
                 </div>
 
-                <div className="fade-in fade-in-4 flex flex-col sm:flex-row justify-center items-center gap-4 sans">
+                <div className="fade-in fade-in-4 flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-4 sans">
                   <button
                     onClick={() => setActiveTab('schedule')}
                     className="cta-button w-full sm:w-auto px-7 py-3 rounded-lg font-semibold flex items-center justify-center space-x-2"
-                    style={{ background: '#3C4A3E', color: '#FBFAF7' }}
+                    style={{ background: '#3C4A3E', color: '#FBFAF7', boxShadow: '0 6px 20px -8px rgba(0,0,0,0.35)' }}
                   >
                     <span>View Schedule</span>
                     <ChevronRight size={18} />
@@ -312,7 +356,7 @@ export default function App() {
                   <button
                     onClick={() => setActiveTab('registration')}
                     className="cta-button w-full sm:w-auto px-7 py-3 rounded-lg font-semibold flex items-center justify-center space-x-2"
-                    style={{ background: '#FFFFFF', color: '#3F3D38', border: '1px solid #C9C4B4' }}
+                    style={{ background: 'rgba(255,255,255,0.95)', color: '#3F3D38', border: '1px solid #C9C4B4', boxShadow: '0 6px 20px -8px rgba(0,0,0,0.2)' }}
                   >
                     <Users size={18} />
                     <span>Register</span>
@@ -320,6 +364,9 @@ export default function App() {
                 </div>
               </div>
             </section>
+
+            {/* Spacer wedge that transitions from image into the solid page background before the next section */}
+            <div style={{ height: 'clamp(2rem, 8vh, 6rem)' }} />
 
             {/* Focus Themes */}
             <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
