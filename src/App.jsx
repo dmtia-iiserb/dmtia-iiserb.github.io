@@ -122,6 +122,10 @@ export default function App() {
         .fade-in-3 { animation-delay: 0.16s; }
         .fade-in-4 { animation-delay: 0.22s; }
 
+        .page-enter {
+          animation: fadeSlideUp 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
+
         .stagger-card {
           animation: fadeSlideUp 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
           backface-visibility: hidden;
@@ -260,7 +264,7 @@ export default function App() {
       <main className="flex-grow">
         {/* ==================== HOME / LANDING PAGE ==================== */}
         {activeTab === 'home' && (
-          <div>
+          <div key="home" className="page-enter">
             {/* Hero Section */}
             <section
               className="relative overflow-hidden py-24 md:py-32"
@@ -347,7 +351,7 @@ export default function App() {
 
         {/* ==================== ABOUT US ==================== */}
         {activeTab === 'about' && (
-          <div className="py-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div key="about" className="page-enter py-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <h1 className="text-3xl sm:text-4xl font-bold mb-4" style={{ color: '#2B2B2E' }}>About the Meeting</h1>
 
             <div className="space-y-6 leading-relaxed" style={{ color: '#3F3D38' }}>
@@ -406,7 +410,7 @@ export default function App() {
 
         {/* ==================== SCHEDULE ==================== */}
         {activeTab === 'schedule' && (
-          <div className="py-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div key="schedule" className="page-enter py-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-10">
               <div>
                 <h1 className="text-3xl sm:text-4xl font-bold mb-2" style={{ color: '#2B2B2E' }}>Schedule & Speakers</h1>
@@ -528,7 +532,7 @@ export default function App() {
 
         {/* ==================== POSTER ==================== */}
         {activeTab === 'poster' && (
-          <div className="py-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div key="poster" className="page-enter py-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <h1 className="text-3xl sm:text-4xl font-bold mb-2" style={{ color: '#2B2B2E' }}>Poster</h1>
             <p className="mb-8 sans" style={{ color: '#6B6A5F' }}>
               The event poster for the Discussion Meeting on Topics in Algebra.
@@ -553,7 +557,7 @@ export default function App() {
 
         {/* ==================== REGISTRATION ==================== */}
         {activeTab === 'registration' && (
-          <div className="py-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div key="registration" className="page-enter py-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <h1 className="text-3xl sm:text-4xl font-bold mb-8" style={{ color: '#2B2B2E' }}>Registration</h1>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
@@ -618,7 +622,7 @@ export default function App() {
 
         {/* ==================== CONTACT ==================== */}
         {activeTab === 'contact' && (
-          <div className="py-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div key="contact" className="page-enter py-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <h1 className="text-3xl sm:text-4xl font-bold mb-2" style={{ color: '#2B2B2E' }}>Contact & Venue</h1>
             <p className="mb-10 sans" style={{ color: '#6B6A5F' }}>Get in touch with the meeting's organizing committee.</p>
 
