@@ -115,21 +115,21 @@ export default function App() {
         }
 
         .fade-in {
-          animation: fadeSlideUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+          animation: fadeSlideUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
         }
-        .fade-in-1 { animation-delay: 0.05s; }
-        .fade-in-2 { animation-delay: 0.15s; }
-        .fade-in-3 { animation-delay: 0.25s; }
-        .fade-in-4 { animation-delay: 0.35s; }
+        .fade-in-1 { animation-delay: 0.04s; }
+        .fade-in-2 { animation-delay: 0.1s; }
+        .fade-in-3 { animation-delay: 0.16s; }
+        .fade-in-4 { animation-delay: 0.22s; }
 
         .stagger-card {
-          animation: fadeSlideUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+          animation: fadeSlideUp 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
           backface-visibility: hidden;
           transform: translateZ(0);
         }
 
         .link-hover {
-          transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), color 0.28s ease;
+          transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), color 0.2s ease;
           display: inline-block;
         }
         .link-hover:hover {
@@ -137,14 +137,14 @@ export default function App() {
           color: #B23A48 !important;
         }
         .nav-link {
-          transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), color 0.28s ease, background-color 0.28s ease;
+          transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), color 0.2s ease, background-color 0.2s ease;
         }
         .nav-link:hover {
           transform: translateY(-1px);
           color: #B23A48 !important;
         }
         .soft-card {
-          transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.32s ease, border-color 0.32s ease;
+          transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.22s ease, border-color 0.22s ease;
         }
         .soft-card:hover {
           transform: translateY(-3px);
@@ -152,7 +152,7 @@ export default function App() {
           border-color: #C9C4B4 !important;
         }
         .cta-button {
-          transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.28s ease, background-color 0.28s ease;
+          transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.2s ease, background-color 0.2s ease;
         }
         .cta-button:hover {
           transform: translateY(-2px) scale(1.015);
@@ -190,10 +190,10 @@ export default function App() {
                 ∑
               </div>
               <div className="min-w-0">
-                <span className="hidden sm:block text-lg font-semibold tracking-tight leading-tight" style={{ color: '#2B2B2E' }}>
+                <span className="hidden sm:block text-lg font-medium tracking-tight leading-tight" style={{ color: '#2B2B2E', fontFamily: "'Fraunces', 'Georgia', serif", fontOpticalSizing: 'auto', letterSpacing: '-0.01em' }}>
                   Discussion Meeting on Topics in Algebra
                 </span>
-                <span className="block sm:hidden text-sm font-semibold tracking-tight leading-tight truncate" style={{ color: '#2B2B2E' }}>
+                <span className="block sm:hidden text-sm font-medium tracking-tight leading-tight truncate" style={{ color: '#2B2B2E', fontFamily: "'Fraunces', 'Georgia', serif" }}>
                   Discussion Meeting on Algebra
                 </span>
               </div>
@@ -267,7 +267,7 @@ export default function App() {
               style={{ borderBottom: '1px solid #DFDACD' }}
             >
               <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h1 className="fade-in fade-in-2 text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-6" style={{ color: '#2B2B2E' }}>
+                <h1 className="fade-in fade-in-2 text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-tight mb-6" style={{ color: '#2B2B2E', letterSpacing: '-0.015em' }}>
                   Discussion Meeting on <br />
                   Topics in Algebra <br />
                   <span style={{ color: '#3C4A3E' }}>IISER Bhopal</span>
@@ -374,9 +374,8 @@ export default function App() {
                   <p className="text-sm" style={{ color: '#6B6A5F' }}>
                     Thursday, September 17, 2026 — AB1-316, Third Floor (Seminar Hall)<br />
                     Friday, September 18, 2026 — Visitor Hostel, First Floor<br />
-                    IISER Bhopal, Bhauri,<br />
-                    Bhopal 462066, <br />
-                    Madhya Pradesh, India
+                    IISER Bhopal Campus, Bhauri,<br />
+                    Bhopal 462066, Madhya Pradesh, India
                   </p>
                 </div>
               </div>
@@ -395,8 +394,8 @@ export default function App() {
                 <h3 className="text-base font-semibold mb-3" style={{ color: '#2B2B2E' }}>Student Volunteers</h3>
                 <ul className="space-y-2 text-sm sans" style={{ color: '#3F3D38' }}>
                   <li>Kader Ali</li>
-                  <li>Adeetya Choubey - Website</li>
-                  <li>Kritika Pahilajani - Poster</li>
+                  <li>Adeetya Choubey — Website</li>
+                  <li>Kritika Pahilajani — Poster</li>
                   <li>Mahadeb Pal</li>
                   <li>Anshika Patel</li>
                 </ul>
@@ -444,8 +443,8 @@ export default function App() {
                     <div className="px-6 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2" style={{ background: '#EFEAE0', borderBottom: '1px solid #DFDACD' }}>
                       <h2 className="text-xl font-semibold" style={{ color: '#3C4A3E' }}>{day.date}</h2>
                       <span
-                        className="inline-flex items-center space-x-2 text-sm sm:text-base font-semibold mono px-4 py-2 rounded-full self-start sm:self-auto"
-                        style={{ color: '#3C4A3E', background: '#FFFFFF', border: '1px solid #DAD3C0' }}
+                        className="inline-flex items-center space-x-2 text-base sm:text-lg font-semibold self-start sm:self-auto"
+                        style={{ color: '#3C4A3E' }}
                       >
                         <MapPin size={18} />
                         <span>{day.venue}</span>
@@ -461,10 +460,10 @@ export default function App() {
                           >
                             <div className="flex items-center space-x-4">
                               <div
-                                className="flex items-center space-x-1.5 text-xs font-semibold mono px-2.5 py-1 rounded-md whitespace-nowrap"
+                                className="flex items-center space-x-1.5 text-sm font-semibold mono px-2.5 py-1 rounded-md whitespace-nowrap"
                                 style={{ color: '#8A8577', background: '#F6F2EA', border: '1px solid #E9E4D6' }}
                               >
-                                <Clock size={13} />
+                                <Clock size={14} />
                                 <span>{event.time}</span>
                               </div>
                               <h3 className="text-sm font-medium sans" style={{ color: '#8A8577' }}>Recess</h3>
@@ -488,10 +487,10 @@ export default function App() {
                               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-1">
                                 <h3 className="text-base font-semibold" style={{ color: '#3F3D38' }}>{event.name}</h3>
                                 <div
-                                  className="flex items-center space-x-1.5 text-xs font-semibold mono px-2.5 py-1 rounded-md whitespace-nowrap self-start"
+                                  className="flex items-center space-x-1.5 text-sm font-semibold mono px-2.5 py-1 rounded-md whitespace-nowrap self-start"
                                   style={{ color: '#3C4A3E', background: '#EFEAE0', border: '1px solid #DAD3C0' }}
                                 >
-                                  <Clock size={13} />
+                                  <Clock size={14} />
                                   <span>{event.time}</span>
                                 </div>
                               </div>
