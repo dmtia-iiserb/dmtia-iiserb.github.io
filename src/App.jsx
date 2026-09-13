@@ -378,9 +378,9 @@ export default function App() {
       <header
         className="sticky top-0 z-50 sans"
         style={{
-          background: activeTab === 'home' ? 'transparent' : 'rgba(251, 250, 247, 0.6)',
-          backdropFilter: activeTab === 'home' ? 'none' : 'blur(10px)',
-          borderBottom: activeTab === 'home' ? 'none' : '1px solid rgba(223,218,205,0.55)',
+          background: 'transparent',
+          backdropFilter: 'none',
+          borderBottom: 'none',
         }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -500,7 +500,6 @@ export default function App() {
                     fontSize: 'clamp(1.6rem, 4.6vw, 3.3rem)',
                     lineHeight: 1.15,
                     fontWeight: 600,
-                    textShadow: '0 1px 4px rgba(255,255,255,0.45)',
                   }}
                 >
                   Discussion Meeting on <br />
@@ -515,7 +514,6 @@ export default function App() {
                     fontSize: 'clamp(0.8rem, 1.5vw, 1.05rem)',
                     maxWidth: '32rem',
                     fontWeight: 400,
-                    textShadow: '0 1px 3px rgba(255,255,255,0.4)',
                   }}
                 >
                   Bringing together researchers, academicians, and students to discuss ongoing research in Commutative Algebra, Algebraic Geometry, and Representation Theory.
@@ -523,14 +521,14 @@ export default function App() {
 
                 {/* Event Highlights — plain text with a subtle underline instead of bubble badges */}
                 <div className="fade-in fade-in-4 flex flex-wrap items-center justify-end gap-x-6 gap-y-2 text-xs sm:text-sm font-medium mb-6 sm:mb-8 sans">
-                  <span className="underline-link" style={{ color: '#171B1D', textShadow: '0 1px 3px rgba(255,255,255,0.4)' }}>
+                  <span className="underline-link" style={{ color: '#171B1D' }}>
                     <Calendar size={14} style={{ color: '#3C4A3E' }} />
                     <span>September 17–18, 2026</span>
                   </span>
                   <button
                     onClick={() => setActiveTab('contact')}
                     className="underline-link cursor-pointer"
-                    style={{ color: '#171B1D', background: 'none', border: 'none', borderBottom: '1px solid currentColor', padding: 0, paddingBottom: '2px', textShadow: '0 1px 3px rgba(255,255,255,0.4)' }}
+                    style={{ color: '#171B1D', background: 'none', border: 'none', borderBottom: '1px solid currentColor', padding: 0, paddingBottom: '2px' }}
                   >
                     <MapPin size={14} style={{ color: '#8C5A5A' }} />
                     <span>IISER Bhopal, Madhya Pradesh</span>
@@ -542,7 +540,7 @@ export default function App() {
                   <button
                     onClick={() => setActiveTab('schedule')}
                     className="underline-link font-semibold cursor-pointer"
-                    style={{ color: '#233A30', background: 'none', border: 'none', borderBottom: '1.5px solid currentColor', padding: 0, paddingBottom: '2px', fontSize: 'clamp(0.85rem, 1.6vw, 1.05rem)', textShadow: '0 1px 3px rgba(255,255,255,0.4)' }}
+                    style={{ color: '#233A30', background: 'none', border: 'none', borderBottom: '1.5px solid currentColor', padding: 0, paddingBottom: '2px', fontSize: 'clamp(0.85rem, 1.6vw, 1.05rem)' }}
                   >
                     <span>View Schedule</span>
                     <ChevronRight size={16} />
@@ -550,7 +548,7 @@ export default function App() {
                   <button
                     onClick={() => setActiveTab('registration')}
                     className="underline-link font-semibold cursor-pointer"
-                    style={{ color: '#242220', background: 'none', border: 'none', borderBottom: '1.5px solid currentColor', padding: 0, paddingBottom: '2px', fontSize: 'clamp(0.85rem, 1.6vw, 1.05rem)', textShadow: '0 1px 3px rgba(255,255,255,0.4)' }}
+                    style={{ color: '#242220', background: 'none', border: 'none', borderBottom: '1.5px solid currentColor', padding: 0, paddingBottom: '2px', fontSize: 'clamp(0.85rem, 1.6vw, 1.05rem)' }}
                   >
                     <Users size={16} />
                     <span>Register</span>
