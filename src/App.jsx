@@ -159,6 +159,9 @@ export default function App() {
   const [activeTab, setActiveTabState] = useState(getTabFromHash());
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const navRefs = React.useRef({});
+  const navContainerRef = React.useRef(null);
+  const [bubbleStyle, setBubbleStyle] = useState({ opacity: 0 });
 
   // Keep activeTab in sync if the user uses browser back/forward.
   useEffect(() => {
@@ -171,6 +174,27 @@ export default function App() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [activeTab]);
+
+  // Slide the nav "bubble" to sit behind whichever tab is active.
+  const updateBubble = useCallback(() => {
+    const activeEl = navRefs.current[activeTab];
+    const containerEl = navContainerRef.current;
+    if (activeEl && containerEl) {
+      const containerRect = containerEl.getBoundingClientRect();
+      const activeRect = activeEl.getBoundingClientRect();
+      setBubbleStyle({
+        opacity: 1,
+        transform: `translateX(${activeRect.left - containerRect.left}px)`,
+        width: `${activeRect.width}px`,
+      });
+    }
+  }, [activeTab]);
+
+  useEffect(() => {
+    updateBubble();
+    window.addEventListener('resize', updateBubble);
+    return () => window.removeEventListener('resize', updateBubble);
+  }, [updateBubble]);
 
   const setActiveTab = useCallback((id) => {
     const path = id === 'home' ? '#/' : `#/${id}`;
@@ -312,24 +336,20 @@ export default function App() {
         }
         .nav-link {
           position: relative;
-          transition: color 0.2s ease;
+          transition: color 0.2s ease, transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
         }
-        .nav-link::after {
-          content: '';
+        .nav-link:hover {
+          transform: translateY(-2px);
+        }
+        .nav-bubble {
           position: absolute;
-          left: 0.9rem;
-          right: 0.9rem;
-          bottom: 4px;
-          height: 1px;
-          background: currentColor;
-          opacity: 0;
-          transform: scaleX(0.6);
-          transform-origin: center;
-          transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        .nav-link:hover::after {
-          opacity: 0.45;
-          transform: scaleX(1);
+          top: 0;
+          bottom: 0;
+          border-radius: 0.375rem;
+          background: rgba(239,234,224,0.85);
+          border: 1px solid #DAD3C0;
+          transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), width 0.35s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.2s ease;
+          z-index: 0;
         }
         .soft-card {
           transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.22s ease, border-color 0.22s ease;
@@ -379,7 +399,8 @@ export default function App() {
         className="sticky top-0 z-50 sans"
         style={{
           background: 'transparent',
-          backdropFilter: 'none',
+          backdropFilter: 'blur(10px)',
+          WebkitBackdropFilter: 'blur(10px)',
           borderBottom: 'none',
         }}
       >
@@ -420,18 +441,19 @@ export default function App() {
             </div>
 
             {/* Desktop Menu */}
-            <nav className="hidden md:flex space-x-1">
+            <nav ref={navContainerRef} className="hidden md:flex space-x-1 relative">
+              <div className="nav-bubble" style={bubbleStyle} aria-hidden="true" />
               {navigation.map((item) => (
                 <button
                   key={item.id}
+                  ref={(el) => { navRefs.current[item.id] = el; }}
                   onClick={() => setActiveTab(item.id)}
-                  className="nav-link px-4 py-2 rounded-md text-sm font-medium"
+                  className="nav-link px-4 py-2 rounded-md text-sm font-medium relative"
                   style={{
                     color: activeTab === item.id
                       ? '#3C4A3E'
                       : (activeTab === 'home' ? '#1D2327' : '#5C5A52'),
-                    background: activeTab === item.id ? 'rgba(239,234,224,0.85)' : 'transparent',
-                    border: activeTab === item.id ? '1px solid #DAD3C0' : '1px solid transparent',
+                    zIndex: 1,
                   }}
                 >
                   {item.label}
