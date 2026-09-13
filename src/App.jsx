@@ -311,11 +311,25 @@ export default function App() {
           color: #B23A48 !important;
         }
         .nav-link {
-          transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), color 0.2s ease, background-color 0.2s ease;
+          position: relative;
+          transition: color 0.2s ease;
         }
-        .nav-link:hover {
-          transform: translateY(-1px);
-          color: #B23A48 !important;
+        .nav-link::after {
+          content: '';
+          position: absolute;
+          left: 0.9rem;
+          right: 0.9rem;
+          bottom: 4px;
+          height: 1px;
+          background: currentColor;
+          opacity: 0;
+          transform: scaleX(0.6);
+          transform-origin: center;
+          transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .nav-link:hover::after {
+          opacity: 0.45;
+          transform: scaleX(1);
         }
         .soft-card {
           transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.22s ease, border-color 0.22s ease;
@@ -389,7 +403,6 @@ export default function App() {
                     fontFamily: "'Fraunces', 'Georgia', serif",
                     fontOpticalSizing: 'auto',
                     letterSpacing: '-0.01em',
-                    textShadow: activeTab === 'home' ? '0 1px 3px rgba(255,255,255,0.55)' : 'none',
                   }}
                 >
                   Discussion Meeting on Topics in Algebra
@@ -399,7 +412,6 @@ export default function App() {
                   style={{
                     color: activeTab === 'home' ? '#12181A' : '#2B2B2E',
                     fontFamily: "'Fraunces', 'Georgia', serif",
-                    textShadow: activeTab === 'home' ? '0 1px 3px rgba(255,255,255,0.55)' : 'none',
                   }}
                 >
                   Discussion Meeting on Algebra
@@ -420,7 +432,6 @@ export default function App() {
                       : (activeTab === 'home' ? '#1D2327' : '#5C5A52'),
                     background: activeTab === item.id ? 'rgba(239,234,224,0.85)' : 'transparent',
                     border: activeTab === item.id ? '1px solid #DAD3C0' : '1px solid transparent',
-                    textShadow: activeTab === 'home' && activeTab !== item.id ? '0 1px 3px rgba(255,255,255,0.5)' : 'none',
                   }}
                 >
                   {item.label}
