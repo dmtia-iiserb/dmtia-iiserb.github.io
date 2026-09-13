@@ -10,7 +10,8 @@ import {
   X,
   Users,
   Search,
-  GraduationCap
+  GraduationCap,
+  ChevronDown
 } from 'lucide-react';
 
 // Reads the current page id from the URL hash (e.g. "#/schedule" -> "schedule").
@@ -18,6 +19,60 @@ function getTabFromHash() {
   const hash = window.location.hash || '';
   const cleaned = hash.replace(/^#\/?/, '');
   return cleaned === '' ? 'home' : cleaned;
+}
+
+// A smoothly-animated, accessible "click to see abstract" dropdown.
+function AbstractDropdown({ abstract }) {
+  const [open, setOpen] = useState(false);
+  const contentRef = React.useRef(null);
+  const [maxHeight, setMaxHeight] = useState('0px');
+
+  useEffect(() => {
+    if (contentRef.current) {
+      setMaxHeight(open ? `${contentRef.current.scrollHeight}px` : '0px');
+    }
+  }, [open, abstract]);
+
+  return (
+    <div className="mt-1">
+      <button
+        type="button"
+        onClick={() => setOpen((prev) => !prev)}
+        aria-expanded={open}
+        className="inline-flex items-center space-x-1.5 text-sm font-semibold sans"
+        style={{
+          color: '#3C4A3E',
+          background: 'transparent',
+          border: 'none',
+          padding: 0,
+          cursor: 'pointer',
+        }}
+      >
+        <span>{open ? 'Hide abstract' : 'Click to see abstract'}</span>
+        <ChevronDown
+          size={16}
+          style={{
+            transition: 'transform 0.35s cubic-bezier(0.22, 1, 0.36, 1)',
+            transform: open ? 'rotate(180deg)' : 'rotate(0deg)',
+          }}
+        />
+      </button>
+      <div
+        style={{
+          overflow: 'hidden',
+          maxHeight,
+          opacity: open ? 1 : 0,
+          transition: 'max-height 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.35s ease',
+        }}
+      >
+        <div ref={contentRef}>
+          <p className="text-sm leading-relaxed pt-3" style={{ color: '#6B6A5F' }}>
+            {abstract}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default function App() {
@@ -57,22 +112,22 @@ export default function App() {
 
   // Single source of truth for the day-by-day schedule of talks and recess breaks.
   const sessionsData = [
-    { type: 'talk', name: 'Dr. Ananthnarayan H', affiliation: 'IIT Bombay', institution: 'IIT Bombay', talkTitle: 'TBA', abstract: 'TBA', day: 'Thursday, September 17, 2026', time: '2:15 – 3:00 PM', venue: 'AB1 316 (Third Floor)' },
+    { type: 'talk', name: 'Dr. Ananthnarayan H', affiliation: 'IIT Bombay', institution: 'IIT Bombay', talkTitle: 'Free resolutions and Betti numbers', abstract: 'We begin with a quick introduction to the notion of Betti numbers over local or graded rings, and some problems related to them. In particular, we will discuss the motivation behind the Boij–Söderberg conjectures (2008), their resolution by Eisenbud–Schreyer (2009), and if time permits, try to see what works more generally.', day: 'Thursday, September 17, 2026', time: '2:15 – 3:00 PM', venue: 'AB1 316 (Third Floor)' },
     { type: 'talk', name: 'Dr. Rahul Gupta', affiliation: 'IMSc, Chennai', institution: 'IMSc, Chennai', talkTitle: 'TBA', abstract: 'TBA', day: 'Thursday, September 17, 2026', time: '3:05 – 3:50 PM', venue: 'AB1 316 (Third Floor)' },
     { type: 'recess', day: 'Thursday, September 17, 2026', time: '3:50 – 4:10 PM', venue: 'AB1 316 (Third Floor)' },
-    { type: 'talk', name: 'Dr. Arpan Dutta', affiliation: 'IIT Bhubaneswar', institution: 'IIT Bhubaneswar', talkTitle: 'TBA', abstract: 'TBA', day: 'Thursday, September 17, 2026', time: '4:10 – 4:55 PM', venue: 'AB1 316 (Third Floor)' },
-    { type: 'talk', name: 'Dr. Sudipta Das', affiliation: 'TIFR Mumbai', institution: 'TIFR Mumbai', talkTitle: 'TBA', abstract: 'TBA', day: 'Thursday, September 17, 2026', time: '5:00 – 5:25 PM', venue: 'AB1 316 (Third Floor)' },
-    { type: 'talk', name: 'Dr. Divyasree', affiliation: 'IISER Pune', institution: 'IISER Pune', talkTitle: 'TBA', abstract: 'TBA', day: 'Thursday, September 17, 2026', time: '5:30 – 6:00 PM', venue: 'AB1 316 (Third Floor)' },
-    { type: 'talk', name: 'Prof. Om Prakash', affiliation: 'IIT Patna', institution: 'IIT Patna', talkTitle: 'TBA', abstract: 'TBA', day: 'Friday, September 18, 2026', time: '10:00 – 10:45 AM', venue: 'Visitor Hostel, First Floor' },
+    { type: 'talk', name: 'Dr. Arpan Dutta', affiliation: 'IIT Bhubaneswar', institution: 'IIT Bhubaneswar', talkTitle: 'On the henselian rationality problem', abstract: 'The problem of local uniformization is one of the central problems in algebraic geometry and valuation theory. Closely connected is the problem of henselian rationality, which asks whether an immediate extension of valued function fields (F|K, w) of transcendence degree one becomes rational after henselization, that is, if there exists some X in the henselization Fʰ of F such that Fʰ = K(X)ʰ. Over tame fields, the problem was answered in the affirmative by Kuhlmann. However, the problem remains open if we remove the tameness hypothesis. In this talk, we will discuss some recent developments over perfect fields. We will first explain the key ideas behind Kuhlmann\u2019s proof over tame fields and the obstacles that arise when one attempts to extend these ideas to the perfect-field setting. We will then discuss alternative approaches toward henselian rationality over perfect fields.', day: 'Thursday, September 17, 2026', time: '4:10 – 4:55 PM', venue: 'AB1 316 (Third Floor)' },
+    { type: 'talk', name: 'Dr. Sudipta Das', affiliation: 'TIFR Mumbai', institution: 'TIFR Mumbai', talkTitle: 'Transcendental Epsilon multiplicity via Divisor volumes', abstract: 'In this talk we will show that epsilon multiplicity can take transcendental values. The main structural result is a one ideal formula for section rings: under natural positivity hypotheses, the epsilon multiplicity of an ideal generated in one degree is equal to an integral of a divisor volume function. This formula transports an asymptotic colength invariant of ideals to the geometry and arithmetic of divisor volumes. To produce a transcendental value, we combine the formula with a shifted projective-bundle construction inspired by Borntr\u00e4ger and Nickel. The shift places the construction in the positivity range required by the one-ideal formula while preserving the underlying disk geometry of the volume computation. Reversing the order of integration reduces the resulting integral to three integrals of rational functions. Their arctangent terms cancel exactly, whereas the remaining real logarithms form an explicit algebraic linear combination whose value is positive. Baker\u2019s theorem then implies transcendence. Consequently, there exists a homogeneous ideal in a normal standard graded domain whose epsilon multiplicity is transcendental. This is a joint work with Stephen Landsittel and Vinh Pham.', day: 'Thursday, September 17, 2026', time: '5:00 – 5:25 PM', venue: 'AB1 316 (Third Floor)' },
+    { type: 'talk', name: 'Dr. Divyasree', affiliation: 'IISER Pune', institution: 'IISER Pune', talkTitle: 'Zero-Cycles on Twisted Grassmannians', abstract: 'The first systematic study of zero-cycles on projective homogeneous varieties was carried out by Krashen in 2010, where he proved the triviality of the group A₀(X) of degree-zero zero-cycles for many projective homogeneous varieties of the classical groups, with subsequent generalizations by Chernousov and Merkurjev. In this talk, we study zero-cycles on generalized Severi–Brauer varieties, which are twisted forms of Grassmannians. Let A be a central simple algebra over a field F of index n, and let SBᵣ(A) be the r-th generalized Severi–Brauer variety. We prove that A₀(SBᵣ(A)) is (d,n/d)-torsion, where d = (r,n), and obtain new cases in which A₀(SBᵣ(A)) = 0. We also show that A₀(SBᵣ(A)) = 0 when F is a local or global field.', day: 'Thursday, September 17, 2026', time: '5:30 – 6:00 PM', venue: 'AB1 316 (Third Floor)' },
+    { type: 'talk', name: 'Prof. Om Prakash', affiliation: 'IIT Patna', institution: 'IIT Patna', talkTitle: 'Hulls over a Non-Unital Ring', abstract: 'In this talk, we discuss the hulls of linear codes over a non-unital ring E = ⟨κ, τ | 2κ = 2τ = 0, κ² = κ, τ² = τ, κτ = κ, τκ = τ⟩. Initially, we examine the residue and torsion codes of various hulls of E-linear codes. Then, we propose four build-up construction methods to construct codes with a larger length and hull-rank from codes with a smaller length and hull-rank. We also give some examples to support our build-up construction methods. Subsequently, we discuss the permutation equivalence of two free E-linear codes and the hull-variation problems. This is joint work with Anup Kushwaha.', day: 'Friday, September 18, 2026', time: '10:00 – 10:45 AM', venue: 'Visitor Hostel, First Floor' },
     { type: 'recess', day: 'Friday, September 18, 2026', time: '10:45 – 11:00 AM', venue: 'Visitor Hostel, First Floor' },
-    { type: 'talk', name: 'Ila Ahmad', affiliation: 'IISER Bhopal', institution: 'IISER Bhopal', talkTitle: 'TBA', abstract: 'TBA', day: 'Friday, September 18, 2026', time: '11:00 – 11:25 AM', venue: 'Visitor Hostel, First Floor' },
+    { type: 'talk', name: 'Ila Ahmad', affiliation: 'IISER Bhopal', institution: 'IISER Bhopal', talkTitle: 'Twisted sign for representations of metaplectic GL(2)', abstract: 'Let F be a non-Archimedean local field of characteristic zero and G = GL(n, F). Let π be an irreducible admissible representation of G and let τ be the standard involution. It is known that τ is a dualizing involution. Hence the notion of the twisted sign of π is well defined and we can determine the twisted sign. Let G̃ denote the metaplectic double cover of GL(2, F). Let σ be any lift of τ to G̃. A recent result establishes that σ is a dualizing involution. In this talk, we discuss the twisted sign problem in the context of representations of G̃. This is based on a joint work with Kumar Balasubramanian, Sanjeev Kumar Pandey and Varsha Vasudevan.', day: 'Friday, September 18, 2026', time: '11:00 – 11:25 AM', venue: 'Visitor Hostel, First Floor' },
     { type: 'talk', name: 'Dr. Ekta Tiwari', affiliation: 'IISER Pune', institution: 'IISER Pune', talkTitle: 'TBA', abstract: 'TBA', day: 'Friday, September 18, 2026', time: '11:30 – 11:55 AM', venue: 'Visitor Hostel, First Floor' },
-    { type: 'talk', name: 'Dr. Sanjeev Kumar Pandey', affiliation: 'IISER Bhopal', institution: 'IISER Bhopal', talkTitle: 'TBA', abstract: 'TBA', day: 'Friday, September 18, 2026', time: '12:00 – 12:25 PM', venue: 'Visitor Hostel, First Floor' },
-    { type: 'talk', name: 'Varsha Vasudevan', affiliation: 'IISER Bhopal', institution: 'IISER Bhopal', talkTitle: 'TBA', abstract: 'TBA', day: 'Friday, September 18, 2026', time: '12:30 – 12:55 PM', venue: 'Visitor Hostel, First Floor' },
-    { type: 'talk', name: 'Prof. A. V. Jayanthan', affiliation: 'IIT Madras', institution: 'IIT Madras', talkTitle: 'TBA', abstract: 'TBA', day: 'Friday, September 18, 2026', time: '2:30 – 3:15 PM', venue: 'Visitor Hostel, First Floor' },
-    { type: 'talk', name: 'Dr. Vaibhav Pandey', affiliation: 'IIT Madras', institution: 'IIT Madras', talkTitle: 'TBA', abstract: 'TBA', day: 'Friday, September 18, 2026', time: '3:20 – 4:05 PM', venue: 'Visitor Hostel, First Floor' },
+    { type: 'talk', name: 'Dr. Sanjeev Kumar Pandey', affiliation: 'IISER Bhopal', institution: 'IISER Bhopal', talkTitle: 'Self-dual representations of metaplectic SL(2,F)', abstract: 'Given an irreducible admissible self-dual complex representation (π, V) of an ℓ-group G, there is a non-degenerate G-invariant bilinear form B on V. By Schur\u2019s lemma, it follows that B is unique (up to scalars) and it is either symmetric or skew-symmetric. The sign of (π, V) is defined to be 1 in the symmetric case and −1 in the skew-symmetric case. Accordingly, the representation is called orthogonal or symplectic. Let F be a non-Archimedean local field of characteristic zero. Let G = SL(2, F) and let G̃ be the metaplectic double cover of G. In this talk, we present our recent work on the sign of a representation in the context of G̃. In particular, we prove an analogue of a result of Dipendra Prasad to determine the sign for certain classes of representations of G̃. This is a joint work with Ila Ahmad, Kumar Balasubramanian and Varsha Vasudevan.', day: 'Friday, September 18, 2026', time: '12:00 – 12:25 PM', venue: 'Visitor Hostel, First Floor' },
+    { type: 'talk', name: 'Varsha Vasudevan', affiliation: 'IISER Bhopal', institution: 'IISER Bhopal', talkTitle: 'Correlation coefficient of the Symmetric group', abstract: 'Let G be a finite group and H, K be subgroups of G such that (G, H) and (G, K) are Gelfand pairs. Given an irreducible complex representation π of G, we can attach a non-negative real number c(π; H, K) called the correlation coefficient. In this talk, we shall discuss the problem of determining the correlation coefficient c(π; H, K) for any pair (H, K) of strong Gelfand subgroups of G = Sₙ. This is based on a joint work with Kumar Balasubramanian, Sanjeev Kumar Pandey and Nandini Parkhi.', day: 'Friday, September 18, 2026', time: '12:30 – 12:55 PM', venue: 'Visitor Hostel, First Floor' },
+    { type: 'talk', name: 'Prof. A. V. Jayanthan', affiliation: 'IIT Madras', institution: 'IIT Madras', talkTitle: 'Partial Betti splittings', abstract: 'We introduce the notion of a partial Betti splitting of a homogeneous ideal, generalizing the notion of a Betti splitting first given by Francisco, Ha, and Van Tuyl. Given a homogeneous ideal I and two ideals J and K such that I = J + K, a partial Betti splitting of I relates some of the graded Betti numbers of I with those of J, K, and J ∩ K. As an application, we focus on the partial Betti splittings of binomial edge ideals. Using this new technique, we generalize results of Saeedi Madani and Kiani related to binomial edge ideals with cut edges, we describe a partial Betti splitting for all binomial edge ideals, and we compute the total second Betti number of binomial edge ideals of trees.', day: 'Friday, September 18, 2026', time: '2:30 – 3:15 PM', venue: 'Visitor Hostel, First Floor' },
+    { type: 'talk', name: 'Dr. Vaibhav Pandey', affiliation: 'IIT Madras', institution: 'IIT Madras', talkTitle: 'Symbolic powers of maximal minors under general linkage', abstract: 'The symbolic powers of the minors of a generic matrix are well understood as determinantal rings are Algebras with Straightening Laws (ASLs). In particular, the ASL structure readily yields the fact that the symbolic powers of maximal minors agree with the ordinary powers. We prove that the equality of the symbolic and ordinary powers holds for \u2018the most general link\u2019 of maximal minors as well. Better still, the blowup algebras of the general link have precisely the same homological properties as those of the ideal of maximal minors. The key point is that these facts do not follow from standard techniques in liaison theory; we develop the novel tool of Gröbner degeneration of links in order to attack the problem. This is joint work with Matteo Varbaro.', day: 'Friday, September 18, 2026', time: '3:20 – 4:05 PM', venue: 'Visitor Hostel, First Floor' },
     { type: 'recess', day: 'Friday, September 18, 2026', time: '4:05 – 4:25 PM', venue: 'Visitor Hostel, First Floor' },
-    { type: 'talk', name: 'Dr. Ajay Kumar', affiliation: 'IIT Jammu', institution: 'IIT Jammu', talkTitle: 'TBA', abstract: 'TBA', day: 'Friday, September 18, 2026', time: '4:25 – 5:10 PM', venue: 'Visitor Hostel, First Floor' },
+    { type: 'talk', name: 'Dr. Ajay Kumar', affiliation: 'IIT Jammu', institution: 'IIT Jammu', talkTitle: 'Symbolic Powers of Monomial Ideals and Simis Ideals', abstract: 'Characterizing monomial ideals for which symbolic and ordinary powers coincide is a fundamental problem in commutative algebra. Monomial ideals satisfying this property are known as Simis ideals. A recent conjecture of Méndez, Pinto, and Villarreal asserts that every Simis monomial ideal with a minimal irreducible decomposition and no embedded primes can be obtained from a square-free Simis monomial ideal by assigning suitable weights to its variables. In this talk, we introduce the conjecture and discuss its motivation, along with its connections to combinatorial structures arising from graphs and simplicial complexes. We then present some recent results that establish the conjecture for several important classes of monomial ideals.', day: 'Friday, September 18, 2026', time: '4:25 – 5:10 PM', venue: 'Visitor Hostel, First Floor' },
     { type: 'talk', name: 'Dr. Deblina Dey', affiliation: 'IISER Bhopal', institution: 'IISER Bhopal', talkTitle: 'TBA', abstract: 'TBA', day: 'Friday, September 18, 2026', time: '5:15 – 5:40 PM', venue: 'Visitor Hostel, First Floor' },
   ];
 
@@ -129,7 +184,7 @@ export default function App() {
           zIndex: -1,
           background: activeTab === 'home'
             ? 'linear-gradient(90deg, rgba(251,250,247,0) 0%, rgba(251,250,247,0.05) 45%, rgba(251,250,247,0.18) 100%)'
-            : 'rgba(251,250,247,0.6)',
+            : 'rgba(251,250,247,0.55)',
         }}
       />
 
@@ -390,14 +445,6 @@ export default function App() {
                   </button>
                 </div>
               </div>
-
-              {/* Photo credit */}
-              <div
-                className="absolute bottom-3 left-4 sm:left-6 lg:left-8 text-[10px] sm:text-xs sans"
-                style={{ color: 'rgba(44,50,54,0.65)' }}
-              >
-                Photo: Kritika Pahilajani
-              </div>
             </section>
           </div>
         )}
@@ -451,8 +498,8 @@ export default function App() {
                 <h3 className="text-base font-semibold mb-3" style={{ color: '#2B2B2E' }}>Student Volunteers</h3>
                 <ul className="space-y-2 text-sm sans" style={{ color: '#3F3D38' }}>
                   <li>Kader Ali</li>
-                  <li>Adeetya Choubey</li>
-                  <li>Kritika Pahilajani</li>
+                  <li>Adeetya Choubey - Website</li>
+                  <li>Kritika Pahilajani - Poster</li>
                   <li>Mahadeb Pal</li>
                   <li>Anshika Patel</li>
                 </ul>
@@ -553,10 +600,14 @@ export default function App() {
                               </div>
                               <p className="text-sm sans mb-3" style={{ color: '#6B6A5F' }}>{event.affiliation}</p>
 
-                              <p className="text-sm leading-relaxed" style={{ color: '#6B6A5F' }}>
-                                <span className="font-semibold sans" style={{ color: '#5C5A52' }}>Abstract: </span>
-                                {event.abstract}
-                              </p>
+                              {event.abstract && event.abstract !== 'TBA' ? (
+                                <AbstractDropdown abstract={event.abstract} />
+                              ) : (
+                                <p className="text-sm leading-relaxed" style={{ color: '#6B6A5F' }}>
+                                  <span className="font-semibold sans" style={{ color: '#5C5A52' }}>Abstract: </span>
+                                  {event.abstract}
+                                </p>
+                              )}
                             </div>
                           </div>
                         )
@@ -767,7 +818,7 @@ export default function App() {
       <footer className="sans" style={{ borderTop: '1px solid rgba(223,218,205,0.6)', background: 'rgba(246,242,234,0.72)', backdropFilter: 'blur(6px)' }}>
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-col sm:flex-row items-center justify-between gap-1.5 text-[11px] sm:text-xs text-center sm:text-left" style={{ color: '#8A8577' }}>
           <span>© 2026 Discussion Meeting on Topics in Algebra, IISER Bhopal</span>
-          <span>Website by Adeetya Choubey</span>
+          <span>Website by Adeetya Choubey · Photos by Kritika Pahilajani</span>
         </div>
       </footer>
     </div>
