@@ -592,11 +592,11 @@ export default function App() {
                 <h2 className="text-xl font-semibold mb-3" style={{ color: '#2B2B2E' }}>Overview & Vision</h2>
                 <p className="mb-4">
                   The <strong>Discussion Meeting on Topics in Algebra</strong> is organized (and supported) by the{' '}
-                  <a href="https://maths.iiserb.ac.in/" target="_blank" rel="noopener noreferrer" className="link-hover" style={{ color: '#3C4A3E' }}>
+                  <a href="https://maths.iiserb.ac.in/" target="_blank" rel="noopener noreferrer" className="link-hover" style={{ color: '#3C4A3E', textDecoration: 'underline' }}>
                     Department of Mathematics
                   </a>{' '}
                   at the Indian Institute of Science Education and Research (
-                  <a href="https://www.iiserb.ac.in/" target="_blank" rel="noopener noreferrer" className="link-hover" style={{ color: '#3C4A3E' }}>
+                  <a href="https://www.iiserb.ac.in/" target="_blank" rel="noopener noreferrer" className="link-hover" style={{ color: '#3C4A3E', textDecoration: 'underline' }}>
                     IISER
                   </a>
                   ) Bhopal. This meeting takes place on <strong>September 17 and September 18, 2026</strong>, and it aims to create a learning environment for researchers in the fields, and students with aligning interests.
@@ -609,20 +609,20 @@ export default function App() {
               <div className="p-6 sm:p-8 rounded-lg" style={{ background: 'rgba(255,255,255,0.9)', border: '1px solid rgba(223,218,205,0.7)', backdropFilter: 'blur(8px)' }}>
                 <h2 className="text-xl font-semibold mb-3" style={{ color: '#2B2B2E' }}>
                   About{' '}
-                  <a href="https://www.iiserb.ac.in/" target="_blank" rel="noopener noreferrer" className="link-hover" style={{ color: '#3C4A3E' }}>
+                  <a href="https://www.iiserb.ac.in/" target="_blank" rel="noopener noreferrer" className="link-hover" style={{ color: '#3C4A3E', textDecoration: 'underline' }}>
                     IISER Bhopal
                   </a>
                 </h2>
                 <p>
-                  <a href="https://www.iiserb.ac.in/" target="_blank" rel="noopener noreferrer" className="link-hover" style={{ color: '#3C4A3E' }}>
+                  <a href="https://www.iiserb.ac.in/" target="_blank" rel="noopener noreferrer" className="link-hover" style={{ color: '#3C4A3E', textDecoration: 'underline' }}>
                     IISER Bhopal
                   </a>{' '}
                   was established in 2008 by the Ministry of Education, Government of India, and is dedicated to fostering the highest quality of scientific research and education. The{' '}
-                  <a href="https://maths.iiserb.ac.in/" target="_blank" rel="noopener noreferrer" className="link-hover" style={{ color: '#3C4A3E' }}>
+                  <a href="https://maths.iiserb.ac.in/" target="_blank" rel="noopener noreferrer" className="link-hover" style={{ color: '#3C4A3E', textDecoration: 'underline' }}>
                     Department of Mathematics
                   </a>{' '}
                   at{' '}
-                  <a href="https://www.iiserb.ac.in/" target="_blank" rel="noopener noreferrer" className="link-hover" style={{ color: '#3C4A3E' }}>
+                  <a href="https://www.iiserb.ac.in/" target="_blank" rel="noopener noreferrer" className="link-hover" style={{ color: '#3C4A3E', textDecoration: 'underline' }}>
                     IISER Bhopal
                   </a>{' '}
                   actively engages in research which spans across Algebra, Number Theory, Geometry, Topology, and Analysis.
