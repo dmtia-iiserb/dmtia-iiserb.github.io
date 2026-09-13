@@ -364,9 +364,9 @@ export default function App() {
       <header
         className="sticky top-0 z-50 sans"
         style={{
-          background: 'rgba(251, 250, 247, 0.6)',
-          backdropFilter: 'blur(10px)',
-          borderBottom: '1px solid rgba(223,218,205,0.55)',
+          background: activeTab === 'home' ? 'transparent' : 'rgba(251, 250, 247, 0.6)',
+          backdropFilter: activeTab === 'home' ? 'none' : 'blur(10px)',
+          borderBottom: activeTab === 'home' ? 'none' : '1px solid rgba(223,218,205,0.55)',
         }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -379,13 +379,29 @@ export default function App() {
                 className="h-9 w-9 shrink-0 rounded-md flex items-center justify-center font-bold text-lg mono"
                 style={{ background: 'rgba(60,74,62,0.88)', color: '#FBFAF7' }}
               >
-                ∑
+                ⊆
               </div>
               <div className="min-w-0">
-                <span className="hidden sm:block text-lg font-medium tracking-tight leading-tight" style={{ color: '#2B2B2E', fontFamily: "'Fraunces', 'Georgia', serif", fontOpticalSizing: 'auto', letterSpacing: '-0.01em' }}>
+                <span
+                  className="hidden sm:block text-lg font-medium tracking-tight leading-tight"
+                  style={{
+                    color: activeTab === 'home' ? '#12181A' : '#2B2B2E',
+                    fontFamily: "'Fraunces', 'Georgia', serif",
+                    fontOpticalSizing: 'auto',
+                    letterSpacing: '-0.01em',
+                    textShadow: activeTab === 'home' ? '0 1px 3px rgba(255,255,255,0.55)' : 'none',
+                  }}
+                >
                   Discussion Meeting on Topics in Algebra
                 </span>
-                <span className="block sm:hidden text-sm font-medium tracking-tight leading-tight truncate" style={{ color: '#2B2B2E', fontFamily: "'Fraunces', 'Georgia', serif" }}>
+                <span
+                  className="block sm:hidden text-sm font-medium tracking-tight leading-tight truncate"
+                  style={{
+                    color: activeTab === 'home' ? '#12181A' : '#2B2B2E',
+                    fontFamily: "'Fraunces', 'Georgia', serif",
+                    textShadow: activeTab === 'home' ? '0 1px 3px rgba(255,255,255,0.55)' : 'none',
+                  }}
+                >
                   Discussion Meeting on Algebra
                 </span>
               </div>
@@ -399,9 +415,12 @@ export default function App() {
                   onClick={() => setActiveTab(item.id)}
                   className="nav-link px-4 py-2 rounded-md text-sm font-medium"
                   style={{
-                    color: activeTab === item.id ? '#3C4A3E' : '#5C5A52',
+                    color: activeTab === item.id
+                      ? '#3C4A3E'
+                      : (activeTab === 'home' ? '#1D2327' : '#5C5A52'),
                     background: activeTab === item.id ? 'rgba(239,234,224,0.85)' : 'transparent',
                     border: activeTab === item.id ? '1px solid #DAD3C0' : '1px solid transparent',
+                    textShadow: activeTab === 'home' && activeTab !== item.id ? '0 1px 3px rgba(255,255,255,0.5)' : 'none',
                   }}
                 >
                   {item.label}
@@ -414,7 +433,7 @@ export default function App() {
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 className="p-2 rounded-md focus:outline-none"
-                style={{ color: '#5C5A52' }}
+                style={{ color: activeTab === 'home' && !mobileMenuOpen ? '#12181A' : '#5C5A52' }}
               >
                 {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
               </button>
@@ -465,25 +484,27 @@ export default function App() {
                 <h1
                   className="hero-title fade-in fade-in-2 tracking-tight mb-3 sm:mb-4"
                   style={{
-                    color: '#1D2327',
+                    color: '#0E1416',
                     letterSpacing: '-0.01em',
                     fontSize: 'clamp(1.6rem, 4.6vw, 3.3rem)',
                     lineHeight: 1.15,
                     fontWeight: 600,
+                    textShadow: '0 1px 4px rgba(255,255,255,0.45)',
                   }}
                 >
                   Discussion Meeting on <br />
                   Topics in Algebra <br />
-                  <span style={{ color: '#2E4A3F' }}>IISER Bhopal</span>
+                  <span style={{ color: '#233A30' }}>IISER Bhopal</span>
                 </h1>
 
                 <p
                   className="fade-in fade-in-3 ml-auto mb-6 sm:mb-7 leading-relaxed sans"
                   style={{
-                    color: '#2C3236',
+                    color: '#171B1D',
                     fontSize: 'clamp(0.8rem, 1.5vw, 1.05rem)',
                     maxWidth: '32rem',
                     fontWeight: 400,
+                    textShadow: '0 1px 3px rgba(255,255,255,0.4)',
                   }}
                 >
                   Bringing together researchers, academicians, and students to discuss ongoing research in Commutative Algebra, Algebraic Geometry, and Representation Theory.
@@ -491,14 +512,14 @@ export default function App() {
 
                 {/* Event Highlights — plain text with a subtle underline instead of bubble badges */}
                 <div className="fade-in fade-in-4 flex flex-wrap items-center justify-end gap-x-6 gap-y-2 text-xs sm:text-sm font-medium mb-6 sm:mb-8 sans">
-                  <span className="underline-link" style={{ color: '#2C3236' }}>
+                  <span className="underline-link" style={{ color: '#171B1D', textShadow: '0 1px 3px rgba(255,255,255,0.4)' }}>
                     <Calendar size={14} style={{ color: '#3C4A3E' }} />
                     <span>September 17–18, 2026</span>
                   </span>
                   <button
                     onClick={() => setActiveTab('contact')}
                     className="underline-link cursor-pointer"
-                    style={{ color: '#2C3236', background: 'none', border: 'none', borderBottom: '1px solid currentColor', padding: 0, paddingBottom: '2px' }}
+                    style={{ color: '#171B1D', background: 'none', border: 'none', borderBottom: '1px solid currentColor', padding: 0, paddingBottom: '2px', textShadow: '0 1px 3px rgba(255,255,255,0.4)' }}
                   >
                     <MapPin size={14} style={{ color: '#8C5A5A' }} />
                     <span>IISER Bhopal, Madhya Pradesh</span>
@@ -510,7 +531,7 @@ export default function App() {
                   <button
                     onClick={() => setActiveTab('schedule')}
                     className="underline-link font-semibold cursor-pointer"
-                    style={{ color: '#2E4A3F', background: 'none', border: 'none', borderBottom: '1.5px solid currentColor', padding: 0, paddingBottom: '2px', fontSize: 'clamp(0.85rem, 1.6vw, 1.05rem)' }}
+                    style={{ color: '#233A30', background: 'none', border: 'none', borderBottom: '1.5px solid currentColor', padding: 0, paddingBottom: '2px', fontSize: 'clamp(0.85rem, 1.6vw, 1.05rem)', textShadow: '0 1px 3px rgba(255,255,255,0.4)' }}
                   >
                     <span>View Schedule</span>
                     <ChevronRight size={16} />
@@ -518,7 +539,7 @@ export default function App() {
                   <button
                     onClick={() => setActiveTab('registration')}
                     className="underline-link font-semibold cursor-pointer"
-                    style={{ color: '#3F3D38', background: 'none', border: 'none', borderBottom: '1.5px solid currentColor', padding: 0, paddingBottom: '2px', fontSize: 'clamp(0.85rem, 1.6vw, 1.05rem)' }}
+                    style={{ color: '#242220', background: 'none', border: 'none', borderBottom: '1.5px solid currentColor', padding: 0, paddingBottom: '2px', fontSize: 'clamp(0.85rem, 1.6vw, 1.05rem)', textShadow: '0 1px 3px rgba(255,255,255,0.4)' }}
                   >
                     <Users size={16} />
                     <span>Register</span>
@@ -723,18 +744,15 @@ export default function App() {
             </p>
 
             <div
-              className="soft-card p-12 sm:p-20 rounded-lg flex flex-col items-center justify-center text-center"
-              style={{ background: 'rgba(246,242,234,0.88)', border: '1px dashed #C9C4B4', backdropFilter: 'blur(8px)' }}
+              className="soft-card p-4 sm:p-6 rounded-lg flex flex-col items-center justify-center text-center"
+              style={{ background: 'rgba(246,242,234,0.88)', border: '1px solid rgba(223,218,205,0.7)', backdropFilter: 'blur(8px)' }}
             >
-              <span
-                className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold mono mb-4"
-                style={{ background: 'rgba(239,234,224,0.9)', color: '#8C5A5A', border: '1px solid #DAD3C0' }}
-              >
-                Under Construction
-              </span>
-              <p className="text-sm sans" style={{ color: '#8A8577' }}>
-                The poster is being finalised and will be added here shortly.
-              </p>
+              <img
+                src="/poster.png"
+                alt="Discussion Meeting on Topics in Algebra — event poster"
+                className="w-full h-auto rounded-md"
+                style={{ maxWidth: '640px' }}
+              />
             </div>
           </div>
         )}
@@ -898,7 +916,7 @@ export default function App() {
       <footer className="sans" style={{ borderTop: '1px solid rgba(223,218,205,0.6)', background: 'rgba(246,242,234,0.72)', backdropFilter: 'blur(6px)' }}>
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-col sm:flex-row items-center justify-between gap-1.5 text-[11px] sm:text-xs text-center sm:text-left" style={{ color: '#8A8577' }}>
           <span>© 2026 Discussion Meeting on Topics in Algebra, IISER Bhopal</span>
-          <span>Website by Adeetya Choubey · Photos by Kritika Pahilajani</span>
+          <span>Website by Adeetya Choubey · Photo by Kritika</span>
         </div>
       </footer>
     </div>
