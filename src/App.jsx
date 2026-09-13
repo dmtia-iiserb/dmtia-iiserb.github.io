@@ -595,11 +595,7 @@ export default function App() {
                   <a href="https://maths.iiserb.ac.in/" target="_blank" rel="noopener noreferrer" className="link-hover" style={{ color: '#3C4A3E', textDecoration: 'underline' }}>
                     Department of Mathematics
                   </a>{' '}
-                  at the Indian Institute of Science Education and Research (
-                  <a href="https://www.iiserb.ac.in/" target="_blank" rel="noopener noreferrer" className="link-hover" style={{ color: '#3C4A3E', textDecoration: 'underline' }}>
-                    IISER
-                  </a>
-                  ) Bhopal. This meeting takes place on <strong>September 17 and September 18, 2026</strong>, and it aims to create a learning environment for researchers in the fields, and students with aligning interests.
+                  at the Indian Institute of Science Education and Research (IISER) Bhopal. This meeting takes place on <strong>September 17 and September 18, 2026</strong>, and it aims to create a learning environment for researchers in the fields, and students with aligning interests.
                 </p>
                 <p>
                   This two-day event includes addresses from various researchers in these areas, coming from different parts of this country.
@@ -614,18 +610,7 @@ export default function App() {
                   </a>
                 </h2>
                 <p>
-                  <a href="https://www.iiserb.ac.in/" target="_blank" rel="noopener noreferrer" className="link-hover" style={{ color: '#3C4A3E', textDecoration: 'underline' }}>
-                    IISER Bhopal
-                  </a>{' '}
-                  was established in 2008 by the Ministry of Education, Government of India, and is dedicated to fostering the highest quality of scientific research and education. The{' '}
-                  <a href="https://maths.iiserb.ac.in/" target="_blank" rel="noopener noreferrer" className="link-hover" style={{ color: '#3C4A3E', textDecoration: 'underline' }}>
-                    Department of Mathematics
-                  </a>{' '}
-                  at{' '}
-                  <a href="https://www.iiserb.ac.in/" target="_blank" rel="noopener noreferrer" className="link-hover" style={{ color: '#3C4A3E', textDecoration: 'underline' }}>
-                    IISER Bhopal
-                  </a>{' '}
-                  actively engages in research which spans across Algebra, Number Theory, Geometry, Topology, and Analysis.
+                  IISER Bhopal was established in 2008 by the Ministry of Education, Government of India, and is dedicated to fostering the highest quality of scientific research and education. The Department of Mathematics at IISER Bhopal actively engages in research which spans across Algebra, Number Theory, Geometry, Topology, and Analysis.
                 </p>
               </div>
 
