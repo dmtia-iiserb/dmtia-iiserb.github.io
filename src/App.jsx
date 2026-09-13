@@ -129,7 +129,7 @@ export default function App() {
           zIndex: -1,
           background: activeTab === 'home'
             ? 'linear-gradient(90deg, rgba(251,250,247,0) 0%, rgba(251,250,247,0.05) 45%, rgba(251,250,247,0.18) 100%)'
-            : 'rgba(251,250,247,0.55)',
+            : 'rgba(251,250,247,0.6)',
         }}
       />
 
@@ -390,6 +390,14 @@ export default function App() {
                   </button>
                 </div>
               </div>
+
+              {/* Photo credit */}
+              <div
+                className="absolute bottom-3 left-4 sm:left-6 lg:left-8 text-[10px] sm:text-xs sans"
+                style={{ color: 'rgba(44,50,54,0.65)' }}
+              >
+                Photo: Kritika Pahilajani
+              </div>
             </section>
           </div>
         )}
@@ -443,8 +451,8 @@ export default function App() {
                 <h3 className="text-base font-semibold mb-3" style={{ color: '#2B2B2E' }}>Student Volunteers</h3>
                 <ul className="space-y-2 text-sm sans" style={{ color: '#3F3D38' }}>
                   <li>Kader Ali</li>
-                  <li>Adeetya Choubey - Website</li>
-                  <li>Kritika Pahilajani - Poster</li>
+                  <li>Adeetya Choubey</li>
+                  <li>Kritika Pahilajani</li>
                   <li>Mahadeb Pal</li>
                   <li>Anshika Patel</li>
                 </ul>
