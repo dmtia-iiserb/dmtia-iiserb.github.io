@@ -803,17 +803,18 @@ export default function App() {
                       style={{ borderTop: idx === 0 ? 'none' : '1px solid rgba(223,218,205,0.6)' }}
                     >
                       <div>
-                        <span className="font-semibold sans block" style={{ color: '#2B2B2E' }}>{speaker.name}</span>
-                        {speaker.website && (
+                        {speaker.website ? (
                           <a
                             href={speaker.website}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="link-hover text-sm sans"
-                            style={{ color: '#3C4A3E' }}
+                            className="link-hover font-semibold sans block"
+                            style={{ color: '#2B2B2E', textDecoration: 'underline' }}
                           >
-                            webpage
+                            {speaker.name}
                           </a>
+                        ) : (
+                          <span className="font-semibold sans block" style={{ color: '#2B2B2E' }}>{speaker.name}</span>
                         )}
                       </div>
                       <span className="text-sm sans text-right" style={{ color: '#6B6A5F' }}>{speaker.affiliation}</span>
@@ -1007,7 +1008,7 @@ export default function App() {
       <footer className="sans" style={{ borderTop: '1px solid rgba(223,218,205,0.6)', background: 'rgba(246,242,234,0.72)', backdropFilter: 'blur(6px)' }}>
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-col sm:flex-row items-center justify-between gap-1.5 text-[11px] sm:text-xs text-center sm:text-left" style={{ color: '#8A8577' }}>
           <span>© 2026 Discussion Meeting on Topics in Algebra, IISER Bhopal</span>
-          <span>Website by Adeetya Choubey · Photo by Kritika Pahilajani</span>
+          <span>Website by Adeetya Choubey · Photo by Kritika</span>
         </div>
       </footer>
     </div>
