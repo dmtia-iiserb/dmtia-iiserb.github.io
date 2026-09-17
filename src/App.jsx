@@ -1008,7 +1008,7 @@ export default function App() {
       <footer className="sans" style={{ borderTop: '1px solid rgba(223,218,205,0.6)', background: 'rgba(246,242,234,0.72)', backdropFilter: 'blur(6px)' }}>
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-col sm:flex-row items-center justify-between gap-1.5 text-[11px] sm:text-xs text-center sm:text-left" style={{ color: '#8A8577' }}>
           <span>© 2026 Discussion Meeting on Topics in Algebra, IISER Bhopal</span>
-          <span>Website by Adeetya Choubey · Photo by Kritika Pahilajini</span>
+          <span>Website by Adeetya Choubey · Photo by Kritika Pahilajani</span>
         </div>
       </footer>
     </div>
