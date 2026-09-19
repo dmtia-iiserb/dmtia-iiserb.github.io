@@ -11,7 +11,8 @@ import {
   Users,
   Search,
   GraduationCap,
-  ChevronDown
+  ChevronDown,
+  Image
 } from 'lucide-react';
 
 // Reads the current page id from the URL hash (e.g. "#/schedule" -> "schedule").
@@ -212,6 +213,7 @@ export default function App() {
     { id: 'speakers', label: 'Speakers' },
     { id: 'participants', label: 'Participants' },
     { id: 'poster', label: 'Poster' },
+    { id: 'gallery', label: 'Gallery' },
     { id: 'registration', label: 'Registration' },
     { id: 'contact', label: 'Contact' },
   ];
@@ -831,22 +833,10 @@ export default function App() {
           <div key="participants" className="page-enter py-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <h1 className="text-3xl sm:text-4xl font-bold mb-2" style={{ color: '#2B2B2E' }}>List of Participants</h1>
             <p className="mb-8 sans" style={{ color: '#6B6A5F' }}>
-              Organizers and participants of the Discussion Meeting on Topics in Algebra.
+              Participants of the Discussion Meeting on Topics in Algebra.
             </p>
 
             <div className="space-y-6">
-              <div className="p-6 sm:p-8 rounded-lg" style={{ background: 'rgba(255,255,255,0.9)', border: '1px solid rgba(223,218,205,0.7)', backdropFilter: 'blur(8px)' }}>
-                <h2 className="text-lg font-semibold mb-4 flex items-center space-x-2" style={{ color: '#2B2B2E' }}>
-                  <Users size={20} style={{ color: '#3C4A3E' }} />
-                  <span>Organizers</span>
-                </h2>
-                <ul className="space-y-2 text-sm sans" style={{ color: '#3F3D38' }}>
-                  <li>Dr. Vivek Sadhu</li>
-                  <li>Dr. Anjan Gupta</li>
-                  <li>Dr. Sankhaneel Bisui</li>
-                </ul>
-              </div>
-
               <div className="p-6 sm:p-8 rounded-lg" style={{ background: 'rgba(255,255,255,0.9)', border: '1px solid rgba(223,218,205,0.7)', backdropFilter: 'blur(8px)' }}>
                 <h2 className="text-lg font-semibold mb-4 flex items-center space-x-2" style={{ color: '#2B2B2E' }}>
                   <Users size={20} style={{ color: '#3C4A3E' }} />
@@ -899,6 +889,55 @@ export default function App() {
                 className="w-full h-auto rounded-md"
                 style={{ maxWidth: '640px' }}
               />
+            </div>
+          </div>
+        )}
+
+        {/* ==================== GALLERY ==================== */}
+        {activeTab === 'gallery' && (
+          <div key="gallery" className="page-enter py-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 className="text-3xl sm:text-4xl font-bold mb-2" style={{ color: '#2B2B2E' }}>Gallery</h1>
+            <p className="mb-8 sans" style={{ color: '#6B6A5F' }}>
+              Photos from the Discussion Meeting on Topics in Algebra.
+            </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+              {[
+                '/gallery/photo1.jpg',
+                '/gallery/photo2.jpg',
+                '/gallery/photo3.jpg',
+                '/gallery/photo4.jpg',
+                '/gallery/photo5.jpg',
+                '/gallery/photo6.jpg',
+              ].map((src, idx) => (
+                <div
+                  key={idx}
+                  className="soft-card rounded-lg overflow-hidden flex items-center justify-center"
+                  style={{
+                    background: 'rgba(246,242,234,0.88)',
+                    border: '1px solid rgba(223,218,205,0.7)',
+                    backdropFilter: 'blur(8px)',
+                    aspectRatio: '4 / 3',
+                  }}
+                >
+                  <img
+                    src={src}
+                    alt={`Event photo ${idx + 1}`}
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none';
+                      e.currentTarget.parentElement.querySelector('.gallery-fallback').style.display = 'flex';
+                    }}
+                  />
+                  <div
+                    className="gallery-fallback flex-col items-center justify-center text-center px-4"
+                    style={{ display: 'none', color: '#8A8577', width: '100%', height: '100%' }}
+                  >
+                    <Image size={28} style={{ marginBottom: '8px' }} />
+                    <span className="text-xs sans">Photo {idx + 1} coming soon</span>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         )}
