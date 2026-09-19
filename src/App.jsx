@@ -214,7 +214,6 @@ export default function App() {
     { id: 'participants', label: 'Participants' },
     { id: 'poster', label: 'Poster' },
     { id: 'gallery', label: 'Gallery' },
-    { id: 'registration', label: 'Registration' },
     { id: 'contact', label: 'Contact' },
   ];
 
@@ -571,14 +570,6 @@ export default function App() {
                     <span>View Schedule</span>
                     <ChevronRight size={16} />
                   </button>
-                  <button
-                    onClick={() => setActiveTab('registration')}
-                    className="underline-link font-semibold cursor-pointer"
-                    style={{ color: '#242220', background: 'none', border: 'none', borderBottom: '1.5px solid currentColor', padding: 0, paddingBottom: '2px', fontSize: 'clamp(0.85rem, 1.6vw, 1.05rem)' }}
-                  >
-                    <Users size={16} />
-                    <span>Register</span>
-                  </button>
                 </div>
               </div>
             </section>
@@ -896,115 +887,14 @@ export default function App() {
         {/* ==================== GALLERY ==================== */}
         {activeTab === 'gallery' && (
           <div key="gallery" className="page-enter py-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 className="text-3xl sm:text-4xl font-bold mb-2" style={{ color: '#2B2B2E' }}>Gallery</h1>
-            <p className="mb-8 sans" style={{ color: '#6B6A5F' }}>
-              Photos from the Discussion Meeting on Topics in Algebra.
-            </p>
+            <h1 className="text-3xl sm:text-4xl font-bold mb-8" style={{ color: '#2B2B2E' }}>Gallery</h1>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-              {[
-                '/gallery/photo1.jpg',
-                '/gallery/photo2.jpg',
-                '/gallery/photo3.jpg',
-                '/gallery/photo4.jpg',
-                '/gallery/photo5.jpg',
-                '/gallery/photo6.jpg',
-              ].map((src, idx) => (
-                <div
-                  key={idx}
-                  className="soft-card rounded-lg overflow-hidden flex items-center justify-center"
-                  style={{
-                    background: 'rgba(246,242,234,0.88)',
-                    border: '1px solid rgba(223,218,205,0.7)',
-                    backdropFilter: 'blur(8px)',
-                    aspectRatio: '4 / 3',
-                  }}
-                >
-                  <img
-                    src={src}
-                    alt={`Event photo ${idx + 1}`}
-                    className="w-full h-full object-cover"
-                    onError={(e) => {
-                      e.currentTarget.style.display = 'none';
-                      e.currentTarget.parentElement.querySelector('.gallery-fallback').style.display = 'flex';
-                    }}
-                  />
-                  <div
-                    className="gallery-fallback flex-col items-center justify-center text-center px-4"
-                    style={{ display: 'none', color: '#8A8577', width: '100%', height: '100%' }}
-                  >
-                    <Image size={28} style={{ marginBottom: '8px' }} />
-                    <span className="text-xs sans">Photo {idx + 1} coming soon</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* ==================== REGISTRATION ==================== */}
-        {activeTab === 'registration' && (
-          <div key="registration" className="page-enter py-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 className="text-3xl sm:text-4xl font-bold mb-8" style={{ color: '#2B2B2E' }}>Registration</h1>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
-              {/* Eligibility */}
-              <div className="soft-card p-6 rounded-lg" style={{ background: 'rgba(255,255,255,0.9)', border: '1px solid rgba(223,218,205,0.7)', backdropFilter: 'blur(8px)' }}>
-                <h2 className="text-lg font-semibold mb-4 flex items-center space-x-2" style={{ color: '#2B2B2E' }}>
-                  <GraduationCap size={20} style={{ color: '#3C4A3E' }} />
-                  <span>Eligibility to Register</span>
-                </h2>
-                <ul className="space-y-3 text-sm sans leading-relaxed" style={{ color: '#3F3D38' }}>
-                  <li className="flex items-start space-x-2">
-                    <span style={{ color: '#3C4A3E' }}>•</span>
-                    <span>Only members of the IISER Bhopal Department of Mathematics are allowed to register.</span>
-                  </li>
-                  <li className="flex items-start space-x-2">
-                    <span style={{ color: '#3C4A3E' }}>•</span>
-                    <span>Since spots for this interaction are very limited, we kindly request that only those with a genuine interest in Algebra, Algebraic Geometry, Commutative Algebra, or Representation Theory register; this helps us keep the group meaningful for everyone involved.</span>
-                  </li>
-                </ul>
-              </div>
-
-              {/* Notes */}
-              <div className="soft-card p-6 rounded-lg" style={{ background: 'rgba(246,242,234,0.88)', border: '1px solid rgba(223,218,205,0.7)', backdropFilter: 'blur(8px)' }}>
-                <h2 className="text-lg font-semibold mb-3" style={{ color: '#2B2B2E' }}>Notes</h2>
-                <ul className="space-y-2 text-sm sans leading-relaxed" style={{ color: '#6B6A5F' }}>
-                  <li>• <strong>Registration deadline: 15th September 2026, 11:59 PM.</strong></li>
-                  <li>• All talks are open to be attended by everyone. No registration is needed to attend the talks.</li>
-                  <li>• Confirmation will be sent by email from the organizing committee.</li>
-                  <li>• For queries, write to any one of the organizers or student volunteers.</li>
-                </ul>
-              </div>
-            </div>
-
-            {/* Registration Form */}
-            <div className="soft-card p-6 sm:p-8 rounded-lg" style={{ background: 'rgba(255,255,255,0.9)', border: '1px solid rgba(223,218,205,0.7)', backdropFilter: 'blur(8px)' }}>
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
-                <h2 className="text-lg font-semibold" style={{ color: '#2B2B2E' }}>Registration Form</h2>
-                <a
-                  href="https://forms.gle/Z1FK9HqBvnE5kniC6"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="cta-button inline-flex items-center justify-center space-x-2 w-full sm:w-auto px-6 py-3 rounded-lg font-semibold text-sm"
-                  style={{ background: '#3C4A3E', color: '#FBFAF7' }}
-                >
-                  <span>Open Form in New Tab</span>
-                  <ExternalLink size={16} />
-                </a>
-              </div>
-
-              <div className="rounded-lg overflow-hidden" style={{ border: '1px solid #DFDACD' }}>
-                <iframe
-                  src="https://forms.gle/Z1FK9HqBvnE5kniC6"
-                  title="Registration Form"
-                  width="100%"
-                  height="900"
-                  style={{ display: 'block', background: '#FBFAF7' }}
-                >
-                  Loading form…
-                </iframe>
-              </div>
+            <div
+              className="soft-card p-12 sm:p-20 rounded-lg flex flex-col items-center justify-center text-center"
+              style={{ background: 'rgba(246,242,234,0.88)', border: '1px solid rgba(223,218,205,0.7)', backdropFilter: 'blur(8px)' }}
+            >
+              <Image size={36} style={{ color: '#8A8577', marginBottom: '16px' }} />
+              <p className="text-lg font-semibold sans" style={{ color: '#3F3D38' }}>Under Construction</p>
             </div>
           </div>
         )}
